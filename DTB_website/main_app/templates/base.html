@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="" />
+    <title>DTB</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% block head %} 
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="header-logo-container">
+        <a href="/">
+          <img src="" alt="DTB logo" />
+        </a>
+      </div>
+      <nav>
+        <ul>
+           <li><a href="/">Home</a></li>
+            <li><a href="/works">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/devs"> Meet the Devs</a></li>
+            <li><a href="/reviews">Reviews</a></li> 
+
+          <li><a href="/about">About DTB</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+     {% block content %} 
+     {% endblock %}
+     </main>
+  </body>
+</html>
