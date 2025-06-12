@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from . import views
 from django.contrib.auth import views as auth_views
 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('reviews', views.reviews, name='reviews'),
     path('devs', views.devs, name='devs'),
     path('profile', views.profile, name='profile'),
+    path('profile/<str:username>', views.view_profile, name='your_profile'),
     
     # Authentication URLs
     path('accounts/signup/', views.signup, name='signup'),

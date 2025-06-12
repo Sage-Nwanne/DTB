@@ -85,7 +85,7 @@ def profile(request):
         profile_complete = True
     
     # Get user's projects
-    projects = Project.objects.filter(developer=request.user) if hasattr(request.user, 'id') else []
+    projects = Project.objects.filter(developers=request.user) if hasattr(request.user, 'id') else []
     
     if request.method == 'POST':
         # Handle form submission
@@ -101,7 +101,7 @@ def profile(request):
         featured_project_id = request.POST.get('featured_project')
         if featured_project_id:
             try:
-                profile.featured_project = Project.objects.get(id=featured_project_id, developer=request.user)
+                profile.featured_project = Project.objects.get(id=featured_project_id, developers=request.user)
             except Project.DoesNotExist:
                 pass
         
@@ -123,7 +123,7 @@ def profile(request):
         else:
             messages.info(request, 'Profile updated, but some information is still missing.')
         
-        return redirect('profile')
+        return redirect('your_profile', profile.user.username)
     
     context = {
         'profile': profile,
@@ -132,3 +132,19 @@ def profile(request):
     }
     
     return render(request, 'profile.html', context)
+
+
+def view_profile(request, username):
+    try:
+        profile = Profile.objects.get(user__username=username)
+    except Profile.DoesNotExist:
+        return render(request, '404.html')
+    
+    projects = Project.objects.filter(developers__username=username)
+    
+    context = {
+        'profile': profile,
+        'projects': projects,
+    }
+    
+    return render(request, 'your-profile.html', context)
