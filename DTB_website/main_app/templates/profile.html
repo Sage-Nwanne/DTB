@@ -44,12 +44,12 @@
   
   .upload-icon {
     position: absolute;
-    bottom: 10px;
-    right: 10px;
+    bottom: 5px;
+    right: 5px;
     background-color: var(--nav-bg);
     color: white;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -219,12 +219,14 @@
     justify-content: space-between;
     margin-top: 15px;
   }
+
+  
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="profile-container">
-  <h1>Your Account</h1>
+  <h1>Your Profile</h1>
   
   {% if not profile_complete %}
   <div class="incomplete-profile">
@@ -242,11 +244,11 @@
           <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" class="profile-image">
         {% else %}
           <div class="profile-image-placeholder">
-            <span>Add Photo</span>
+            <span>Add Profile Picture</span>
           </div>
         {% endif %}
         <label for="profile-picture-upload" class="upload-icon">
-          <span>+</span>
+          <span><img src="{% static 'Images/pfp_icon.png' %}" alt="pfp Icon" style="width: 65px; height: 40px;"></span>
         </label>
         <input type="file" id="profile-picture-upload" name="profile_picture" class="hidden-file-input" accept="image/*">
       </div>
@@ -335,16 +337,22 @@
       <button class="carousel-button" id="prev-button">&lt;</button>
       <div class="carousel-images" id="carousel-container">
         <div class="carousel-item">
+          {% if profile.resume %}
           <img src="{{ profile.resume.url|default:'#' }}" alt="Resume" class="carousel-image">
+          {% endif %}
           <div class="carousel-label">Resume</div>
         </div>
         <div class="carousel-item">
+          {% if profile.certificate %}
           <img src="{{ profile.certificate.url|default:'#' }}" alt="Certificate" class="carousel-image">
+          {% endif %}
           <div class="carousel-label">Certificate</div>
         </div>
         {% if profile.featured_project and profile.featured_project.image %}
         <div class="carousel-item">
+          {% if profile.featured_project.image %}
           <img src="{{ profile.featured_project.image.url }}" alt="Featured Project" class="carousel-image">
+          {% endif %}
           <div class="carousel-label">Featured Project</div>
         </div>
         {% endif %}
