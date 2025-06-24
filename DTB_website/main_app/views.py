@@ -5,6 +5,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from email_validator import validate_email, EmailNotValidError
 from .models import Profile, Project
 
 # Add these imports
@@ -148,3 +149,26 @@ def view_profile(request, username):
     }
     
     return render(request, 'your-profile.html', context)
+
+def contact(request):
+    error_message = None
+    success_message = None
+
+    if request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        subject = request.POST.get("subject", "").strip()
+        message = request.POST.get("message", "").strip()
+
+
+        try:
+            validate_email(email)
+
+            success_message = "Your message has been submitted successfully. We will get back to you shortly."
+        except EmailNotValidError as e:
+            error_message = "Please enter a valid email address "
+        else:
+            # Send email
+            success_message = "Your message has been submitted successfully. We will get back to you shortly."
+    
+    return render(request, 'contact.html', {'error_message': error_message, 'success_message': success_message})

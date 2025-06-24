@@ -1,21 +1,28 @@
 {% extends 'base.html' %} 
 {% block content %}
+{% load static %}
 <h1>Contact Us</h1>
 <hr />
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
 <div class="contact-container">
   <div class="contact-info">
     <h2>Get in Touch</h2>
-    <p>We'd love to hear from you! Whether you have a question about our services, pricing, or just want to say hello, we're here to help.</p>
-    <ul class="contact-details">
-      <li><strong>Email:</strong> info@dtb.com</li>
-      <li><strong>Phone:</strong> (123) 456-7890</li>
-      <li><strong>Address:</strong> 123 Web Dev Street, Tech City, TC 12345</li>
-    </ul>
+    <p style="font-size:1.2em;">We'd love to hear from you! Whether you have a question about our services, pricing, or just want to learn more about DTB, we're here to help.</p>
+  
   </div>
   
+{% if error_message %}
+  <div style="color: red; font-weight:bold; font-size:1.2em; text-align:center; justify-content: center; margin-top:2em; margin-bottom:2em; border-radius: 0.5em; padding: 1em; background: rgba(34, 34, 34, 0.8);">{{ error_message }}</div>
+{% endif %}
+{% if success_message %}
+  <div style="color: green; font-weight:bold; font-size:1.2em; text-align:center; justify-content: center; margin-top:2em; margin-bottom:2em; border-radius: 0.5em; padding: 1em; background: rgba(34, 34, 34, 0.8);">{{ success_message }}</div>
+{% endif %}
+
+
   <div class="contact-form">
     <h2>Send Us a Message</h2>
-    <form>
+    <form method="post">
+      {% csrf_token %}
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" required>
@@ -28,12 +35,12 @@
       
       <div class="form-group">
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required>
+        <input type="text" id="subject" name="subject" maxlength="50" required >
       </div>
       
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="5" maxlength="1000" required></textarea>
       </div>
       
       <button type="submit" class="btn submit">Send Message</button>
