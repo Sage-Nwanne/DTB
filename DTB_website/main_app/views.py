@@ -3,15 +3,20 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib import messages
 from email_validator import validate_email, EmailNotValidError
 from .models import Profile, Project
+from .forms import ProjectForm
 
 # Add these imports
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+
+# Add this function to check if user is admin or dev
+def is_admin_or_dev(user):
+    return user.is_authenticated and (user.is_staff or user.is_superuser)
 
 # Define the home view function
 def home(request):
@@ -21,7 +26,8 @@ def about(request):
     return render(request, 'about.html')
 
 def works(request):
-    return render(request, 'works.html')
+    projects = Project.objects.all()
+    return render(request, 'works.html', {'projects': projects})
 
 def contact(request):
     return render(request, 'contact.html')
@@ -172,3 +178,68 @@ def contact(request):
             success_message = "Your message has been submitted successfully. We will get back to you shortly."
     
     return render(request, 'contact.html', {'error_message': error_message, 'success_message': success_message})
+
+@login_required
+@user_passes_test(is_admin_or_dev)
+def add_project(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            
+            # Clean up technologies input (remove extra spaces)
+            technologies = form.cleaned_data.get('technologies', '')
+            if technologies:
+                # Split by comma, strip whitespace, and rejoin
+                tech_list = [tech.strip() for tech in technologies.split(',') if tech.strip()]
+                project.technologies = ', '.join(tech_list)
+                
+            project.save()
+            # Add the current user as a developer for this project
+            project.developers.add(request.user)
+            messages.success(request, 'Project added successfully!')
+            return redirect('works')
+    else:
+        form = ProjectForm()
+    
+    return render(request, 'add_project.html', {'form': form})
+
+def project_detail(request, project_id):
+    try:
+        project = Project.objects.get(id=project_id)
+    except Project.DoesNotExist:
+        return render(request, '404.html')
+    
+    context = {
+        'project': project,
+    }
+    
+    return render(request, 'project_detail.html', context)
+
+@login_required
+@user_passes_test(is_admin_or_dev)
+def edit_project(request, project_id):
+    try:
+        project = Project.objects.get(id=project_id)
+    except Project.DoesNotExist:
+        return render(request, '404.html')
+    
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            project = form.save(commit=False)
+            
+            # Clean up technologies input (remove extra spaces)
+            technologies = form.cleaned_data.get('technologies', '')
+            if technologies:
+                # Split by comma, strip whitespace, and rejoin
+                tech_list = [tech.strip() for tech in technologies.split(',') if tech.strip()]
+                project.technologies = ', '.join(tech_list)
+                
+            project.save()
+            messages.success(request, 'Project updated successfully!')
+            return redirect('project_detail', project_id=project.id)
+    else:
+        form = ProjectForm(instance=project)
+    
+    return render(request, 'edit_project.html', {'form': form, 'project': project})

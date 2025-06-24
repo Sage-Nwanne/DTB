@@ -1,36 +1,163 @@
 {% extends 'base.html' %} 
 {% block content %}
-<h1>Our Portfolio</h1>
+<h1>Portfolio</h1>
 <hr />
-<div class="portfolio-container">
-  <div class="project-card">
-    <h2>E-commerce Platform</h2>
-    <p class="project-description">A fully responsive e-commerce solution with secure payment integration and inventory management.</p>
-    <div class="tech-stack">
-      <span class="tech-tag">Django</span>
-      <span class="tech-tag">PostgreSQL</span>
-      <span class="tech-tag">JavaScript</span>
-    </div>
-  </div>
-  
-  <div class="project-card">
-    <h2>Nonprofit Organization Website</h2>
-    <p class="project-description">A content-rich website with donation capabilities and event management features.</p>
-    <div class="tech-stack">
-      <span class="tech-tag">Django</span>
-      <span class="tech-tag">AWS</span>
-      <span class="tech-tag">Bootstrap</span>
-    </div>
-  </div>
-  
-  <div class="project-card">
-    <h2>Real Estate Listing Platform</h2>
-    <p class="project-description">Interactive property search with filtering options and agent contact forms.</p>
-    <div class="tech-stack">
-      <span class="tech-tag">Django</span>
-      <span class="tech-tag">Google Maps API</span>
-      <span class="tech-tag">React</span>
-    </div>
-  </div>
+
+{% if user.is_authenticated and user.is_staff or user.is_superuser %}
+<div class="admin-controls">
+  <a href="{% url 'add_project' %}" class="btn add-project">Add New Project</a>
 </div>
+{% endif %}
+
+<div class="portfolio-container">
+  {% if projects %}
+    {% for project in projects %}
+      <div class="project-card">
+        <a href="{% url 'project_detail' project.id %}" class="project-link">
+          {% if project.image %}
+            <div class="project-image">
+              <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </div>
+          {% endif %}
+          <h2>{{ project.title }}</h2>
+          <p class="project-description">{{ project.short_description }}</p>
+          <div class="tech-stack">
+            {% with tech_list=project.technologies.split|slice:":3" %}
+              {% for tech in tech_list %}
+                <span class="tech-tag">{{ tech }}</span>
+              {% endfor %}
+            {% endwith %}
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <!-- Fallback static projects if no projects in database -->
+    <div class="project-card">
+      <h2>E-commerce Platform</h2>
+      <p class="project-description">A fully responsive e-commerce solution with secure payment integration and inventory management.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Django</span>
+        <span class="tech-tag">PostgreSQL</span>
+        <span class="tech-tag">JavaScript</span>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <h2>Nonprofit Organization Website</h2>
+      <p class="project-description">A content-rich website with donation capabilities and event management features.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Django</span>
+        <span class="tech-tag">AWS</span>
+        <span class="tech-tag">Bootstrap</span>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <h2>Real Estate Listing Platform</h2>
+      <p class="project-description">Interactive property search with filtering options and agent contact forms.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Django</span>
+        <span class="tech-tag">Google Maps API</span>
+        <span class="tech-tag">React</span>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+<style>
+  .portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .project-card {
+    background: rgba(34, 34, 34, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 15px;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .project-card h2 {
+    color: #f9f9fa;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .project-description {
+    color: #ccc;
+    margin-bottom: 15px;
+    line-height: 1.4;
+  }
+  
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .tech-tag {
+    background: #d35208;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  
+  .admin-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 20px 20px;
+  }
+  
+  .btn.add-project {
+    background-color: #d35208;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .btn.add-project:hover {
+    background-color: #9e3902;
+  }
+  
+  .project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+</style>
 {% endblock %}

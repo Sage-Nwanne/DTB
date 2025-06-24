@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<!-- Bootstrap Tags Input CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+<!-- jQuery UI CSS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+  .bootstrap-tagsinput {
+    width: 100%;
+    padding: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+  
+  .bootstrap-tagsinput .tag {
+    background-color: #d35208;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 20px;
+    margin-right: 5px;
+  }
+  
+  .ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+  
+  .ui-menu-item {
+    padding: 8px 12px;
+    color: #f9f9fa;
+    cursor: pointer;
+  }
+  
+  .ui-menu-item:hover, .ui-menu-item.ui-state-focus {
+    background-color: #d35208;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<h1>Add New Project</h1>
+<hr />
+
+<div class="form-container">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="{{ form.title.id_for_label }}">Project Title</label>
+      {{ form.title }}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.short_description.id_for_label }}">Short Description</label>
+      {{ form.short_description }}
+      <small class="form-text">Brief summary of the project (will be displayed on portfolio page)</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.full_description.id_for_label }}">Full Description</label>
+      {{ form.full_description }}
+      <small class="form-text">Detailed description of the project</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.image.id_for_label }}">Project Image</label>
+      {{ form.image }}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.project_url.id_for_label }}">Project URL</label>
+      {{ form.project_url }}
+      <small class="form-text">Link to the live project or repository</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.technologies.id_for_label }}">Technologies Used</label>
+      {{ form.technologies }}
+      <small class="form-text">Type and select technologies (comma-separated)</small>
+    </div>
+    
+    <button type="submit" class="btn submit">Add Project</button>
+  </form>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- jQuery UI -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Bootstrap Tags Input -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    // List of common technologies for autocomplete
+    const technologies = [
+      "Django", "Python", "JavaScript", "React", "Angular", "Vue.js", 
+      "Node.js", "Express", "Flask", "FastAPI", "PostgreSQL", "MySQL", 
+      "MongoDB", "Redis", "AWS", "Azure", "Google Cloud", "Docker", 
+      "Kubernetes", "HTML", "CSS", "SASS", "LESS", "Bootstrap", 
+      "Tailwind CSS", "jQuery", "TypeScript", "GraphQL", "REST API", 
+      "PHP", "Laravel", "Ruby", "Ruby on Rails", "Java", "Spring Boot", 
+      "C#", ".NET", "Swift", "Kotlin", "Flutter", "React Native", 
+      "Electron", "WordPress", "Shopify", "Magento", "Git", "GitHub", 
+      "GitLab", "Bitbucket", "Jenkins", "Travis CI", "CircleCI", 
+      "Heroku", "Netlify", "Vercel", "Firebase", "Stripe", "PayPal", 
+      "Elasticsearch", "RabbitMQ", "Kafka", "TensorFlow", "PyTorch", 
+      "Pandas", "NumPy", "Selenium", "Jest", "Mocha", "Chai", "Cypress"
+    ];
+    
+    // Initialize Bootstrap Tags Input
+    $('.tech-autocomplete').tagsinput({
+      trimValue: true,
+      confirmKeys: [13, 44], // Enter and comma
+      maxTags: 10
+    });
+    
+    // Initialize jQuery UI Autocomplete
+    $('.bootstrap-tagsinput input').autocomplete({
+      source: function(request, response) {
+        // Filter technologies based on the current input
+        const term = request.term.toLowerCase();
+        const matches = technologies.filter(tech => 
+          tech.toLowerCase().includes(term)
+        );
+        response(matches);
+      },
+      select: function(event, ui) {
+        // Add the selected technology as a tag
+        $('.tech-autocomplete').tagsinput('add', ui.item.value);
+        // Clear the input field
+        $(this).val('');
+        return false;
+      },
+      minLength: 1
+    });
+    
+    // Prevent form submission on Enter key in autocomplete field
+    $('.bootstrap-tagsinput input').keydown(function(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
+
+<style>
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: rgba(34, 34, 34, 0.8);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #f9f9fa;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+  }
+  
+  .form-text {
+    display: block;
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 0.9em;
+  }
+  
+  .btn.submit {
+    background-color: #d35208;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .btn.submit:hover {
+    background-color: #9e3902;
+  }
+</style>
+{% endblock %}

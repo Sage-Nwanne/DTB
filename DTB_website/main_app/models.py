@@ -8,6 +8,7 @@ class Project(models.Model):
     full_description = models.TextField(verbose_name='Full Description')
     image = models.ImageField(upload_to='project_images/', blank=True, null=True, verbose_name='Project Image')
     technologies = models.CharField(max_length=200, verbose_name='Technologies')  # Comma-separated list of technologies
+    project_url = models.URLField(max_length=255, blank=True, null=True, verbose_name='Project URL')
     developers = models.ManyToManyField(User, related_name='projects', verbose_name='Developers')
     assigned_at = models.DateTimeField(default=timezone.now, verbose_name='Assigned At')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Last Updated')

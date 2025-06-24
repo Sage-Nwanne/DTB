@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="project-detail-container">
+  <div class="project-header">
+    <h1>{{ project.title }}</h1>
+    
+    {% if user.is_authenticated and user.is_staff or user.is_superuser %}
+    <div class="admin-controls">
+      <a href="{% url 'edit_project' project.id %}" class="btn edit">Edit Project</a>
+    </div>
+    {% endif %}
+  </div>
+  
+  <div class="project-content">
+    <div class="project-image-container">
+      {% if project.image %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="project-image">
+      {% else %}
+        <div class="no-image">No image available</div>
+      {% endif %}
+    </div>
+    
+    <div class="project-info">
+      <div class="project-description">
+        {% if project.full_description %}
+          {{ project.full_description|linebreaks }}
+        {% else %}
+          {{ project.short_description|linebreaks }}
+        {% endif %}
+      </div>
+      
+      {% if project.project_url %}
+      <div class="project-url">
+        <h3>Project Link</h3>
+        <a href="{{ project.project_url }}" target="_blank" class="url-link">
+          <i class="fas fa-external-link-alt"></i> Visit Project
+        </a>
+      </div>
+      {% endif %}
+      
+      <div class="project-tech">
+        <h3>Technologies Used</h3>
+        <div class="tech-tags">
+          {% for tech in project.technologies.split %}
+            <span class="tech-tag">{{ tech }}</span>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="project-team">
+        <h3>Development Team</h3>
+        <div class="dev-list">
+          {% for dev in project.developers.all %}
+            <a href="{% url 'your_profile' dev.username %}" class="dev-link">{{ dev.get_full_name|default:dev.username }}</a>{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="back-link">
+    <a href="{% url 'works' %}" class="btn back">Back to Portfolio</a>
+  </div>
+</div>
+
+<style>
+  .project-detail-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .project-header h1 {
+    margin: 0;
+    color: #f9f9fa;
+  }
+  
+  .project-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  @media (max-width: 768px) {
+    .project-content {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .project-image-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .no-image {
+    background-color: #333;
+    color: #999;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+  }
+  
+  .project-info {
+    color: #f9f9fa;
+  }
+  
+  .project-info h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #d35208;
+    font-size: 1.2em;
+  }
+  
+  .project-description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .tech-tag {
+    background: #d35208;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+  
+  .url-link {
+    display: inline-block;
+    background-color: #d35208;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .url-link:hover {
+    background-color: #9e3902;
+  }
+  
+  .dev-link {
+    color: #f9f9fa;
+    text-decoration: underline;
+    transition: color 0.3s;
+  }
+  
+  .dev-link:hover {
+    color: #d35208;
+  }
+  
+  .back-link {
+    margin-top: 30px;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn.back {
+    background-color: #333;
+    color: white;
+  }
+  
+  .btn.back:hover {
+    background-color: #444;
+  }
+  
+  .btn.edit {
+    background-color: #d35208;
+    color: white;
+  }
+  
+  .btn.edit:hover {
+    background-color: #9e3902;
+  }
+</style>
+{% endblock %}

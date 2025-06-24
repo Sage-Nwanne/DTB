@@ -11,7 +11,10 @@ urlpatterns = [
     path('devs', views.devs, name='devs'),
     path('profile', views.profile, name='profile'),
     path('profile/<str:username>', views.view_profile, name='your_profile'),
-    
+    path('add_project', views.add_project, name='add_project'),
+    path('project/<int:project_id>/', views.project_detail, name='project_detail'),
+    path('project/<int:project_id>/edit/', views.edit_project, name='edit_project'),
+
     # Authentication URLs
     path('accounts/signup/', views.signup, name='signup'),
     path('accounts/login/', auth_views.LoginView.as_view(), name='login'),
