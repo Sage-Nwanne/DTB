@@ -66,6 +66,7 @@
     padding: 1em 3vw;
     width: 100%;
     scrollbar-width: thin;
+    scroll-behavior: smooth;
   }
   .dev-card {
     display: flex;
@@ -77,6 +78,29 @@
     box-shadow: 0 2px 10px #00000055;
     padding: 1em 1em 2em 1em;
     position: relative;
+    transition: transform 0.3s ease-out;
+    animation: pushIn 0.5s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  @keyframes pushIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .dev-card:nth-child(1) { animation-delay: 0.1s; }
+  .dev-card:nth-child(2) { animation-delay: 0.2s; }
+  .dev-card:nth-child(3) { animation-delay: 0.3s; }
+  .dev-card:nth-child(4) { animation-delay: 0.4s; }
+  .dev-card:nth-child(5) { animation-delay: 0.5s; }
+  .dev-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px #00000077;
   }
   .dev-img {
     width: 96px;
@@ -155,6 +179,34 @@
     .hero-box, .featured-project, .testimonial-box { width: 90vw; min-width: unset; }
     .dev-card { min-width: 120px; padding: 0.5em 0.5em 1em 0.5em;}
   }
+  /* Add scroll buttons */
+  .scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(211, 82, 8, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+  .scroll-btn:hover {
+    background: rgba(211, 82, 8, 1);
+  }
+  .scroll-left {
+    left: 10px;
+  }
+  .scroll-right {
+    right: 10px;
+  }
 </style>
 {% endblock %}
 
@@ -178,17 +230,27 @@
   <section style="width:100%; padding:0 0 2em 0;">
     <h2 style="color:#f9f9fa; margin-left:3vw;">Featured Projects</h2>
     <div style="margin-left:3vw;">
-      <!-- Hardcoded featured projects since we don't have the context data yet -->
-      <div class="featured-project">
-        <h3 style="font-size:1.2em; font-weight:bold;">E-commerce Platform</h3>
-        <p>A comprehensive online shopping solution with secure payment processing</p>
-        <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
-      </div>
-      <div class="featured-project">
-        <h3 style="font-size:1.2em; font-weight:bold;">Real Estate Listing</h3>
-        <p>Interactive property search platform with advanced filtering options</p>
-        <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
-      </div>
+      {% if featured_projects %}
+        {% for project in featured_projects %}
+          <div class="featured-project">
+            <h3 style="font-size:1.2em; font-weight:bold;">{{ project.title }}</h3>
+            <p>{{ project.short_description }}</p>
+            <a href="{% url 'project_detail' project.id %}" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Hardcoded featured projects as fallback -->
+        <div class="featured-project">
+          <h3 style="font-size:1.2em; font-weight:bold;">E-commerce Platform</h3>
+          <p>A comprehensive online shopping solution with secure payment processing</p>
+          <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
+        </div>
+        <div class="featured-project">
+          <h3 style="font-size:1.2em; font-weight:bold;">Real Estate Listing</h3>
+          <p>Interactive property search platform with advanced filtering options</p>
+          <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
+        </div>
+      {% endif %}
     </div>
   </section>
   
@@ -196,32 +258,42 @@
   <section style="width:100%; padding:1em 0 2em 0;">
     <h2 style="color:#f9f9fa; margin-left:3vw;">Meet the Developers</h2>
     <div class="dev-scroll">
-      <!-- Placeholder developers since we don't have the context data yet -->
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
+      {% if developers %}
+        {% for dev in developers %}
+          <div class="dev-card">
+            {% if dev.profile.profile_picture %}
+              <img src="{{ dev.profile.profile_picture.url }}" alt="{{ dev.username }}" class="dev-img">
+            {% else %}
+              <div class="dev-placeholder" aria-label="Developer">DEV</div>
+            {% endif %}
+            
+            {% if dev.profile.certificate %}
+              <img src="{{ dev.profile.certificate.url }}" alt="Certificate" class="dev-cert">
+            {% else %}
+              <div class="cert-placeholder" aria-label="Certificate">CERT</div>
+            {% endif %}
+            
+            <a href="{% url 'your_profile' dev.username %}" class="recent-work-btn" aria-label="View profile">Recent Work</a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- Placeholder developers -->
+        <div class="dev-card">
+          <div class="dev-placeholder" aria-label="TBD">TBD</div>
+          <div class="cert-placeholder" aria-label="TBD">TBD</div>
+          <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
+        </div>
+        <div class="dev-card">
+          <div class="dev-placeholder" aria-label="TBD">TBD</div>
+          <div class="cert-placeholder" aria-label="TBD">TBD</div>
+          <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
+        </div>
+        <div class="dev-card">
+          <div class="dev-placeholder" aria-label="TBD">TBD</div>
+          <div class="cert-placeholder" aria-label="TBD">TBD</div>
+          <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
+        </div>
+      {% endif %}
     </div>
   </section>
   
@@ -239,3 +311,33 @@
   </section>
 </div>
 {% endblock %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add scroll buttons to the dev-scroll section
+    const devScroll = document.querySelector('.dev-scroll');
+    const scrollSection = devScroll.parentElement;
+    
+    const leftBtn = document.createElement('button');
+    leftBtn.className = 'scroll-btn scroll-left';
+    leftBtn.innerHTML = '&lt;';
+    leftBtn.setAttribute('aria-label', 'Scroll left');
+    
+    const rightBtn = document.createElement('button');
+    rightBtn.className = 'scroll-btn scroll-right';
+    rightBtn.innerHTML = '&gt;';
+    rightBtn.setAttribute('aria-label', 'Scroll right');
+    
+    scrollSection.appendChild(leftBtn);
+    scrollSection.appendChild(rightBtn);
+    
+    // Add scroll functionality
+    leftBtn.addEventListener('click', function() {
+      devScroll.scrollBy({ left: -200, behavior: 'smooth' });
+    });
+    
+    rightBtn.addEventListener('click', function() {
+      devScroll.scrollBy({ left: 200, behavior: 'smooth' });
+    });
+  });
+</script>

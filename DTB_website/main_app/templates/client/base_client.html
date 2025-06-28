@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="client-dashboard-container">
+  <div class="dashboard-sidebar">
+    <div class="client-info">
+      <h3>{{ request.user.username }}</h3>
+      {% if request.user.client_profile.company_name %}
+        <p>{{ request.user.client_profile.company_name }}</p>
+      {% endif %}
+    </div>
+    
+    <nav class="dashboard-nav">
+      <a href="{% url 'client_dashboard' %}" class="nav-item {% if request.resolver_match.url_name == 'client_dashboard' %}active{% endif %}">
+        <i class="fas fa-tachometer-alt"></i> Dashboard
+      </a>
+      
+      {% if projects %}
+        {% for project in projects %}
+          <a href="{% url 'client_project_detail' project.id %}" class="nav-item {% if project.id == active_project_id %}active{% endif %}">
+            <i class="fas fa-project-diagram"></i> {{ project.title }}
+          </a>
+        {% endfor %}
+      {% endif %}
+      
+      <a href="{% url 'profile' %}" class="nav-item">
+        <i class="fas fa-user-cog"></i> Account Settings
+      </a>
+    </nav>
+  </div>
+  
+  <div class="dashboard-content">
+    {% if messages %}
+      <div class="messages-container">
+        {% for message in messages %}
+          <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+    {% block dashboard_content %}{% endblock %}
+  </div>
+</div>
+
+<style>
+  .client-dashboard-container {
+    display: flex;
+    min-height: calc(100vh - 80px);
+    background-color: #1a1a1a;
+  }
+  
+  .dashboard-sidebar {
+    width: 250px;
+    background-color: #222;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+  }
+  
+  .client-info {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+  }
+  
+  .client-info h3 {
+    color: #f9f9fa;
+    margin: 0 0 5px;
+  }
+  
+  .client-info p {
+    color: #d35208;
+    margin: 0;
+    font-size: 0.9em;
+  }
+  
+  .dashboard-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-item {
+    padding: 12px 20px;
+    color: #ccc;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+  
+  .nav-item:hover {
+    background-color: #2a2a2a;
+    color: #fff;
+  }
+  
+  .nav-item.active {
+    background-color: #2a2a2a;
+    color: #d35208;
+    border-left-color: #d35208;
+  }
+  
+  .nav-item i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+  }
+  
+  .dashboard-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+  }
+  
+  .messages-container {
+    margin-bottom: 20px;
+  }
+  
+  .alert {
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .alert-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #2ecc71;
+  }
+  
+  .alert-error, .alert-danger {
+    background-color: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #e74c3c;
+  }
+  
+  .alert-info {
+    background-color: rgba(23, 162, 184, 0.2);
+    border: 1px solid rgba(23, 162, 184, 0.3);
+    color: #3498db;
+  }
+  
+  @media (max-width: 768px) {
+    .client-dashboard-container {
+      flex-direction: column;
+    }
+    
+    .dashboard-sidebar {
+      width: 100%;
+      padding: 10px 0;
+    }
+    
+    .dashboard-content {
+      padding: 15px;
+    }
+  }
+</style>
+{% endblock %}

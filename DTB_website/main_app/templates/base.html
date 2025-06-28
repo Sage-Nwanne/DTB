@@ -24,12 +24,17 @@
           <li><a href="/">Home</a></li>
           <li><a href="/works">Portfolio</a></li>
           <li><a href="/contact">Contact</a></li>
-          <li><a href="/devs">Meet the Devs</a></li>
+          <li><a href="/devs">Our Team</a></li>
           <li><a href="/reviews">Reviews</a></li>
           <li><a href="/about">About DTB</a></li>
           
           {% if user.is_authenticated %}
-            <li><a href="{% url 'your_profile' user.username %}">Profile</a></li>
+            {% if user.is_staff or user.is_superuser %}
+              <li><a href="{% url 'your_profile' user.username %}">Profile</a></li>
+            {% else %}
+              <li><a href="{% url 'client_dashboard' %}">Dashboard</a></li>
+              <li><a href="{% url 'your_profile' user.username %}">Profile</a></li>
+            {% endif %}
             <li><a href="{% url 'logout' %}">Log Out</a></li>
           {% else %}
             <li><a href="{% url 'login' %}">Log In</a></li>

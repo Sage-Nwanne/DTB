@@ -8,9 +8,9 @@ class DevBackend(BaseBackend):
     Custom authentication backend for developers with hardcoded credentials.
     """
     
-    def authenticate(self, request, username=None, password=None, **kwargs):
+    def __init__(self):
         # List of developer credentials (username and plain password)
-        dev_keys = [
+        self.dev_keys = [
             {
                 'username': 'dev1',
                 'password': 'dtbDev1!',  # Plain password
@@ -25,9 +25,10 @@ class DevBackend(BaseBackend):
             },
             # Add more developer credentials as needed
         ]
-        
+    
+    def authenticate(self, request, username=None, password=None, **kwargs):
         # Check if the username matches any developer username
-        for dev in dev_keys:
+        for dev in self.dev_keys:
             if dev['username'] == username:
                 # Check if the password matches (plain text comparison for dev accounts)
                 if dev['password'] == password:

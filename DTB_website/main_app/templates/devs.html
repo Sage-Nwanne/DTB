@@ -5,22 +5,170 @@
 <h1>Meet the Developers</h1>
 <hr />
 <div class="devs-container">
-  <div class="dev-card">
-    <h2>Developer Name</h2>
-    <p>Full-stack developer with expertise in Django and React.</p>
-    <p>Email: dev1@example.com</p>
-  </div>
-  
-  <div class="dev-card">
-    <h2>Developer Name</h2>
-    <p>Backend specialist with focus on database optimization and API design.</p>
-    <p>Email: dev2@example.com</p>
-  </div>
-  
-  <div class="dev-card">
-    <h2>Developer Name</h2>
-    <p>Frontend developer with a passion for creating responsive UI/UX designs.</p>
-    <p>Email: dev3@example.com</p>
-  </div>
+  {% if developers %}
+    {% for dev in developers %}
+      <div class="dev-card">
+        <div class="dev-header">
+          {% if dev.profile.profile_picture %}
+            <img src="{{ dev.profile.profile_picture.url }}" alt="{{ dev.username }}" class="dev-img">
+          {% else %}
+            <div class="dev-placeholder">DEV</div>
+          {% endif %}
+          
+          <div class="dev-info">
+            <h2>{{ dev.profile.name|default:dev.username }}</h2>
+            <p class="dev-title">{{ dev.profile.title|default:"Developer" }}</p>
+          </div>
+        </div>
+        
+        <div class="dev-bio">
+          <p>{{ dev.profile.bio|default:"Full-stack developer with expertise in Django and modern web technologies." }}</p>
+        </div>
+        
+        {% if dev.profile.certificate %}
+          <div class="dev-cert-container">
+            <h3>Certifications</h3>
+            <img src="{{ dev.profile.certificate.url }}" alt="Certificate" class="dev-cert">
+          </div>
+        {% endif %}
+        
+        <div class="dev-contact">
+          <a href="{% url 'your_profile' dev.username %}" class="view-profile-btn">View Profile</a>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <!-- Fallback static developers -->
+    <div class="dev-card">
+      <h2>Developer Name</h2>
+      <p>Full-stack developer with expertise in Django and React.</p>
+      <p>Email: dev1@example.com</p>
+    </div>
+    
+    <div class="dev-card">
+      <h2>Developer Name</h2>
+      <p>Backend specialist with focus on database optimization and API design.</p>
+      <p>Email: dev2@example.com</p>
+    </div>
+    
+    <div class="dev-card">
+      <h2>Developer Name</h2>
+      <p>Frontend developer with a passion for creating responsive UI/UX designs.</p>
+      <p>Email: dev3@example.com</p>
+    </div>
+  {% endif %}
 </div>
+
+<style>
+  .devs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dev-card {
+    background: rgba(34, 34, 34, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .dev-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dev-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .dev-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d35208;
+    margin-right: 15px;
+  }
+  
+  .dev-placeholder {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    border: 3px solid #d35208;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-weight: bold;
+    margin-right: 15px;
+  }
+  
+  .dev-info {
+    flex: 1;
+  }
+  
+  .dev-info h2 {
+    margin: 0 0 5px 0;
+    color: #f9f9fa;
+    font-size: 1.5em;
+  }
+  
+  .dev-title {
+    color: #d35208;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .dev-bio {
+    margin-bottom: 15px;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  .dev-cert-container {
+    margin-bottom: 15px;
+  }
+  
+  .dev-cert-container h3 {
+    font-size: 1em;
+    color: #f9f9fa;
+    margin-bottom: 10px;
+  }
+  
+  .dev-cert {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #444;
+  }
+  
+  .view-profile-btn {
+    display: inline-block;
+    background: #d35208;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s;
+  }
+  
+  .view-profile-btn:hover {
+    background: #9e3902;
+  }
+  
+  @media (max-width: 768px) {
+    .devs-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 {% endblock %}

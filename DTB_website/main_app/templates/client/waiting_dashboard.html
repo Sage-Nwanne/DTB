@@ -1,0 +1,106 @@
+{% extends 'client/base_client.html' %}
+
+{% block dashboard_content %}
+<div class="waiting-container">
+  <div class="waiting-animation">
+    <div class="spinner">
+      <div class="dot1"></div>
+      <div class="dot2"></div>
+    </div>
+  </div>
+  
+  <h1>Welcome to Your Project Dashboard</h1>
+  
+  <div class="waiting-message">
+    <p>Thank you for registering with DTB. Your project dashboard is being set up.</p>
+    <p>You'll be notified as soon as your project updates are available.</p>
+    <p>In the meantime, feel free to complete your profile or contact us if you have any questions.</p>
+  </div>
+  
+  <div class="waiting-actions">
+    <a href="{% url 'profile' %}" class="action-btn">
+      <i class="fas fa-user-edit"></i> Complete Your Profile
+    </a>
+    <a href="{% url 'contact' %}" class="action-btn">
+      <i class="fas fa-envelope"></i> Contact Us
+    </a>
+  </div>
+</div>
+
+<style>
+  .waiting-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .waiting-animation {
+    margin-bottom: 30px;
+  }
+  
+  .spinner {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  .dot1, .dot2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: bounce 2s infinite ease-in-out;
+  }
+  
+  .dot2 {
+    animation-delay: -1.0s;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: scale(0.0); }
+    50% { transform: scale(1.0); }
+  }
+  
+  .waiting-message {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .waiting-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--gradient);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 600px) {
+    .waiting-actions {
+      flex-direction: column;
+    }
+  }
+</style>
+{% endblock %}

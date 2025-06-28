@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-container">
+  <h1>Add Project Update</h1>
+  <h2>{{ project.title }}</h2>
+  
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="form-group">
+      <label for="{{ form.title.id_for_label }}">Update Title</label>
+      {{ form.title }}
+      {% if form.title.errors %}
+        <div class="form-errors">
+          {{ form.title.errors }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.description.id_for_label }}">Description</label>
+      <p class="form-help">Write a client-friendly description of the progress made. Avoid technical jargon.</p>
+      {{ form.description }}
+      {% if form.description.errors %}
+        <div class="form-errors">
+          {{ form.description.errors }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="form-group">
+      <label for="{{ form.preview_url

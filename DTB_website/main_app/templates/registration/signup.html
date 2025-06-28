@@ -9,7 +9,7 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    background: linear-gradient(90deg, rgba(14, 13, 13, 0.9) 0%, #d35208 100%);
   }
   
   .auth-header {
@@ -105,20 +105,20 @@
 <div class="auth-container">
   <div class="auth-header">
     <h1>Sign Up</h1>
-    <p>Create an account to track your project's progress.</p>
+    <p style="font-size: medium;">Create an account to track your project's progress.</p>
   </div>
   
   {% if form.errors %}
-  <div class="error-list">
+  <div class="error-list" style="color: #fd6812; background-color: #0c0501f7; font-size: 14px;">
     <p>Please correct the following errors:</p>
     <ul>
       {% for field in form %}
         {% for error in field.errors %}
-          <li>{{ field.label }}: {{ error }}</li>
+          <li>{{ field.label }}: {{ error }}</li> <br>
         {% endfor %}
       {% endfor %}
       {% for error in form.non_field_errors %}
-        <li>{{ error }}</li>
+        <li>{{ error }}</li> <br>
       {% endfor %}
     </ul>
   </div>
@@ -126,31 +126,24 @@
   
   <form method="post">
     {% csrf_token %}
-    
+
     <div class="form-group">
-      <label for="id_username">Username</label>
-      <input type="text" name="username" id="id_username" class="form-control" required>
+      {{ form.username.label_tag }}
+      {{ form.username }}
+      {% if form.username.help_text %}
+        <small class="form-text text-muted">{{ form.username.help_text }}</small>
+      {% endif %}
     </div>
-    
+
     <div class="form-group">
-      <label for="id_email">Email</label>
-      <input type="email" name="email" id="id_email" class="form-control" required>
+      {{ form.email.label_tag }}
+      {{ form.email }}
     </div>
-    
+
     <div class="form-group">
-      <label for="id_first_name">First Name</label>
-      <input type="text" name="first_name" id="id_first_name" class="form-control" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="id_last_name">Last Name</label>
-      <input type="text" name="last_name" id="id_last_name" class="form-control" required>
-    </div>
-    
-    <div class="form-group">
-      <label for="id_password1">Password</label>
+      {{ form.password1.label_tag }}
       <div style="position: relative;">
-        <input type="password" name="password1" id="id_password1" class="form-control" required>
+        {{ form.password1 }}
         <button type="button" class="password-toggle" onclick="togglePasswordVisibility('id_password1')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -163,11 +156,11 @@
         </button>
       </div>
     </div>
-    
+
     <div class="form-group">
-      <label for="id_password2">Confirm Password</label>
+      {{ form.password2.label_tag }}
       <div style="position: relative;">
-        <input type="password" name="password2" id="id_password2" class="form-control" required>
+        {{ form.password2 }}
         <button type="button" class="password-toggle" onclick="togglePasswordVisibility('id_password2')" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
@@ -180,7 +173,7 @@
         </button>
       </div>
     </div>
-    
+
     <button type="submit" class="auth-btn">Sign Up</button>
   </form>
   

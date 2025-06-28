@@ -265,9 +265,5 @@ nav li {
       backdrop-filter: none;
     }
 
-    nav,
-    .header-logo-container {
-      background: linear-gradient(90deg, rgba(14, 13, 13, 0.9) 0%, #d35208 100%);
-    }
   }
 }
