@@ -1,24 +1,178 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Reviews — DTB{% endblock %}
+{% block meta_description %}See what our clients say about working with DTB.{% endblock %}
+
 {% block content %}
-<h1>Client Reviews</h1>
-<hr />
-<div class="reviews-container">
-  <div class="review-card">
-    <h3>Company Name</h3>
-    <p class="review-text">"DTB delivered an exceptional website that perfectly captured our brand identity. Their attention to detail and responsive design exceeded our expectations."</p>
-    <p class="reviewer">- John Smith, CEO</p>
-  </div>
-  
-  <div class="review-card">
-    <h3>Organization Name</h3>
-    <p class="review-text">"Working with DTB was a seamless experience. They understood our requirements and delivered a user-friendly platform that has significantly improved our online presence."</p>
-    <p class="reviewer">- Jane Doe, Marketing Director</p>
-  </div>
-  
-  <div class="review-card">
-    <h3>Startup Name</h3>
-    <p class="review-text">"As a startup, we needed a cost-effective yet professional website. DTB provided exactly what we needed, with excellent support throughout the process."</p>
-    <p class="reviewer">- Alex Johnson, Founder</p>
-  </div>
-</div>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
+                What Our Clients <span class="text-accent">Say</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                Real feedback from real clients. We're proud of the impact we've made.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews Grid -->
+<section class="py-20 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Review 1 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "DTB delivered an exceptional website that perfectly captured our brand identity. Their attention to detail and responsive design exceeded our expectations. We've seen a 40% increase in leads since launch."
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">John Smith</p>
+                    <p class="text-accent text-sm">CEO, TechStart Inc.</p>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "Working with DTB was a seamless experience. They understood our requirements and delivered a user-friendly platform that has significantly improved our online presence. Highly recommended!"
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">Jane Doe</p>
+                    <p class="text-accent text-sm">Marketing Director, Growth Co.</p>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "As a startup, we needed a cost-effective yet professional website. DTB provided exactly what we needed, with excellent support throughout the process. They're now our go-to for all tech needs."
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">Alex Johnson</p>
+                    <p class="text-accent text-sm">Founder, StartupXYZ</p>
+                </div>
+            </div>
+
+            <!-- Review 4 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "The automation system DTB built for us has saved our team 30+ hours per week. The ROI was immediate, and their support team is always responsive. Best investment we've made."
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">Sarah Williams</p>
+                    <p class="text-accent text-sm">Operations Manager, Enterprise Corp</p>
+                </div>
+            </div>
+
+            <!-- Review 5 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "DTB's team is professional, responsive, and genuinely cares about our success. They didn't just build a website—they built a growth engine. Can't recommend them enough."
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">Michael Chen</p>
+                    <p class="text-accent text-sm">Product Lead, SaaS Company</p>
+                </div>
+            </div>
+
+            <!-- Review 6 -->
+            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
+                <div class="flex items-center gap-1 mb-4">
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                    <span class="text-accent">★</span>
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">
+                    "From initial consultation to post-launch support, DTB exceeded expectations at every step. They're not just vendors—they're partners invested in our growth."
+                </p>
+                <div class="border-t border-slate pt-4">
+                    <p class="font-poppins font-bold">Emily Rodriguez</p>
+                    <p class="text-accent text-sm">Founder, Creative Agency</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-20 md:py-32 bg-slate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <p class="text-4xl font-poppins font-bold text-accent mb-2">50+</p>
+                <p class="text-gray-300">Happy Clients</p>
+            </div>
+            <div>
+                <p class="text-4xl font-poppins font-bold text-accent mb-2">4.9/5</p>
+                <p class="text-gray-300">Average Rating</p>
+            </div>
+            <div>
+                <p class="text-4xl font-poppins font-bold text-accent mb-2">100%</p>
+                <p class="text-gray-300">Would Recommend</p>
+            </div>
+            <div>
+                <p class="text-4xl font-poppins font-bold text-accent mb-2">$2M+</p>
+                <p class="text-gray-300">Client Revenue Generated</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
+            Join our growing list of success stories
+        </h2>
+        <p class="text-lg text-charcoal/80 mb-8">
+            Let's create your next success story together.
+        </p>
+        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
+            Get Started Today
+        </a>
+    </div>
+</section>
+
 {% endblock %}

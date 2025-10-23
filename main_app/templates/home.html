@@ -1,241 +1,109 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block head %}
-<style>
-  * { box-sizing: border-box; }
-  h1, h2, p, div, section, header, footer, a, button, img { display: block; }
-  h1 { font-size: 2em; font-weight: bold; }
-  h2 { font-size: 1.5em; font-weight: bold; }
-  p { margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; unicode-bidi: isolate; }
-  .hero-box {
-    background: linear-gradient(90deg, rgba(14, 13, 13, 0.9) 0%, #d35208 100%);
-    color: white;
-    width: 75vw; max-width: 1200px; min-width: 310px;
-    padding: 3em 0 3em 3vw;
-    border-radius: 0 2em 2em 0;
-    box-shadow: 0 4px 24px #0006;
-    margin: 0;
-  }
-  @media (max-width: 900px) {
-    .hero-box { width: 95vw; border-radius: 0 1em 1em 0; padding-left: 5vw; }
-  }
-  .hero-buttons {
-    margin-top: 2em;
-    display: flex;
-    gap: 1em;
-  }
-  .cta-btn {
-    border: none;
-    border-radius: 2em;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 1em 2.5em;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    box-shadow: 0 2px 8px #18191a22;
-  }
-  .btn-orange {
-    background: #d35208;
-    color: white;
-  }
-  .btn-orange:hover { background: #9e3902; }
-  .btn-white {
-    background: white;
-    color: #18191a;
-  }
-  .btn-white:hover { background: #f2d3b3; color: #18191a; }
-  /* Featured Projects */
-  .featured-project {
-    background: #222;
-    color: #f9f9fa;
-    padding: 1.5em 2em;
-    border-radius: 1em;
-    margin-bottom: 1.5em;
-    box-shadow: 0 2px 12px #00000055;
-    width: 60vw;
-    max-width: 600px;
-    min-width: 260px;
-  }
-  /* Scroll wheel */
-  .dev-scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 2em;
-    padding: 1em 3vw;
-    width: 100%;
-    scrollbar-width: thin;
-  }
-  .dev-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 160px;
-    background: #222;
-    border-radius: 1em;
-    box-shadow: 0 2px 10px #00000055;
-    padding: 1em 1em 2em 1em;
-    position: relative;
-  }
-  .dev-img {
-    width: 96px;
-    height: 96px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #d35208;
-    background: #222;
-  }
-  .dev-cert {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid #18191a;
-    margin-top: 0.5em;
-    object-fit: cover;
-    background: #eee;
-  }
-  .recent-work-btn {
-    margin-top: 1em;
-    background: #d35208;
-    color: white;
-    padding: 0.5em 1.5em;
-    border-radius: 1em;
-    font-weight: bold;
-    border: none;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-    cursor: pointer;
-    font-size: 1em;
-    display: block;
-  }
-  .recent-work-btn:hover {
-    background: #9e3902;
-    color: #fff;
-  }
-  /* Placeholder for TBD */
-  .dev-placeholder { 
-    background: #333; 
-    border: 3px solid #d35208; 
-    width: 96px; 
-    height: 96px; 
-    border-radius: 50%; 
-    margin-bottom: 0.5em;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    color: #aaa; 
-    font-size: 1.1em;
-  }
-  .cert-placeholder {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 2px solid #d35208;
-    margin-top: 0.5em;
-    background: #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    font-size: 0.9em;
-  }
-  /* Testimonials */
-  .testimonial-box {
-    background: #222;
-    color: #f9f9fa;
-    padding: 2em 3vw;
-    border-radius: 1em;
-    width: 60vw;
-    max-width: 600px;
-    min-width: 260px;
-    box-shadow: 0 2px 12px #00000055;
-  }
-  @media (max-width: 700px) {
-    .hero-box, .featured-project, .testimonial-box { width: 90vw; min-width: unset; }
-    .dev-card { min-width: 120px; padding: 0.5em 0.5em 1em 0.5em;}
-  }
-</style>
-{% endblock %}
+{% block title %}DTB — Web + Agentic Automation Studio{% endblock %}
+{% block meta_description %}Design. Automate. Breakthrough. Web systems and agentic automation for small teams that want enterprise results.{% endblock %}
 
 {% block content %}
-<div style="margin:0; padding:0; width:100%; background:rgba(14, 13, 13, 0.9); color:#f9f9fa;">
-  <!-- Hero Section -->
-  <section style="width: 100%; display:flex; justify-content:flex-start; margin-bottom: 3em;">
-    <div class="hero-box">
-      <h1>DesignedToBreakthrough</h1>
-      <h2>Innovate. Build. Succeed.</h2>
-      <p>We help visionaries turn ideas into modern digital realities.<br>
-      Discover how our tech-driven team can make your breakthrough possible.</p>
-      <div class="hero-buttons">
-        <a href="/works" class="cta-btn btn-orange">Our Services</a>
-        <a href="/contact" class="cta-btn btn-white">Contact Us</a>
-      </div>
+
+<!-- Intro Splash Screen -->
+{% include 'components/intro_splash.html' %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
+                Design. Automate. <span class="text-accent">Breakthrough.</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                Web systems and agentic automation for small teams that want enterprise results.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="/services" class="inline-block bg-accent text-charcoal px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200 text-center">
+                    Explore Services
+                </a>
+                <a href="/contact" class="inline-block border-2 border-accent text-accent px-8 py-3 rounded-md font-bold font-poppins hover:bg-accent/10 transition duration-200 text-center">
+                    Start a Project
+                </a>
+            </div>
+        </div>
     </div>
-  </section>
-  
-  <!-- Featured Projects -->
-  <section style="width:100%; padding:0 0 2em 0;">
-    <h2 style="color:#f9f9fa; margin-left:3vw;">Featured Projects</h2>
-    <div style="margin-left:3vw;">
-      <!-- Hardcoded featured projects since we don't have the context data yet -->
-      <div class="featured-project">
-        <h3 style="font-size:1.2em; font-weight:bold;">E-commerce Platform</h3>
-        <p>A comprehensive online shopping solution with secure payment processing</p>
-        <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
-      </div>
-      <div class="featured-project">
-        <h3 style="font-size:1.2em; font-weight:bold;">Real Estate Listing</h3>
-        <p>Interactive property search platform with advanced filtering options</p>
-        <a href="/works" class="cta-btn btn-orange" style="width:auto; display:inline-block;">View Project</a>
-      </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Service Card 1 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="text-4xl mb-4">🌐</div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Web Services</h3>
+                <p class="text-sm text-gray-300 mb-4">Conversion-first websites with SEO, analytics, and maintenance baked in.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="text-4xl mb-4">🤖</div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Agentic Automation</h3>
+                <p class="text-sm text-gray-300 mb-4">AI agents and workflows that replace busywork with results.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="text-4xl mb-4">��</div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Marketing & Growth</h3>
+                <p class="text-sm text-gray-300 mb-4">Content systems that compound attention into revenue.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="text-4xl mb-4">💡</div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Consulting</h3>
+                <p class="text-sm text-gray-300 mb-4">Strategy, audits, and white-label delivery you can trust.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+        </div>
     </div>
-  </section>
-  
-  <!-- Scroll Wheel of Developers -->
-  <section style="width:100%; padding:1em 0 2em 0;">
-    <h2 style="color:#f9f9fa; margin-left:3vw;">Meet the Developers</h2>
-    <div class="dev-scroll">
-      <!-- Placeholder developers since we don't have the context data yet -->
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
-      <div class="dev-card">
-        <div class="dev-placeholder" aria-label="TBD">TBD</div>
-        <div class="cert-placeholder" aria-label="TBD">TBD</div>
-        <a href="/devs" class="recent-work-btn" aria-label="TBD">Recent Work</a>
-      </div>
+</section>
+
+<!-- Proof Strip -->
+<section class="bg-slate py-12 border-y border-graphite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-around items-center gap-8 text-center">
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">12+</p>
+                <p class="text-gray-400 text-sm">Launches</p>
+            </div>
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">100%</p>
+                <p class="text-gray-400 text-sm">On-time Handoffs</p>
+            </div>
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">30-day</p>
+                <p class="text-gray-400 text-sm">Post-launch Support</p>
+            </div>
+        </div>
     </div>
-  </section>
-  
-  <!-- What Our Clients Say -->
-  <section style="width:100%; padding:1em 0 3em 0;">
-    <h2 style="color:#f9f9fa; margin-left:3vw;">What Our Clients Say</h2>
-    <div class="testimonial-box" style="margin-left:3vw;">
-      <blockquote style="font-size:1.1em; font-style:italic;">
-        "DTB transformed our online presence with a website that perfectly represents our brand and has significantly increased our customer engagement."
-      </blockquote>
-      <div style="margin-top:1em; color:#d35208; font-weight:bold;">
-        — John Smith, CEO of Company Name
-      </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
+            Let's map your breakthrough in 20 minutes.
+        </h2>
+        <p class="text-lg text-charcoal/80 mb-8">
+            Schedule a free consultation to discuss your project and see how we can help.
+        </p>
+        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
+            Get Started
+        </a>
     </div>
-  </section>
-</div>
+</section>
+
 {% endblock %}

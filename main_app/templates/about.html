@@ -1,8 +1,190 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About — DTB{% endblock %}
+{% block meta_description %}Learn about DTB's mission, values, and the team behind your success.{% endblock %}
+
 {% block content %}
-<h1>About DTB</h1>
-<hr />
-<p class="page-content">
-blah blah blah blah blah
-</p>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
+                About <span class="text-accent">DTB</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                We're a small team obsessed with building systems that work. No fluff. No excuses. Just results.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="py-20 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-4xl font-poppins font-bold mb-6">Our Mission</h2>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    We exist to help small teams punch above their weight. In a world where enterprise tools are expensive and generic, we build custom solutions that actually fit your business.
+                </p>
+                <p class="text-gray-300 mb-4 leading-relaxed">
+                    Every project we take on is an opportunity to prove that great design and smart automation can transform a business. We don't just build websites or automate tasks—we build competitive advantages.
+                </p>
+                <p class="text-gray-300 leading-relaxed">
+                    Our goal is simple: help you grow faster, work smarter, and compete like you're 10x bigger than you are.
+                </p>
+            </div>
+            <div class="bg-gradient-to-br from-slate to-graphite p-8 rounded-lg border border-slate">
+                <div class="text-6xl mb-4">🎯</div>
+                <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Design. Automate. Breakthrough.</h3>
+                <p class="text-gray-300">
+                    This isn't just our tagline—it's our philosophy. We design with intention, automate with precision, and deliver breakthroughs that matter.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="py-20 md:py-32 bg-slate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Values</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite">
+                <div class="text-4xl mb-4">⚡</div>
+                <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Speed</h3>
+                <p class="text-gray-300 text-sm">We move fast without cutting corners. Your time is valuable, and we respect that.</p>
+            </div>
+
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite">
+                <div class="text-4xl mb-4">🎨</div>
+                <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Precision</h3>
+                <p class="text-gray-300 text-sm">Every pixel, every line of code, every decision is intentional and purposeful.</p>
+            </div>
+
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite">
+                <div class="text-4xl mb-4">🤝</div>
+                <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Partnership</h3>
+                <p class="text-gray-300 text-sm">We're not vendors—we're partners invested in your success and growth.</p>
+            </div>
+
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite">
+                <div class="text-4xl mb-4">📈</div>
+                <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Results</h3>
+                <p class="text-gray-300 text-sm">We measure success by your growth. No vanity metrics. Just real impact.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="py-20 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Journey</h2>
+
+        <div class="space-y-8 max-w-3xl mx-auto">
+            <!-- Timeline Item 1 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold">2020</div>
+                    <div class="w-1 h-24 bg-accent/30 mt-4"></div>
+                </div>
+                <div class="pb-8">
+                    <h3 class="text-xl font-poppins font-bold mb-2">DTB Founded</h3>
+                    <p class="text-gray-300">Started with a simple mission: help small teams build better digital products.</p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold">2021</div>
+                    <div class="w-1 h-24 bg-accent/30 mt-4"></div>
+                </div>
+                <div class="pb-8">
+                    <h3 class="text-xl font-poppins font-bold mb-2">First 10 Clients</h3>
+                    <p class="text-gray-300">Delivered our first successful projects and learned what really matters to our clients.</p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold">2022</div>
+                    <div class="w-1 h-24 bg-accent/30 mt-4"></div>
+                </div>
+                <div class="pb-8">
+                    <h3 class="text-xl font-poppins font-bold mb-2">Automation Focus</h3>
+                    <p class="text-gray-300">Expanded into AI and automation, helping clients save thousands of hours annually.</p>
+                </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="flex gap-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold">2024</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-poppins font-bold mb-2">Today</h3>
+                    <p class="text-gray-300">Trusted by 50+ companies. Helping teams grow faster and work smarter every day.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-20 md:py-32 bg-slate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Meet the Team</h2>
+        <p class="text-center text-gray-300 mb-12 max-w-2xl mx-auto">
+            Small team. Big impact. We're obsessed with quality and results.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Team Member 1 -->
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-accent to-accent-dark rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">👨‍💼</div>
+                <h3 class="font-poppins font-bold text-lg mb-1">Sage Nwanne</h3>
+                <p class="text-accent text-sm mb-3">Founder & Lead Developer</p>
+                <p class="text-gray-300 text-sm">Full-stack developer obsessed with building systems that scale. 10+ years of experience.</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-accent to-accent-dark rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">👩‍💻</div>
+                <h3 class="font-poppins font-bold text-lg mb-1">Design Lead</h3>
+                <p class="text-accent text-sm mb-3">Product & UX Design</p>
+                <p class="text-gray-300 text-sm">Crafts beautiful, conversion-focused designs that users love.</p>
+            </div>
+
+            <!-- Team Member 3 -->
+            <div class="bg-charcoal p-6 rounded-lg border border-graphite text-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-accent to-accent-dark rounded-full mx-auto mb-4 flex items-center justify-center text-4xl">🤖</div>
+                <h3 class="font-poppins font-bold text-lg mb-1">Automation Specialist</h3>
+                <p class="text-accent text-sm mb-3">AI & Workflow Automation</p>
+                <p class="text-gray-300 text-sm">Builds intelligent systems that work 24/7 and save thousands of hours.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
+            Let's work together
+        </h2>
+        <p class="text-lg text-charcoal/80 mb-8">
+            Ready to partner with a team that's obsessed with your success?
+        </p>
+        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
+            Get in Touch
+        </a>
+    </div>
+</section>
+
 {% endblock %}
