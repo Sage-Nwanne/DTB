@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,7 +40,9 @@
                 </p>
             </div>
             <div class="bg-gradient-to-br from-slate to-graphite p-8 rounded-lg border border-slate">
-                <div class="text-6xl mb-4">🎯</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-target"/></svg>
+                </div>
                 <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Design. Automate. Breakthrough.</h3>
                 <p class="text-gray-300">
                     This isn't just our tagline—it's our philosophy. We design with intention, automate with precision, and deliver breakthroughs that matter.
@@ -54,25 +59,33 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             <div class="bg-charcoal p-6 rounded-lg border border-graphite">
-                <div class="text-4xl mb-4">⚡</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 48px; height: 48px;" viewBox="0 0 64 64"><use href="#icon-speed"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Speed</h3>
                 <p class="text-gray-300 text-sm">We move fast without cutting corners. Your time is valuable, and we respect that.</p>
             </div>
 
             <div class="bg-charcoal p-6 rounded-lg border border-graphite">
-                <div class="text-4xl mb-4">🎨</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 48px; height: 48px;" viewBox="0 0 64 64"><use href="#icon-precision"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Precision</h3>
                 <p class="text-gray-300 text-sm">Every pixel, every line of code, every decision is intentional and purposeful.</p>
             </div>
 
             <div class="bg-charcoal p-6 rounded-lg border border-graphite">
-                <div class="text-4xl mb-4">🤝</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 48px; height: 48px;" viewBox="0 0 64 64"><use href="#icon-partnership"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Partnership</h3>
                 <p class="text-gray-300 text-sm">We're not vendors—we're partners invested in your success and growth.</p>
             </div>
 
             <div class="bg-charcoal p-6 rounded-lg border border-graphite">
-                <div class="text-4xl mb-4">📈</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 48px; height: 48px;" viewBox="0 0 64 64"><use href="#icon-results"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2 text-accent">Results</h3>
                 <p class="text-gray-300 text-sm">We measure success by your growth. No vanity metrics. Just real impact.</p>
             </div>

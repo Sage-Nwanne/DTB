@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +30,9 @@
             
             <!-- Service 1: Web Services -->
             <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="text-5xl mb-4">🌐</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-web"/></svg>
+                </div>
                 <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Web Services</h3>
                 <p class="text-gray-300 mb-6 leading-relaxed">
                     Conversion-first websites designed to turn visitors into customers. We build fast, SEO-optimized sites with analytics, maintenance, and ongoing support baked in.
@@ -61,7 +66,9 @@
             
             <!-- Service 2: Agentic Automation -->
             <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="text-5xl mb-4">🤖</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-automation"/></svg>
+                </div>
                 <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Agentic Automation</h3>
                 <p class="text-gray-300 mb-6 leading-relaxed">
                     AI agents and workflows that replace busywork with results. From lead qualification to customer support, we build systems that work 24/7.
@@ -95,7 +102,9 @@
             
             <!-- Service 3: Marketing & Growth -->
             <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="text-5xl mb-4">📈</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-results"/></svg>
+                </div>
                 <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Marketing & Growth</h3>
                 <p class="text-gray-300 mb-6 leading-relaxed">
                     Content systems that compound attention into revenue. We build sustainable growth engines through strategy, content, and automation.
@@ -129,7 +138,9 @@
             
             <!-- Service 4: Consulting -->
             <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="text-5xl mb-4">💡</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-lightbulb"/></svg>
+                </div>
                 <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Consulting</h3>
                 <p class="text-gray-300 mb-6 leading-relaxed">
                     Strategy, audits, and white-label delivery you can trust. We help agencies and teams scale without the overhead.
@@ -165,8 +176,11 @@
 </section>
 
 <!-- Pricing Section -->
-<section class="py-20 md:py-32 bg-slate">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 md:py-32 bg-slate relative">
+    <!-- Animated Background -->
+    {% include 'components/animated_bg.html' %}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="text-center mb-16">
             <h2 class="text-4xl font-poppins font-bold mb-4">Transparent Pricing</h2>
             <p class="text-gray-300 text-lg">Choose the package that fits your needs. All include 30-day support.</p>

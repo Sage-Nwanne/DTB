@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
 <!-- Intro Splash Screen -->
 {% include 'components/intro_splash.html' %}
 
@@ -32,13 +35,18 @@
 </section>
 
 <!-- Services Section -->
-<section class="py-20 md:py-32 bg-charcoal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 md:py-32 bg-charcoal relative">
+    <!-- Animated Background -->
+    {% include 'components/animated_bg.html' %}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Services</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Service Card 1 -->
             <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
-                <div class="text-4xl mb-4">🌐</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-web"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2">Web Services</h3>
                 <p class="text-sm text-gray-300 mb-4">Conversion-first websites with SEO, analytics, and maintenance baked in.</p>
                 <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
@@ -46,7 +54,9 @@
 
             <!-- Service Card 2 -->
             <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
-                <div class="text-4xl mb-4">🤖</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-automation"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2">Agentic Automation</h3>
                 <p class="text-sm text-gray-300 mb-4">AI agents and workflows that replace busywork with results.</p>
                 <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
@@ -62,7 +72,9 @@
 
             <!-- Service Card 4 -->
             <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
-                <div class="text-4xl mb-4">💡</div>
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-consulting"/></svg>
+                </div>
                 <h3 class="font-poppins font-bold text-lg mb-2">Consulting</h3>
                 <p class="text-sm text-gray-300 mb-4">Strategy, audits, and white-label delivery you can trust.</p>
                 <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>

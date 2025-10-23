@@ -1,0 +1,331 @@
+<!-- Animated Tech Background -->
+<style>
+  .animated-bg-container {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animated-bg-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+  }
+
+  /* Animated circuit paths */
+  @keyframes flowPath1 {
+    0% {
+      stroke-dashoffset: 1000;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowPath2 {
+    0% {
+      stroke-dashoffset: 1200;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowPath3 {
+    0% {
+      stroke-dashoffset: 1400;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowPath4 {
+    0% {
+      stroke-dashoffset: 1100;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowPath5 {
+    0% {
+      stroke-dashoffset: 1300;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes flowPath6 {
+    0% {
+      stroke-dashoffset: 1500;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
+
+  @keyframes pulseNode {
+    0%, 100% {
+      r: 2;
+      opacity: 0.3;
+    }
+    50% {
+      r: 4;
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes floatNode {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .flow-path-1 {
+    stroke-dasharray: 1000;
+    animation: flowPath1 8s linear infinite;
+  }
+
+  .flow-path-2 {
+    stroke-dasharray: 1200;
+    animation: flowPath2 10s linear infinite;
+  }
+
+  .flow-path-3 {
+    stroke-dasharray: 1400;
+    animation: flowPath3 12s linear infinite;
+  }
+
+  .flow-path-4 {
+    stroke-dasharray: 1100;
+    animation: flowPath4 9s linear infinite;
+  }
+
+  .flow-path-5 {
+    stroke-dasharray: 1300;
+    animation: flowPath5 11s linear infinite;
+  }
+
+  .flow-path-6 {
+    stroke-dasharray: 1500;
+    animation: flowPath6 13s linear infinite;
+  }
+
+  .pulse-node {
+    animation: pulseNode 3s ease-in-out infinite;
+  }
+
+  .float-node {
+    animation: floatNode 4s ease-in-out infinite;
+  }
+
+  /* Grid animation */
+  @keyframes gridShift {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+
+  .animated-grid {
+    background-image: 
+      linear-gradient(0deg, transparent 24%, rgba(255, 159, 26, 0.08) 25%, rgba(255, 159, 26, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.08) 75%, rgba(255, 159, 26, 0.08) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(255, 159, 26, 0.08) 25%, rgba(255, 159, 26, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.08) 75%, rgba(255, 159, 26, 0.08) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    animation: gridShift 20s linear infinite;
+  }
+
+  /* Glow effect */
+  @keyframes glowPulse {
+    0%, 100% {
+      opacity: 0.05;
+    }
+    50% {
+      opacity: 0.15;
+    }
+  }
+
+  .glow-pulse {
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+</style>
+
+<!-- Animated SVG Background -->
+<svg class="animated-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9f1a;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ff9f1a;stop-opacity:0" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background grid -->
+  <rect width="1440" height="800" fill="none"/>
+
+  <!-- Animated circuit paths - Hexagonal grid pattern -->
+  <g stroke="#ff9f1a" stroke-width="2" fill="none" filter="url(#glow)">
+    <!-- Horizontal lines -->
+    <path class="flow-path-1" d="M 0 100 L 1440 100" stroke-linecap="round"/>
+    <path class="flow-path-2" d="M 0 300 L 1440 300" stroke-linecap="round"/>
+    <path class="flow-path-3" d="M 0 500 L 1440 500" stroke-linecap="round"/>
+    <path class="flow-path-4" d="M 0 700 L 1440 700" stroke-linecap="round"/>
+
+    <!-- Vertical lines (evenly spaced) -->
+    <path class="flow-path-5" d="M 180 0 L 180 800" stroke-linecap="round"/>
+    <path class="flow-path-6" d="M 360 0 L 360 800" stroke-linecap="round"/>
+    <path class="flow-path-1" d="M 540 0 L 540 800" stroke-linecap="round"/>
+    <path class="flow-path-2" d="M 720 0 L 720 800" stroke-linecap="round"/>
+    <path class="flow-path-3" d="M 900 0 L 900 800" stroke-linecap="round"/>
+    <path class="flow-path-4" d="M 1080 0 L 1080 800" stroke-linecap="round"/>
+    <path class="flow-path-5" d="M 1260 0 L 1260 800" stroke-linecap="round"/>
+
+    <!-- Diagonal lines (60 degrees) - Top left to bottom right -->
+    <path class="flow-path-6" d="M 0 200 L 1440 800" stroke-linecap="round"/>
+    <path class="flow-path-1" d="M 0 0 L 1260 800" stroke-linecap="round"/>
+    <path class="flow-path-2" d="M 180 0 L 1440 700" stroke-linecap="round"/>
+    <path class="flow-path-3" d="M 360 0 L 1440 500" stroke-linecap="round"/>
+    <path class="flow-path-4" d="M 540 0 L 1440 300" stroke-linecap="round"/>
+    <path class="flow-path-5" d="M 720 0 L 1440 100" stroke-linecap="round"/>
+
+    <!-- Diagonal lines (120 degrees) - Top right to bottom left -->
+    <path class="flow-path-6" d="M 1440 200 L 0 800" stroke-linecap="round"/>
+    <path class="flow-path-1" d="M 1440 0 L 180 800" stroke-linecap="round"/>
+    <path class="flow-path-2" d="M 1260 0 L 0 700" stroke-linecap="round"/>
+    <path class="flow-path-3" d="M 1080 0 L 0 500" stroke-linecap="round"/>
+    <path class="flow-path-4" d="M 900 0 L 0 300" stroke-linecap="round"/>
+    <path class="flow-path-5" d="M 720 0 L 0 100" stroke-linecap="round"/>
+  </g>
+
+  <!-- Animated nodes - Hexagonal grid intersections -->
+  <g fill="#ff9f1a" filter="url(#glow)">
+    <!-- Horizontal line intersections -->
+    <!-- Row 1 (y=100) -->
+    <circle class="pulse-node" style="animation-delay: 0.0s;" cx="180" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.1s;" cx="360" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="540" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="720" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="900" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="1080" cy="100" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="1260" cy="100" r="2"/>
+
+    <!-- Row 2 (y=300) -->
+    <circle class="pulse-node" style="animation-delay: 0.1s;" cx="180" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="360" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="540" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="720" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="900" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="1080" cy="300" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="1260" cy="300" r="2"/>
+
+    <!-- Row 3 (y=500) -->
+    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="180" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="360" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="540" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="720" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="900" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="1080" cy="500" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.8s;" cx="1260" cy="500" r="2"/>
+
+    <!-- Row 4 (y=700) -->
+    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="180" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="360" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="540" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="720" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="900" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.8s;" cx="1080" cy="700" r="2"/>
+    <circle class="pulse-node" style="animation-delay: 0.9s;" cx="1260" cy="700" r="2"/>
+
+    <!-- Larger hub nodes at key intersections -->
+    <circle class="pulse-node" style="animation-delay: 0.0s;" cx="720" cy="300" r="3"/>
+    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="540" cy="500" r="3"/>
+    <circle class="pulse-node" style="animation-delay: 1.0s;" cx="900" cy="500" r="3"/>
+    <circle class="pulse-node" style="animation-delay: 1.5s;" cx="360" cy="300" r="3"/>
+    <circle class="pulse-node" style="animation-delay: 2.0s;" cx="1080" cy="700" r="3"/>
+  </g>
+
+  <!-- Connecting lines - Hexagonal grid pattern -->
+  <g stroke="#ff9f1a" stroke-width="1" opacity="0.15" fill="none">
+    <!-- Horizontal connections -->
+    <line x1="180" y1="100" x2="360" y2="100"/>
+    <line x1="360" y1="100" x2="540" y2="100"/>
+    <line x1="540" y1="100" x2="720" y2="100"/>
+    <line x1="720" y1="100" x2="900" y2="100"/>
+    <line x1="900" y1="100" x2="1080" y2="100"/>
+    <line x1="1080" y1="100" x2="1260" y2="100"/>
+
+    <line x1="180" y1="300" x2="360" y2="300"/>
+    <line x1="360" y1="300" x2="540" y2="300"/>
+    <line x1="540" y1="300" x2="720" y2="300"/>
+    <line x1="720" y1="300" x2="900" y2="300"/>
+    <line x1="900" y1="300" x2="1080" y2="300"/>
+    <line x1="1080" y1="300" x2="1260" y2="300"/>
+
+    <line x1="180" y1="500" x2="360" y2="500"/>
+    <line x1="360" y1="500" x2="540" y2="500"/>
+    <line x1="540" y1="500" x2="720" y2="500"/>
+    <line x1="720" y1="500" x2="900" y2="500"/>
+    <line x1="900" y1="500" x2="1080" y2="500"/>
+    <line x1="1080" y1="500" x2="1260" y2="500"/>
+
+    <line x1="180" y1="700" x2="360" y2="700"/>
+    <line x1="360" y1="700" x2="540" y2="700"/>
+    <line x1="540" y1="700" x2="720" y2="700"/>
+    <line x1="720" y1="700" x2="900" y2="700"/>
+    <line x1="900" y1="700" x2="1080" y2="700"/>
+    <line x1="1080" y1="700" x2="1260" y2="700"/>
+
+    <!-- Vertical connections -->
+    <line x1="180" y1="100" x2="180" y2="300"/>
+    <line x1="180" y1="300" x2="180" y2="500"/>
+    <line x1="180" y1="500" x2="180" y2="700"/>
+
+    <line x1="360" y1="100" x2="360" y2="300"/>
+    <line x1="360" y1="300" x2="360" y2="500"/>
+    <line x1="360" y1="500" x2="360" y2="700"/>
+
+    <line x1="540" y1="100" x2="540" y2="300"/>
+    <line x1="540" y1="300" x2="540" y2="500"/>
+    <line x1="540" y1="500" x2="540" y2="700"/>
+
+    <line x1="720" y1="100" x2="720" y2="300"/>
+    <line x1="720" y1="300" x2="720" y2="500"/>
+    <line x1="720" y1="500" x2="720" y2="700"/>
+
+    <line x1="900" y1="100" x2="900" y2="300"/>
+    <line x1="900" y1="300" x2="900" y2="500"/>
+    <line x1="900" y1="500" x2="900" y2="700"/>
+
+    <line x1="1080" y1="100" x2="1080" y2="300"/>
+    <line x1="1080" y1="300" x2="1080" y2="500"/>
+    <line x1="1080" y1="500" x2="1080" y2="700"/>
+
+    <line x1="1260" y1="100" x2="1260" y2="300"/>
+    <line x1="1260" y1="300" x2="1260" y2="500"/>
+    <line x1="1260" y1="500" x2="1260" y2="700"/>
+  </g>
+
+  <!-- Glow overlays -->
+  <circle class="glow-pulse" cx="300" cy="200" r="150" fill="#ff9f1a" opacity="0.05"/>
+  <circle class="glow-pulse" style="animation-delay: 1s;" cx="900" cy="400" r="200" fill="#ff9f1a" opacity="0.05"/>
+  <circle class="glow-pulse" style="animation-delay: 2s;" cx="500" cy="650" r="180" fill="#ff9f1a" opacity="0.05"/>
+</svg>
+

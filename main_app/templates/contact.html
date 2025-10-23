@@ -6,6 +6,9 @@
 
 {% block content %}
 
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,8 +24,11 @@
 </section>
 
 <!-- Contact Section -->
-<section class="py-20 md:py-32 bg-charcoal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-20 md:py-32 bg-charcoal relative">
+    <!-- Animated Background -->
+    {% include 'components/animated_bg.html' %}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
             <!-- Contact Info -->
