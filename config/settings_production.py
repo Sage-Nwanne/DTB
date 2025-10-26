@@ -18,13 +18,17 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'CHANGE-THIS-IN-PRODUCTION')
 DEBUG = False
 
 # Add your domain here
-ALLOWED_HOSTS = [
-    os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
-    'www.' + os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
-    'dtb-website-2b83b5cf8067.herokuapp.com',  # Heroku domain
-    'localhost',
-    '127.0.0.1',
-]
+# Get ALLOWED_HOSTS from environment variable, or use defaults
+_allowed_hosts = os.environ.get('ALLOWED_HOSTS', '')
+if _allowed_hosts:
+    ALLOWED_HOSTS = [host.strip() for host in _allowed_hosts.split(',')]
+else:
+    ALLOWED_HOSTS = [
+        os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
+        'www.' + os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
+        'localhost',
+        '127.0.0.1',
+    ]
 
 # Application definition
 INSTALLED_APPS = [
