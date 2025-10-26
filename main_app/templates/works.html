@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Portfolio — DTB{% endblock %}
+{% block meta_description %}See our latest web design, automation, and marketing projects.{% endblock %}
+
+{% block content %}
+
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
+                Our <span class="text-accent">Work</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                Real projects. Real results. Real impact for our clients.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Section -->
+<section class="bg-charcoal border-b border-slate py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3">
+            <button class="filter-btn active px-4 py-2 rounded-md border border-accent bg-accent text-charcoal font-bold text-sm transition duration-200" data-filter="all">
+                All Projects
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-md border border-slate text-text font-bold text-sm hover:border-accent transition duration-200" data-filter="web">
+                Web Design
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-md border border-slate text-text font-bold text-sm hover:border-accent transition duration-200" data-filter="automation">
+                Automation
+            </button>
+            <button class="filter-btn px-4 py-2 rounded-md border border-slate text-text font-bold text-sm hover:border-accent transition duration-200" data-filter="marketing">
+                Marketing
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Grid -->
+<section class="py-20 md:py-32 bg-charcoal">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Project 1: E-commerce Platform -->
+            <div class="project-card group cursor-pointer" data-category="web">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-shopping"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">E-commerce Platform</h3>
+                <p class="text-gray-400 text-sm mb-4">A fully responsive e-commerce solution with secure payment integration and inventory management.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Django</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">PostgreSQL</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Stripe</span>
+                </div>
+            </div>
+
+            <!-- Project 2: Nonprofit Website -->
+            <div class="project-card group cursor-pointer" data-category="web">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-partnership"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">Nonprofit Organization Website</h3>
+                <p class="text-gray-400 text-sm mb-4">A content-rich website with donation capabilities and event management features.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Django</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">AWS</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Tailwind</span>
+                </div>
+            </div>
+
+            <!-- Project 3: Real Estate Platform -->
+            <div class="project-card group cursor-pointer" data-category="web">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-home"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">Real Estate Listing Platform</h3>
+                <p class="text-gray-400 text-sm mb-4">Interactive property search with filtering options and agent contact forms.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Django</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Google Maps</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">React</span>
+                </div>
+            </div>
+
+            <!-- Project 4: Lead Automation System -->
+            <div class="project-card group cursor-pointer" data-category="automation">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-automation"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">Lead Qualification Automation</h3>
+                <p class="text-gray-400 text-sm mb-4">AI-powered system that qualifies leads 24/7, saving 20+ hours per week.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">OpenAI</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Zapier</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">CRM</span>
+                </div>
+            </div>
+
+            <!-- Project 5: Email Marketing Automation -->
+            <div class="project-card group cursor-pointer" data-category="marketing">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-email"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">Email Marketing Automation</h3>
+                <p class="text-gray-400 text-sm mb-4">Personalized email sequences that increased client revenue by 35%.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Klaviyo</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Segment</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Analytics</span>
+                </div>
+            </div>
+
+            <!-- Project 6: Content Management System -->
+            <div class="project-card group cursor-pointer" data-category="web">
+                <div class="relative overflow-hidden rounded-lg mb-4 h-64 bg-gradient-to-br from-slate to-graphite flex items-center justify-center">
+                    <div class="mb-4">
+                    <svg class="tech-icon" style="width: 96px; height: 96px;" viewBox="0 0 64 64"><use href="#icon-document"/></svg>
+                </div>
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition duration-300 flex items-center justify-center">
+                        <button class="opacity-0 group-hover:opacity-100 transition duration-300 bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins">
+                            View Project
+                        </button>
+                    </div>
+                </div>
+                <h3 class="text-xl font-poppins font-bold mb-2">Content Management System</h3>
+                <p class="text-gray-400 text-sm mb-4">Custom CMS for managing 500+ blog posts with SEO optimization.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Django</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">Elasticsearch</span>
+                    <span class="text-xs bg-graphite text-accent px-3 py-1 rounded-full">SEO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
+            Ready to be our next success story?
+        </h2>
+        <p class="text-lg text-charcoal/80 mb-8">
+            Let's discuss how we can help your business grow.
+        </p>
+        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
+            Start Your Project
+        </a>
+    </div>
+</section>
+
+<script>
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+
+        // Update active button
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('active', 'bg-accent', 'text-charcoal', 'border-accent');
+            b.classList.add('border-slate', 'text-text');
+        });
+        this.classList.add('active', 'bg-accent', 'text-charcoal', 'border-accent');
+        this.classList.remove('border-slate', 'text-text');
+
+        // Filter projects
+        document.querySelectorAll('.project-card').forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.style.display = 'block';
+                setTimeout(() => card.style.opacity = '1', 10);
+            } else {
+                card.style.opacity = '0';
+                setTimeout(() => card.style.display = 'none', 300);
+            }
+        });
+    });
+});
+</script>
+
+{% endblock %}

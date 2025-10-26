@@ -1,0 +1,36 @@
+{% load static %}
+
+<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <a href="/" class="flex items-center gap-2">
+                <img src="{% static 'Images/DTB_logo.png' %}" alt="DTB logo" class="h-8 w-8">
+                <span class="text-2xl font-poppins font-bold text-accent">DTB</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <ul class="hidden md:flex gap-8 items-center">
+                <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
+                <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
+                <li><a href="/works" class="hover:text-accent transition duration-200">Portfolio</a></li>
+                <li><a href="/about" class="hover:text-accent transition duration-200">About</a></li>
+                <li><a href="/reviews" class="hover:text-accent transition duration-200">Reviews</a></li>
+                <li><a href="/contact" class="hover:text-accent transition duration-200">Contact</a></li>
+            </ul>
+
+            <!-- CTA Button -->
+            <a href="/contact" class="hidden md:inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
+                Start a Project
+            </a>
+            
+            <!-- Mobile Menu Button (placeholder for future) -->
+            <button class="md:hidden text-accent">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+

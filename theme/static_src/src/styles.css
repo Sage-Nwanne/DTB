@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/**
+  * A catch-all path to Django template files, JavaScript, and Python files
+  * that contain Tailwind CSS classes and will be scanned by Tailwind to generate the final CSS file.
+  *
+  * If your final CSS file is not being updated after code changes, you may want to broaden or narrow
+  * the scope of this path.
+  */
+@source "../../../**/*.{html,py,js}";
+
+/* DTB Custom Theme */
+@theme {
+  --color-charcoal: #0c0c0c;
+  --color-slate: #141414;
+  --color-graphite: #1a1a1a;
+  --color-accent: #ff9f1a;
+  --color-accent-dark: #b35400;
+  --color-text: #e9e9e9;
+
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}

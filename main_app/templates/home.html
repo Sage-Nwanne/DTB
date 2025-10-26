@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}DTB — Web + Agentic Automation Studio{% endblock %}
+{% block meta_description %}Design. Automate. Breakthrough. Web systems and agentic automation for small teams that want enterprise results.{% endblock %}
+
+{% block content %}
+
+<!-- Tech Icons Library -->
+{% include 'components/tech_icons.html' %}
+
+<!-- Intro Splash Screen -->
+{% include 'components/intro_splash.html' %}
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
+                Design. Automate. <span class="text-accent">Breakthrough.</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                Web systems and agentic automation for small teams that want enterprise results.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="/services" class="inline-block bg-accent text-charcoal px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200 text-center">
+                    Explore Services
+                </a>
+                <a href="/contact" class="inline-block border-2 border-accent text-accent px-8 py-3 rounded-md font-bold font-poppins hover:bg-accent/10 transition duration-200 text-center">
+                    Start a Project
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-20 md:py-32 bg-charcoal relative">
+    <!-- Animated Background -->
+    {% include 'components/animated_bg.html' %}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Service Card 1 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-web"/></svg>
+                </div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Web Services</h3>
+                <p class="text-sm text-gray-300 mb-4">Conversion-first websites with SEO, analytics, and maintenance baked in.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 2 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-automation"/></svg>
+                </div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Agentic Automation</h3>
+                <p class="text-sm text-gray-300 mb-4">AI agents and workflows that replace busywork with results.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 3 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="text-4xl mb-4">��</div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Marketing & Growth</h3>
+                <p class="text-sm text-gray-300 mb-4">Content systems that compound attention into revenue.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+
+            <!-- Service Card 4 -->
+            <div class="bg-graphite p-6 rounded-lg hover:translate-y-[-4px] transition duration-200 border border-slate">
+                <div class="mb-4">
+                    <svg class="tech-icon" viewBox="0 0 64 64"><use href="#icon-consulting"/></svg>
+                </div>
+                <h3 class="font-poppins font-bold text-lg mb-2">Consulting</h3>
+                <p class="text-sm text-gray-300 mb-4">Strategy, audits, and white-label delivery you can trust.</p>
+                <a href="/services" class="text-accent hover:text-accent-dark transition text-sm font-bold">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Proof Strip -->
+<section class="bg-slate py-12 border-y border-graphite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-around items-center gap-8 text-center">
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">12+</p>
+                <p class="text-gray-400 text-sm">Launches</p>
+            </div>
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">100%</p>
+                <p class="text-gray-400 text-sm">On-time Handoffs</p>
+            </div>
+            <div>
+                <p class="text-2xl font-poppins font-bold text-accent">30-day</p>
+                <p class="text-gray-400 text-sm">Post-launch Support</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
+            Let's map your breakthrough in 20 minutes.
+        </h2>
+        <p class="text-lg text-charcoal/80 mb-8">
+            Schedule a free consultation to discuss your project and see how we can help.
+        </p>
+        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
+            Get Started
+        </a>
+    </div>
+</section>
+
+{% endblock %}

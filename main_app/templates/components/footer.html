@@ -1,0 +1,53 @@
+{% load static %}
+
+<footer class="bg-slate border-t border-graphite mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- Column 1: Company Info -->
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="{% static 'Images/DTB_logo.png' %}" alt="DTB logo" class="h-6 w-6">
+                    <h3 class="font-poppins font-bold text-lg text-accent">DTB</h3>
+                </div>
+                <p class="text-sm text-gray-400 mb-4">Web systems and agentic automation for small teams that want enterprise results.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-400 hover:text-accent transition">Twitter</a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition">LinkedIn</a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition">GitHub</a>
+                </div>
+            </div>
+            
+            <!-- Column 2: Links -->
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <h4 class="font-poppins font-bold text-sm mb-4 text-text">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/" class="text-gray-400 hover:text-accent transition">Home</a></li>
+                        <li><a href="/services/" class="text-gray-400 hover:text-accent transition">Services</a></li>
+                        <li><a href="/works/" class="text-gray-400 hover:text-accent transition">Portfolio</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-poppins font-bold text-sm mb-4 text-text">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/about/" class="text-gray-400 hover:text-accent transition">About</a></li>
+                        <li><a href="/reviews/" class="text-gray-400 hover:text-accent transition">Reviews</a></li>
+                        <li><a href="/contact/" class="text-gray-400 hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Divider -->
+        <div class="border-t border-graphite pt-8">
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <p>© 2025 DTB. All rights reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-accent transition">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent transition">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

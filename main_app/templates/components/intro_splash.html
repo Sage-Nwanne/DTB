@@ -1,0 +1,150 @@
+<!-- DTB Intro Splash Screen -->
+<div id="introSplash" class="fixed inset-0 z-50 grid place-items-center bg-[#0b0b0b] opacity-100 transition-opacity duration-1000">
+  <!-- SVG Logo with Flash Reveal -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 720" role="img"
+       aria-labelledby="t d" class="w-full h-full" style="display:block;background:#0b0b0b">
+    <title id="t">Designed To Breakthrough — intro logo</title>
+    <desc id="d">DTB letters revealed by a left-to-right flash over a dense orange wiring field.</desc>
+
+    <defs>
+      <!-- Brand color + gradients -->
+      <linearGradient id="wireGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#ff9f1a"/>
+        <stop offset="1" stop-color="#ffc06a"/>
+      </linearGradient>
+      <linearGradient id="flashGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%"  stop-color="#ffffff" stop-opacity="0"/>
+        <stop offset="45%" stop-color="#fff2dd" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+      </linearGradient>
+
+      <!-- Glow filters -->
+      <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2.4" result="g"/>
+        <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="hardGlow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="6" result="g"/>
+        <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+
+      <!-- Sweep mask that reveals letters L→R -->
+      <mask id="sweep">
+        <rect width="1440" height="720" fill="black"/>
+        <rect id="sweeper" x="-500" y="0" width="500" height="720" fill="url(#flashGrad)">
+          <animate attributeName="x" from="-500" to="1440" dur="1.6s" begin="0.35s" fill="freeze" />
+        </rect>
+      </mask>
+
+      <style>
+        :root { --bg:#0b0b0b; --orange:#ff9f1a; }
+
+        /* Background wiring field */
+        .field path{
+          fill:none; stroke:url(#wireGrad); stroke-width:1.6; opacity:.28;
+          stroke-linecap:round; filter:url(#softGlow);
+          stroke-dasharray:8 22; animation:pulse 4.2s linear infinite;
+        }
+        .field path:nth-child(3n){ opacity:.22; animation-duration:5.3s }
+        .field path:nth-child(5n){ opacity:.18; animation-duration:6.4s }
+
+        /* Flash trail (brief, subtle) */
+        .trail{ stroke:#fff2dd; stroke-width:8; stroke-linecap:round;
+                filter:url(#hardGlow); opacity:.0; }
+        .trail.show{ opacity:.7; animation:trailOut .9s ease-out .35s forwards }
+
+        /* Letter strokes */
+        .letter{
+          fill:none; stroke:url(#wireGrad); stroke-width:9; stroke-linecap:round; stroke-linejoin:round;
+          filter:url(#hardGlow);
+        }
+        .letterBase{
+          fill:none; stroke:#2a2a2a; opacity:.35; filter:none;
+        }
+
+        /* Idle shimmer to keep it alive after reveal */
+        #logo{ animation:idle 3.2s ease-in-out 2.2s infinite }
+
+        @keyframes pulse { to { stroke-dashoffset:-30 } }
+        @keyframes trailOut { to { opacity:0 } }
+        @keyframes idle { 0%,100%{opacity:.98} 50%{opacity:1} }
+
+        /* Accessibility: reduce motion */
+        @media (prefers-reduced-motion:reduce){
+          .field path{animation:none}
+          #logo, .trail{animation:none}
+          #sweeper{display:none}
+        }
+      </style>
+    </defs>
+
+    <!-- Subtle vignette -->
+    <defs>
+      <radialGradient id="vign" cx="50%" cy="20%" r="80%">
+        <stop offset="0%" stop-color="#0b0b0b"/>
+        <stop offset="100%" stop-color="#000000"/>
+      </radialGradient>
+    </defs>
+    <rect x="0" y="0" width="1440" height="720" fill="url(#vign)"/>
+
+    <!-- Dense wiring background (curved traces across the canvas) -->
+    <g class="field">
+      <!-- top sweepers -->
+      <path d="M-40 120 C 180 60, 360 60, 600 120 S 1040 200, 1520 120"/>
+      <path d="M-40 170 C 210 130, 420 150, 680 190 S 1150 230, 1520 170"/>
+      <path d="M-40 230 C 140 240, 360 210, 680 230 S 1160 260, 1520 220"/>
+      <!-- mid meshes -->
+      <path d="M-40 310 C 160 280, 300 330, 520 340 S 980 330, 1520 310"/>
+      <path d="M-40 360 C 220 390, 420 370, 720 380 S 1180 390, 1520 360"/>
+      <path d="M-40 410 C 140 440, 380 420, 620 440 S 1020 460, 1520 420"/>
+      <!-- lower meshes -->
+      <path d="M-40 480 C 160 470, 420 520, 680 510 S 1100 500, 1520 480"/>
+      <path d="M-40 540 C 240 560, 460 540, 780 560 S 1240 580, 1520 540"/>
+      <path d="M-40 600 C 180 640, 440 610, 760 620 S 1280 640, 1520 600"/>
+    </g>
+
+    <!-- LOGO: base + reveal group -->
+    <g id="logo" transform="translate(190,130)">
+      <!-- Base faint tracks for depth -->
+      <path class="letterBase" d="M90,430 C90,530 330,540 470,520 620,500 700,440 700,360 700,280 610,210 450,210 H240 C190,210 140,200 140,180 V150"/>
+      <path class="letterBase" d="M470,120 V430"/>
+      <path class="letterBase" d="M860,150 V520 M860,150 H1120 C1200,150 1240,200 1240,250 1240,300 1200,340 1120,340 H860
+                                  M860,340 H1100 C1180,340 1220,390 1220,440 1220,490 1180,520 1100,520 H860"/>
+      <!-- Flash trail following the sweeper -->
+      <rect class="trail show" x="190" y="120" width="780" height="440" rx="6" ry="6"/>
+
+      <!-- Masked bright letters (flash reveal left→right) -->
+      <g mask="url(#sweep)">
+        <!-- D -->
+        <path class="letter"
+              d="M90,430 C90,530 330,540 470,520 620,500 700,440 700,360 700,280 610,210 450,210 H240 C190,210 140,200 140,180 V150"/>
+        <!-- T -->
+        <path class="letter" d="M470,120 V430 M320,120 H620"/>
+        <!-- B -->
+        <path class="letter"
+              d="M860,150 V520 M860,150 H1120 C1200,150 1240,200 1240,250 1240,300 1200,340 1120,340 H860
+                 M860,340 H1100 C1180,340 1220,390 1220,440 1220,490 1180,520 1100,520 H860"/>
+      </g>
+    </g>
+
+    <!-- Wordmark -->
+    <g transform="translate(220,640)" filter="url(#softGlow)">
+      <text x="0" y="0" font-size="28"
+            font-family="Share Tech Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Courier New', monospace"
+            fill="#eaeaea" letter-spacing=".18em">DESIGNED TO BREAKTHROUGH</text>
+    </g>
+  </svg>
+</div>
+
+<script>
+  // Fade out intro splash after 3 seconds
+  document.addEventListener('DOMContentLoaded', function() {
+    const introSplash = document.getElementById('introSplash');
+    
+    setTimeout(function() {
+      introSplash.style.opacity = '0';
+      introSplash.style.pointerEvents = 'none';
+    }, 3000);
+  });
+</script>
+

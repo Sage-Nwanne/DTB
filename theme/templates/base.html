@@ -1,0 +1,45 @@
+{% load static %}
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}DTB — Web + Agentic Automation Studio{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Design. Automate. Breakthrough. Web systems and agentic automation for small teams.{% endblock %}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'Images/DTB_logo.png' %}" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    {% tailwind_css %}
+
+    <!-- Tech Backgrounds -->
+    {% include 'components/tech_backgrounds.html' %}
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-charcoal text-text font-inter">
+    <!-- Navigation -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
