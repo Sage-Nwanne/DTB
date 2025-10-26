@@ -138,6 +138,16 @@ SECURE_HSTS_SECONDS = 31536000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 SECURE_HSTS_PRELOAD = True
 
+# Required for Django 4+ when using HTTPS behind a proxy (Heroku)
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.dtbsolutions.tech",
+    "https://dtbsolutions.tech",
+]
+
+# Make Django respect X-Forwarded-Proto from Heroku
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+USE_X_FORWARDED_HOST = True
+
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
 
