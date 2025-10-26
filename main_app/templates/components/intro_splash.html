@@ -136,14 +136,26 @@
 </div>
 
 <script>
-  // Fade out intro splash after 3 seconds
+  // Fade out intro splash after 3 seconds (only on desktop/md+ screens)
   document.addEventListener('DOMContentLoaded', function() {
     const introSplash = document.getElementById('introSplash');
-    
-    setTimeout(function() {
-      introSplash.style.opacity = '0';
-      introSplash.style.pointerEvents = 'none';
-    }, 3000);
+
+    // Check if element exists and is visible (not hidden by md:hidden)
+    if (introSplash) {
+      // Reset opacity to ensure it's visible on page load
+      introSplash.style.opacity = '1';
+      introSplash.style.pointerEvents = 'auto';
+
+      // Only fade out if the element is actually displayed (not hidden by Tailwind)
+      const isVisible = window.getComputedStyle(introSplash).display !== 'none';
+
+      if (isVisible) {
+        setTimeout(function() {
+          introSplash.style.opacity = '0';
+          introSplash.style.pointerEvents = 'none';
+        }, 3000);
+      }
+    }
   });
 </script>
 
