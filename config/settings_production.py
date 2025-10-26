@@ -21,6 +21,8 @@ DEBUG = False
 ALLOWED_HOSTS = [
     os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
     'www.' + os.environ.get('DOMAIN_NAME', 'yourdomain.com'),
+    '*.herokuapp.com',  # Allow all Heroku domains
+    'herokuapp.com',
 ]
 
 # Application definition
