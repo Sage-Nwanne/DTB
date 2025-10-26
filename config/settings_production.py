@@ -148,6 +148,16 @@ CSRF_TRUSTED_ORIGINS = [
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 USE_X_FORWARDED_HOST = True
 
+# Content Security Policy - Allow external images from UI Avatars
+SECURE_CONTENT_SECURITY_POLICY = {
+    'default-src': ("'self'",),
+    'script-src': ("'self'", "'unsafe-inline'"),
+    'style-src': ("'self'", "'unsafe-inline'"),
+    'img-src': ("'self'", "data:", "https://api.ui-avatars.com"),
+    'font-src': ("'self'", "data:"),
+    'connect-src': ("'self'",),
+}
+
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
 

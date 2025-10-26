@@ -159,6 +159,32 @@
   .glow-pulse {
     animation: glowPulse 4s ease-in-out infinite;
   }
+
+  /* Disable animations on mobile for better performance */
+  @media (max-width: 768px) {
+    .flow-path-1,
+    .flow-path-2,
+    .flow-path-3,
+    .flow-path-4,
+    .flow-path-5,
+    .flow-path-6 {
+      animation: none !important;
+    }
+
+    .pulse-node,
+    .float-node,
+    .glow-pulse {
+      animation: none !important;
+    }
+
+    .animated-grid {
+      animation: none !important;
+    }
+
+    .animated-bg-svg {
+      opacity: 0.05;
+    }
+  }
 </style>
 
 <!-- Animated SVG Background -->

@@ -142,5 +142,15 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
+# Content Security Policy - Allow external images from UI Avatars
+SECURE_CONTENT_SECURITY_POLICY = {
+    'default-src': ("'self'",),
+    'script-src': ("'self'", "'unsafe-inline'"),
+    'style-src': ("'self'", "'unsafe-inline'"),
+    'img-src': ("'self'", "data:", "https://api.ui-avatars.com"),
+    'font-src': ("'self'", "data:"),
+    'connect-src': ("'self'",),
+}
+
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
