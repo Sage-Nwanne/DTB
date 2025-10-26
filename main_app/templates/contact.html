@@ -75,90 +75,70 @@
 
             <!-- Contact Form -->
             <div class="lg:col-span-2">
-                <form class="space-y-6">
+                <!-- Success Message -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="mb-6 p-4 bg-green-900/20 border border-green-500 rounded-md text-green-300">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST" class="space-y-6">
+                    {% csrf_token %}
+
                     <!-- Name -->
                     <div>
-                        <label for="name" class="block text-sm font-poppins font-bold mb-2">Name</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            required
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text placeholder-gray-500 focus:outline-none focus:border-accent transition"
-                            placeholder="Your name"
-                        >
+                        <label for="{{ form.name.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">Name</label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.name.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Email -->
                     <div>
-                        <label for="email" class="block text-sm font-poppins font-bold mb-2">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text placeholder-gray-500 focus:outline-none focus:border-accent transition"
-                            placeholder="your@email.com"
-                        >
+                        <label for="{{ form.email.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">Email</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.email.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Company -->
                     <div>
-                        <label for="company" class="block text-sm font-poppins font-bold mb-2">Company</label>
-                        <input
-                            type="text"
-                            id="company"
-                            name="company"
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text placeholder-gray-500 focus:outline-none focus:border-accent transition"
-                            placeholder="Your company"
-                        >
+                        <label for="{{ form.company.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">Company</label>
+                        {{ form.company }}
+                        {% if form.company.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.company.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Service Interest -->
                     <div>
-                        <label for="service" class="block text-sm font-poppins font-bold mb-2">What service are you interested in?</label>
-                        <select
-                            id="service"
-                            name="service"
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text focus:outline-none focus:border-accent transition"
-                        >
-                            <option value="">Select a service</option>
-                            <option value="web">Web Design</option>
-                            <option value="automation">Agentic Automation</option>
-                            <option value="marketing">Marketing & Growth</option>
-                            <option value="consulting">Consulting</option>
-                            <option value="other">Other</option>
-                        </select>
+                        <label for="{{ form.service.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">What service are you interested in?</label>
+                        {{ form.service }}
+                        {% if form.service.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.service.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Budget -->
                     <div>
-                        <label for="budget" class="block text-sm font-poppins font-bold mb-2">Budget Range</label>
-                        <select
-                            id="budget"
-                            name="budget"
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text focus:outline-none focus:border-accent transition"
-                        >
-                            <option value="">Select a range</option>
-                            <option value="less-2k">Less than $2K</option>
-                            <option value="2-5k">$2K - $5K</option>
-                            <option value="5-10k">$5K - $10K</option>
-                            <option value="10-25k">$10K - $25K</option>
-                            <option value="25k+">$25K+</option>
-                        </select>
+                        <label for="{{ form.budget.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">Budget Range</label>
+                        {{ form.budget }}
+                        {% if form.budget.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.budget.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Message -->
                     <div>
-                        <label for="message" class="block text-sm font-poppins font-bold mb-2">Tell us about your project</label>
-                        <textarea
-                            id="message"
-                            name="message"
-                            rows="6"
-                            required
-                            class="w-full bg-graphite border border-slate rounded-md px-4 py-3 text-text placeholder-gray-500 focus:outline-none focus:border-accent transition resize-none"
-                            placeholder="What are you looking to build or automate?"
-                        ></textarea>
+                        <label for="{{ form.message.id_for_label }}" class="block text-sm font-poppins font-bold mb-2">Tell us about your project</label>
+                        {{ form.message }}
+                        {% if form.message.errors %}
+                            <p class="text-red-400 text-sm mt-1">{{ form.message.errors.0 }}</p>
+                        {% endif %}
                     </div>
 
                     <!-- Submit Button -->

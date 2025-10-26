@@ -154,3 +154,15 @@ SECURE_CONTENT_SECURITY_POLICY = {
 
 # Tailwind CSS
 TAILWIND_APP_NAME = 'theme'
+
+# Email Configuration - Resend
+import os
+
+# Resend API Key (set in environment variables)
+RESEND_API_KEY = os.getenv('RESEND_API_KEY', '')
+
+# Email settings
+DEFAULT_FROM_EMAIL = 'inquire@dtbsolutions.tech'
+
+# Contact email for internal notifications (your Zoho email)
+CONTACT_EMAIL = 'inquire@dtbsolutions.tech'

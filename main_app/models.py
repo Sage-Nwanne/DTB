@@ -11,7 +11,7 @@ class Project(models.Model):
     developers = models.ManyToManyField(User, related_name='projects', verbose_name='Developers')
     assigned_at = models.DateTimeField(default=timezone.now, verbose_name='Assigned At')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Last Updated')
-    
+
     def __str__(self):
         return self.title
 
@@ -27,6 +27,37 @@ class Profile(models.Model):
     featured_project = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True, blank=True, related_name='featured_by', verbose_name='Featured Project')
     is_active = models.BooleanField(default=False, verbose_name='Is Active')
     created_at = models.DateTimeField(default=timezone.now, verbose_name='Created At')
-    
+
     def __str__(self):
         return f"{self.user.username}'s Profile"
+
+class ContactSubmission(models.Model):
+    SERVICE_CHOICES = [
+        ('web', 'Web Design'),
+        ('automation', 'Agentic Automation'),
+        ('marketing', 'Marketing & Growth'),
+        ('consulting', 'Consulting'),
+        ('other', 'Other'),
+    ]
+
+    BUDGET_CHOICES = [
+        ('less-2k', 'Less than $2K'),
+        ('2-5k', '$2K - $5K'),
+        ('5-10k', '$5K - $10K'),
+        ('10-25k', '$10K - $25K'),
+        ('25k+', '$25K+'),
+    ]
+
+    name = models.CharField(max_length=100, verbose_name='Name')
+    email = models.EmailField(verbose_name='Email')
+    company = models.CharField(max_length=100, blank=True, verbose_name='Company')
+    service = models.CharField(max_length=20, choices=SERVICE_CHOICES, verbose_name='Service Interest')
+    budget = models.CharField(max_length=20, choices=BUDGET_CHOICES, verbose_name='Budget Range')
+    message = models.TextField(verbose_name='Message')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Submitted At')
+
+    def __str__(self):
+        return f"Contact from {self.name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+
+    class Meta:
+        ordering = ['-created_at']

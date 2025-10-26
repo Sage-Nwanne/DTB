@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #ff9f1a; color: #0b0b0d; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 20px; }
+        .content { background: #f9f9fa; padding: 20px; border-radius: 0 0 8px 8px; }
+        .info-block { background: white; padding: 15px; border-radius: 6px; margin: 15px 0; border-left: 4px solid #ff9f1a; }
+        .info-block strong { color: #ff9f1a; }
+        .message-box { background: white; padding: 15px; border-radius: 6px; margin: 15px 0; border: 1px solid #ddd; }
+        .footer { text-align: center; color: #999; font-size: 12px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 New Contact Submission</h1>
+        </div>
+        
+        <div class="content">
+            <p>A new potential client has submitted a contact form. Here are the details:</p>
+            
+            <div class="info-block">
+                <strong>Name:</strong> {{ name }}<br>
+                <strong>Email:</strong> {{ email }}<br>
+                <strong>Company:</strong> {{ company }}<br>
+                <strong>Service Interest:</strong> {{ service }}<br>
+                <strong>Budget Range:</strong> {{ budget }}<br>
+                <strong>Submitted:</strong> {{ submitted_at|date:"M d, Y \a\t g:i A" }}
+            </div>
+            
+            <h3>Message:</h3>
+            <div class="message-box">
+                {{ message|linebreaks }}
+            </div>
+            
+            <p style="margin-top: 20px; color: #666;">
+                ✓ Confirmation email with intake & scope, contract, and SOP has been automatically sent to the client.
+            </p>
+            
+            <div class="footer">
+                <p>Log in to the admin panel to view all submissions and manage follow-ups.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

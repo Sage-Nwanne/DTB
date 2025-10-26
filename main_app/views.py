@@ -5,7 +5,9 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Profile, Project
+from .models import Profile, Project, ContactSubmission
+from .forms import ContactForm
+from .email_utils import send_contact_confirmation_email, send_internal_notification_email
 
 # Add these imports
 from django.contrib.auth.models import User
@@ -26,7 +28,27 @@ def works(request):
     return render(request, 'works.html')
 
 def contact(request):
-    return render(request, 'contact.html')
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Save the contact submission
+            contact_submission = form.save()
+
+            # Send confirmation email to client with PDFs
+            send_contact_confirmation_email(contact_submission)
+
+            # Send internal notification to DTB team
+            send_internal_notification_email(contact_submission)
+
+            # Show success message
+            messages.success(request, 'Thank you for your message! We\'ve sent you a confirmation email with important documents. We\'ll be in touch within 24 hours.')
+
+            # Redirect to contact page
+            return redirect('contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', {'form': form})
 
 def reviews(request):
     return render(request, 'reviews.html')
