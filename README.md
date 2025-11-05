@@ -32,6 +32,123 @@ python manage.py runserver
 
 Visit `http://127.0.0.1:8000` in your browser.
 
+## 🚀 Start a Local Server
+
+### Step-by-Step Guide
+
+#### 1. Navigate to Project Root
+```bash
+cd /path/to/DTB
+```
+Make sure you're in the root directory where `manage.py` is located.
+
+#### 2. Activate Virtual Environment
+
+**On macOS/Linux:**
+```bash
+source venv/bin/activate
+```
+
+**On Windows:**
+```bash
+venv\Scripts\activate
+```
+
+You should see `(venv)` in your terminal prompt.
+
+#### 3. Install Dependencies (if not already done)
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Run Database Migrations
+```bash
+python manage.py migrate
+```
+
+#### 5. Start the Development Server
+```bash
+python manage.py runserver
+```
+
+You should see output like:
+```
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+```
+
+#### 6. Access the Website
+Open your browser and visit:
+- **Website:** `http://127.0.0.1:8000/`
+- **Admin Panel:** `http://127.0.0.1:8000/admin/`
+
+### Common Issues & Solutions
+
+**Issue: "No such file or directory: 'manage.py'"**
+- **Solution:** Make sure you're in the `/DTB` root directory, not in a subdirectory
+- **Check:** Run `ls manage.py` - it should show the file
+
+**Issue: "ModuleNotFoundError: No module named 'django'"**
+- **Solution:** Activate virtual environment and install dependencies
+- **Run:** `source venv/bin/activate` then `pip install -r requirements.txt`
+
+**Issue: "Port 8000 is already in use"**
+- **Solution:** Use a different port
+- **Run:** `python manage.py runserver 8001`
+
+**Issue: "Database error" or "no such table"**
+- **Solution:** Run migrations
+- **Run:** `python manage.py migrate`
+
+### Useful Development Commands
+
+```bash
+# Run server on different port
+python manage.py runserver 8001
+
+# Run server on all network interfaces
+python manage.py runserver 0.0.0.0:8000
+
+# Create a superuser for admin panel
+python manage.py createsuperuser
+
+# Create database migrations
+python manage.py makemigrations
+
+# Apply migrations
+python manage.py migrate
+
+# Access Django shell
+python manage.py shell
+
+# Collect static files
+python manage.py collectstatic
+
+# Run tests
+python manage.py test
+```
+
+### Project Structure Reminder
+
+When running the server, Django uses:
+- **`config/settings.py`** - Configuration settings
+- **`config/urls.py`** - Main URL routing
+- **`main_app/`** - Main application (views, models, templates)
+- **`main_app/templates/`** - HTML templates
+- **`main_app/static/`** - CSS, JavaScript, images
+- **`theme/`** - Tailwind CSS styling
+
+### Stopping the Server
+
+Press `CTRL+C` in your terminal to stop the development server.
+
+### Deactivate Virtual Environment
+
+When you're done developing:
+```bash
+deactivate
+```
+
 ## 📁 Project Structure
 
 ```
