@@ -1,236 +1,192 @@
-# DTB Website - DesignedToBreakthrough
+# DTB — Design. Automate. Breakthrough.
 
-A Django-based portfolio and project management website for the DesignedToBreakthrough team.
+A modern web studio website built with Django, Tailwind CSS, and Resend email service.
 
-## 📋 Table of Contents
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Local Development Setup](#local-development-setup)
-- [Deployment Guide](#deployment-guide)
-- [Project Structure](#project-structure)
-- [Contributing](#contributing)
-
-## ✨ Features
-
-- **Portfolio Showcase**: Display team projects and work
-- **Developer Profiles**: Individual developer profiles with certificates and resumes
-- **Project Management**: Assign projects to developers and track progress
-- **User Authentication**: Custom authentication system for developers and customers
-- **Responsive Design**: Mobile-friendly interface
-- **Admin Dashboard**: Django admin interface for content management
-
-## 🛠 Tech Stack
-
-- **Backend**: Django 5.2.1
-- **Database**: SQLite (development) / PostgreSQL (production recommended)
-- **Frontend**: HTML, CSS, JavaScript
-- **Image Processing**: Pillow
-- **Static Files**: WhiteNoise (production)
-- **Server**: Gunicorn (production)
-
-## 🚀 Local Development Setup
+## 🚀 Quick Start
 
 ### Prerequisites
+- Python 3.11+
+- pip
+- Virtual environment
 
-- Python 3.11 or higher
-- pip (Python package manager)
-- Git
-
-### Step 1: Clone the Repository
+### Local Setup
 
 ```bash
-git clone <your-repository-url>
-cd DTB-site
-```
+# Clone the repository
+git clone https://github.com/Sage-Nwanne/DTB.git
+cd DTB
 
-### Step 2: Create a Virtual Environment
-
-**On macOS/Linux:**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-**On Windows:**
-```bash
+# Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate
-```
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
-You should see `(venv)` in your terminal prompt, indicating the virtual environment is active.
-
-### Step 3: Install Dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Run migrations
+python manage.py migrate
+
+# Start development server
+python manage.py runserver
 ```
 
-Or if using Pipenv:
+Visit `http://127.0.0.1:8000` in your browser.
+
+## 📁 Project Structure
+
+```
+DTB/
+├── config/                 # Django settings & configuration
+│   ├── settings.py        # Development settings
+│   ├── settings_production.py
+│   ├── urls.py            # URL routing
+│   ├── wsgi.py            # WSGI config
+│   └── asgi.py            # ASGI config
+│
+├── main_app/              # Main Django application
+│   ├── migrations/        # Database migrations
+│   ├── static/            # Static files (CSS, JS, images)
+│   ├── templates/         # HTML templates
+│   ├── models.py          # Database models
+│   ├── views.py           # View functions
+│   ├── urls.py            # App URL routing
+│   ├── forms.py           # Django forms
+│   ├── admin.py           # Admin configuration
+│   └── email_utils.py     # Email sending (Resend)
+│
+├── theme/                 # Tailwind CSS theme app
+│   ├── static/            # Compiled CSS
+│   ├── static_src/        # Source CSS
+│   └── templates/         # Theme templates
+│
+├── docs/                  # Documentation (33 files)
+│   ├── DEPLOYMENT.md      # Deployment guide
+│   ├── SETUP.md           # Setup instructions
+│   ├── RESEND_EMAIL.md    # Email configuration
+│   └── ...
+│
+├── manage.py              # Django management script
+├── requirements.txt       # Python dependencies
+├── Procfile               # Heroku deployment config
+├── build.sh               # Build script
+├── db.sqlite3             # SQLite database
+└── venv/                  # Virtual environment
+```
+
+## 🛠️ Tech Stack
+
+- **Django 5.2** - Web framework
+- **Tailwind CSS** - Utility-first CSS
+- **Resend** - Email service
+- **PostgreSQL** - Production database
+- **Heroku** - Deployment platform
+
+## 📧 Email Configuration
+
+The site uses **Resend** for transactional emails:
+
+- **Contact form confirmations** - Sent to users
+- **Internal notifications** - Sent to team
+- **API Key** - Set via environment variable `RESEND_API_KEY`
+
+See `docs/RESEND_EMAIL.md` for detailed setup.
+
+## 🚀 Deployment
+
+### Heroku Deployment
+
 ```bash
-cd ../  # Go to DTB-website directory
-pipenv install
-pipenv shell
-cd DTB_website
+# Set environment variables
+heroku config:set RESEND_API_KEY=your_api_key
+
+# Deploy
+git push heroku main
 ```
 
-### Step 4: Run Database Migrations
+See `docs/DEPLOYMENT.md` for complete instructions.
 
+## 📚 Documentation
+
+All documentation is in the `docs/` folder:
+
+- `docs/DEPLOYMENT.md` - Production deployment
+- `docs/SETUP.md` - Local development setup
+- `docs/RESEND_EMAIL.md` - Email configuration
+- `docs/PROJECT_STRUCTURE_ANALYSIS.md` - Project structure explanation
+
+## 🔧 Development
+
+### Run Development Server
+```bash
+python manage.py runserver
+```
+
+### Create Migrations
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-### Step 5: Create a Superuser (Admin Account)
-
+### Create Superuser
 ```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to create your admin account.
+### Access Admin Panel
+Visit `http://127.0.0.1:8000/admin/`
 
-### Step 6: Collect Static Files
+## 📝 Environment Variables
 
-```bash
-python manage.py collectstatic --noinput
-```
-
-### Step 7: Run the Development Server
-
-```bash
-python manage.py runserver
-```
-
-Visit `http://127.0.0.1:8000/` in your browser to see the site!
-
-### Step 8: Access the Admin Panel
-
-Visit `http://127.0.0.1:8000/admin/` and log in with your superuser credentials.
-
-## 📁 Project Structure
+Create a `.env` file in the root directory:
 
 ```
-DTB-site/
-├── config/                       # Django project settings
-│   ├── settings.py               # Development settings
-│   ├── settings_production.py    # Production settings
-│   ├── urls.py                   # Main URL configuration
-│   ├── wsgi.py                   # WSGI configuration
-│   └── asgi.py                   # ASGI configuration
-├── main_app/                     # Main application
-│   ├── models.py                 # Database models (Project, Profile)
-│   ├── views.py                  # View functions
-│   ├── urls.py                   # App URL patterns
-│   ├── admin.py                  # Admin configuration
-│   ├── auth_backends.py          # Custom authentication
-│   ├── templates/                # HTML templates
-│   └── static/                   # CSS, JS, Images
-├── media/                        # User uploaded files
-├── staticfiles/                  # Collected static files
-├── certificates/                 # Certificate uploads
-├── profile_pictures/             # Profile picture uploads
-├── manage.py                     # Django management script
-├── requirements.txt              # Python dependencies
-├── Procfile                      # Railway/Heroku config
-├── railway.json                  # Railway configuration
-├── runtime.txt                   # Python version
-├── setup_local.sh                # Automated setup script
-├── .env.example                  # Environment variables template
-├── .gitignore                    # Git ignore rules
-├── venv/                         # Virtual environment (not in git)
-└── README.md                     # This file
+DEBUG=True
+SECRET_KEY=your-secret-key
+RESEND_API_KEY=your-resend-api-key
+DATABASE_URL=postgresql://user:password@localhost/dtb
 ```
 
-## 🌐 Deployment Guide
+## 🌐 Pages
 
-### Preparing for Production
+- **Home** (`/`) - Landing page with services
+- **Services** (`/services`) - Service offerings
+- **Works** (`/works`) - Portfolio/projects
+- **About** (`/about`) - Team and company info
+- **Reviews** (`/reviews`) - Client testimonials
+- **Contact** (`/contact`) - Contact form with email
+- **Admin** (`/admin`) - Django admin panel
 
-1. **Generate a New Secret Key**
+## 📧 Contact Form
 
-```bash
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
-```
+The contact form:
+1. Collects user information
+2. Saves to database
+3. Sends confirmation email to user (via Resend)
+4. Sends internal notification to team
+5. Shows success message
 
-2. **Create Environment File**
+## 🔐 Security
 
-```bash
-cp .env.example .env
-```
+- CSRF protection on all forms
+- Email validation
+- Environment variables for secrets
+- Secure password hashing
+- SQL injection prevention (Django ORM)
 
-Edit `.env` and add:
-- Your generated secret key
-- Your domain name
-- Any other environment-specific settings
+## 📞 Support
 
-3. **Install Production Dependencies**
+For issues or questions:
+1. Check `docs/` folder for documentation
+2. Review Django documentation: https://docs.djangoproject.com/
+3. Check Resend docs: https://resend.com/docs
 
-```bash
-pip install -r requirements.txt
-```
+## 👥 Team
 
-4. **Collect Static Files**
-
-```bash
-python manage.py collectstatic --settings=config.settings_production
-```
-
-5. **Run Migrations**
-
-```bash
-python manage.py migrate --settings=config.settings_production
-```
-
-### Deployment Options
-
-#### Option 1: Traditional VPS (DigitalOcean, Linode, AWS EC2)
-
-See [DEPLOYMENT_VPS.md](DEPLOYMENT_VPS.md) for detailed instructions.
-
-#### Option 2: Platform as a Service (Heroku, Railway, Render)
-
-See [DEPLOYMENT_PAAS.md](DEPLOYMENT_PAAS.md) for detailed instructions.
-
-#### Option 3: Squarespace Domain with External Hosting
-
-See [DEPLOYMENT_SQUARESPACE.md](DEPLOYMENT_SQUARESPACE.md) for detailed instructions on connecting your Squarespace domain.
-
-### Security Checklist
-
-- [ ] Change `SECRET_KEY` in production
-- [ ] Set `DEBUG = False`
-- [ ] Update `ALLOWED_HOSTS` with your domain
-- [ ] Use HTTPS (SSL certificate)
-- [ ] Set up proper database backups
-- [ ] Review and update developer credentials in `auth_backends.py`
-- [ ] Enable firewall on your server
-- [ ] Set up monitoring and logging
-
-## 🔐 Developer Authentication
-
-The site includes a custom authentication backend for developers with predefined credentials.
-
-**Default developer accounts** (defined in `main_app/auth_backends.py`):
-- Username: `dev1`, Password: `dtbDev1!`
-- Username: `dev2`, Password: `dtbDev2!`
-- Username: `dev3`, Password: `dtbDev3!`
-
-⚠️ **IMPORTANT**: Change these credentials before deploying to production!
-
-## 🤝 Contributing
-
-1. Create a new branch for your feature
-2. Make your changes
-3. Test thoroughly
-4. Submit a pull request
-
-## 📝 License
-
-[Add your license here]
-
-## 📧 Contact
-
-For questions or support, contact the DesignedToBreakthrough team.
+- **Sage Nwanne** - Co-Founder & Lead Developer
+- **Shawn Dullen** - Co-Founder & Solutions Architect
+- **Adam Mohammed** - Product & UX Design
 
 ---
 
-**Built with ❤️ by the DTB Team**
+**Ready to get started?** See `docs/SETUP.md` for detailed setup instructions.
 
