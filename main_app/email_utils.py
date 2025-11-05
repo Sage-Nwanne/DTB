@@ -5,8 +5,9 @@ import os
 import base64
 
 # Set Resend API key from settings
-if settings.RESEND_API_KEY:
-    resend.api_key = settings.RESEND_API_KEY
+resend_api_key = getattr(settings, 'RESEND_API_KEY', '')
+if resend_api_key:
+    resend.api_key = resend_api_key
 
 def send_contact_confirmation_email(contact_submission):
     """
