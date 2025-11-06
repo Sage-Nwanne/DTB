@@ -28,43 +28,49 @@ def works(request):
     return render(request, 'works.html')
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            # Save the contact submission
-            contact_submission = form.save()
+    form = ContactForm()
 
-            # Send confirmation email to client
-            send_contact_confirmation_email(contact_submission)
+    try:
+        if request.method == 'POST':
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                # Save the contact submission
+                contact_submission = form.save()
 
-            # Send internal notification to DTB team
-            send_internal_notification_email(contact_submission)
+                # Send confirmation email to client
+                send_contact_confirmation_email(contact_submission)
 
-            # Show success message
-            messages.success(request, 'Thank you for your message! We\'ve sent you a confirmation email. We\'ll be in touch within 24 hours.')
+                # Send internal notification to DTB team
+                send_internal_notification_email(contact_submission)
 
-            # Redirect to contact page
-            return redirect('contact')
-    elif request.method == 'GET' and any(request.GET.get(field) for field in ['name', 'email', 'message']):
-        # Handle GET requests with form data (for testing/debugging)
-        form = ContactForm(request.GET)
-        if form.is_valid():
-            # Save the contact submission
-            contact_submission = form.save()
+                # Show success message
+                messages.success(request, 'Thank you for your message! We\'ve sent you a confirmation email. We\'ll be in touch within 24 hours.')
 
-            # Send confirmation email to client
-            send_contact_confirmation_email(contact_submission)
+                # Redirect to contact page
+                return redirect('contact')
+        elif request.method == 'GET' and any(request.GET.get(field) for field in ['name', 'email', 'message']):
+            # Handle GET requests with form data (for testing/debugging)
+            form = ContactForm(request.GET)
+            if form.is_valid():
+                # Save the contact submission
+                contact_submission = form.save()
 
-            # Send internal notification to DTB team
-            send_internal_notification_email(contact_submission)
+                # Send confirmation email to client
+                send_contact_confirmation_email(contact_submission)
 
-            # Show success message
-            messages.success(request, 'Thank you for your message! We\'ve sent you a confirmation email. We\'ll be in touch within 24 hours.')
+                # Send internal notification to DTB team
+                send_internal_notification_email(contact_submission)
 
-            # Redirect to contact page
-            return redirect('contact')
-    else:
-        form = ContactForm()
+                # Show success message
+                messages.success(request, 'Thank you for your message! We\'ve sent you a confirmation email. We\'ll be in touch within 24 hours.')
+
+                # Redirect to contact page
+                return redirect('contact')
+    except Exception as e:
+        print(f"Error in contact view: {type(e).__name__}: {e}")
+        import traceback
+        traceback.print_exc()
+        messages.error(request, f'An error occurred: {str(e)}')
 
     return render(request, 'contact.html', {'form': form})
 

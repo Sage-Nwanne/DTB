@@ -4,16 +4,24 @@ from django.template.loader import render_to_string
 import os
 import base64
 
-# Set Resend API key from settings
-resend_api_key = getattr(settings, 'RESEND_API_KEY', '')
-if resend_api_key:
-    resend.api_key = resend_api_key
+def _set_resend_api_key():
+    """Set the Resend API key from settings"""
+    resend_api_key = getattr(settings, 'RESEND_API_KEY', '')
+    if resend_api_key:
+        resend.api_key = resend_api_key
+    return resend_api_key
 
 def send_contact_confirmation_email(contact_submission):
     """
     Send a simple confirmation email to the client letting them know
     we've received their message and will respond within 24 hours.
     """
+
+    # Set Resend API key before sending
+    api_key = _set_resend_api_key()
+    if not api_key:
+        print("✗ RESEND_API_KEY not configured")
+        return False
 
     # Email subject and recipient
     subject = "We've Received Your Message"
@@ -46,6 +54,12 @@ def send_internal_notification_email(contact_submission):
     """
     Send an internal notification to the DTB team about a new contact submission
     """
+
+    # Set Resend API key before sending
+    api_key = _set_resend_api_key()
+    if not api_key:
+        print("✗ RESEND_API_KEY not configured")
+        return False
 
     subject = f"New Contact Submission from {contact_submission.name}"
 
