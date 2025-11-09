@@ -169,7 +169,7 @@ import os
 RESEND_API_KEY = os.getenv('RESEND_API_KEY', '')
 
 # Email settings
-DEFAULT_FROM_EMAIL = 'inquire@dtbsolutions.tech'
+DEFAULT_FROM_EMAIL = 'inquire@send.dtbsolutions.tech'
 
 # Contact email for internal notifications (your Zoho email)
 CONTACT_EMAIL = 'inquire@dtbsolutions.tech'
