@@ -1,11 +1,12 @@
 {% load static %}
 
-<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate relative" style="background-image: url({% static 'Images/logo-background-image-resized.png' %}); background-position: center center; background-size: cover; background-repeat: no-repeat; ">
+<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate relative" style="background-image: url({% static 'Images/logo-background-image-resized.png' %}); background-position: top; background-size: auto; background-repeat: repeat; height: 92px;">
     <!-- Animated Background (commented out) -->
     {# {% include 'components/animated_bg.html' %} #}
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
-        <div class="flex justify-between items-center">
+        <!-- Desktop Layout -->
+        <div class="hidden md:flex justify-between items-center">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-2">
                 <div class="text-accent font-poppins font-bold text-2xl px-4 py-2">
@@ -14,7 +15,7 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex gap-8 items-center">
+            <div class="flex gap-8 items-center">
                 <ul class="flex gap-8 items-center" style="font-size: 23px; font-weight: 900;">
                     <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
                     <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
@@ -29,27 +30,38 @@
                     Start a Project
                 </a>
             </div>
+        </div>
 
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuBtn" class="md:hidden text-accent" aria-label="Toggle menu">
+        <!-- Mobile Layout -->
+        <div class="md:hidden flex justify-center items-center">
+            <!-- Centered Logo -->
+            <a href="/" class="flex items-center gap-2">
+                <div class="text-accent font-poppins font-bold text-2xl px-4 py-2" style="font-size: 33px; position: relative; top: 15px; background-color: #00000085;">
+                    Designed To Breakthrough
+                </div>
+            </a>
+
+            <!-- Mobile Menu Button (Fixed positioned to top right) -->
+            <button id="mobileMenuBtn" class="text-accent z-20" style="position: fixed; right: 20px; top: 25px;" aria-label="Toggle menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 border-t border-slate mt-4 bg-black">
-            <a href="/" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Home</a>
-            <a href="/services" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Services</a>
-            <a href="/works" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Portfolio</a>
-            <a href="/about" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">About</a>
-            <a href="/reviews" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Reviews</a>
-            <a href="/contact" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Contact</a>
-            <a href="/contact" class="block px-4 py-2 bg-accent text-charcoal rounded-md font-bold font-poppins text-center">
-                Start a Project
-            </a>
-        </div>
+    </div>
+
+    <!-- Mobile Navigation Menu (outside container to span full width) -->
+    <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 border-t border-slate" style="background-color: #000000;">
+        <a href="/" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Home</a>
+        <a href="/services" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Services</a>
+        <a href="/works" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Portfolio</a>
+        <a href="/about" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">About</a>
+        <a href="/reviews" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Reviews</a>
+        <a href="/contact" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Contact</a>
+        <a href="/contact" class="block px-4 py-2 bg-accent text-charcoal rounded-md font-bold font-poppins text-center mx-4">
+            Start a Project
+        </a>
     </div>
 </nav>
 
