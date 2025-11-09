@@ -14,19 +14,21 @@
             </a>
 
             <!-- Desktop Navigation -->
-            <ul class="hidden md:flex gap-8 items-center" style="font-size: 23px; font-weight: 900;">
-                <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
-                <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
-                <li><a href="/works" class="hover:text-accent transition duration-200">Portfolio</a></li>
-                <li><a href="/about" class="hover:text-accent transition duration-200">About</a></li>
-                <li><a href="/reviews" class="hover:text-accent transition duration-200">Reviews</a></li>
-                <li><a href="/contact" class="hover:text-accent transition duration-200">Contact</a></li>
-            </ul>
+            <div class="hidden md:flex gap-8 items-center">
+                <ul class="flex gap-8 items-center" style="font-size: 23px; font-weight: 900;">
+                    <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
+                    <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
+                    <li><a href="/works" class="hover:text-accent transition duration-200">Portfolio</a></li>
+                    <li><a href="/about" class="hover:text-accent transition duration-200">About</a></li>
+                    <li><a href="/reviews" class="hover:text-accent transition duration-200">Reviews</a></li>
+                    <li><a href="/contact" class="hover:text-accent transition duration-200">Contact</a></li>
+                </ul>
 
-            <!-- CTA Button -->
-            <a href="/contact" class="hidden md:inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
-                Start a Project
-            </a>
+                <!-- CTA Button -->
+                <a href="/contact" class="bg-accent text-charcoal rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200 flex items-center justify-center" style="width: 164px; height: 45px;">
+                    Start a Project
+                </a>
+            </div>
 
             <!-- Mobile Menu Button -->
             <button id="mobileMenuBtn" class="md:hidden text-accent" aria-label="Toggle menu">
@@ -37,13 +39,13 @@
         </div>
 
         <!-- Mobile Navigation Menu -->
-        <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 border-t border-slate mt-4">
-            <a href="/" class="block px-4 py-2 hover:text-accent transition duration-200">Home</a>
-            <a href="/services" class="block px-4 py-2 hover:text-accent transition duration-200">Services</a>
-            <a href="/works" class="block px-4 py-2 hover:text-accent transition duration-200">Portfolio</a>
-            <a href="/about" class="block px-4 py-2 hover:text-accent transition duration-200">About</a>
-            <a href="/reviews" class="block px-4 py-2 hover:text-accent transition duration-200">Reviews</a>
-            <a href="/contact" class="block px-4 py-2 hover:text-accent transition duration-200">Contact</a>
+        <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 border-t border-slate mt-4 bg-black">
+            <a href="/" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Home</a>
+            <a href="/services" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Services</a>
+            <a href="/works" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Portfolio</a>
+            <a href="/about" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">About</a>
+            <a href="/reviews" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Reviews</a>
+            <a href="/contact" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Contact</a>
             <a href="/contact" class="block px-4 py-2 bg-accent text-charcoal rounded-md font-bold font-poppins text-center">
                 Start a Project
             </a>
