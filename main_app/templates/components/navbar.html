@@ -36,7 +36,7 @@
         <div class="md:hidden flex justify-center items-center">
             <!-- Centered Logo -->
             <a href="/" class="flex items-center gap-2">
-                <div class="text-accent font-poppins font-bold text-2xl px-4 py-2" style="font-size: 33px; position: relative; top: 15px; background-color: #00000085;">
+                <div class="mobile-logo-text text-accent font-poppins font-bold text-2xl px-4 py-2" style="font-size: 33px; position: relative; top: 15px; background-color: #00000085;">
                     Designed To Breakthrough
                 </div>
             </a>
@@ -64,6 +64,16 @@
         </a>
     </div>
 </nav>
+
+<style>
+    /* Mobile logo adjustments for very small screens */
+    @media (max-width: 500px) {
+        .mobile-logo-text {
+            font-size: 19px !important;
+            top: 19px !important;
+        }
+    }
+</style>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
