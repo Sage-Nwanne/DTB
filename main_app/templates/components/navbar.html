@@ -1,16 +1,20 @@
 {% load static %}
 
-<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate relative" style="background-image: url({% static 'Images/logo-background-image-resized.png' %}); background-position: center center; background-size: cover; background-repeat: no-repeat; ">
+    <!-- Animated Background (commented out) -->
+    {# {% include 'components/animated_bg.html' %} #}
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
         <div class="flex justify-between items-center">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-2">
-                <img src="{% static 'Images/DTB_logo.png' %}" alt="DTB logo" class="h-8 w-8">
-                <span class="text-2xl font-poppins font-bold text-accent">DTB</span>
+                <div class="text-accent font-poppins font-bold text-2xl px-4 py-2">
+                    Designed To Breakthrough
+                </div>
             </a>
 
             <!-- Desktop Navigation -->
-            <ul class="hidden md:flex gap-8 items-center">
+            <ul class="hidden md:flex gap-8 items-center" style="font-size: 23px; font-weight: 900;">
                 <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
                 <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
                 <li><a href="/works" class="hover:text-accent transition duration-200">Portfolio</a></li>

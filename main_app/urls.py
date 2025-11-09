@@ -12,6 +12,8 @@ urlpatterns = [
     path('devs', views.devs, name='devs'),
     path('profile', views.profile, name='profile'),
     path('profile/<str:username>', views.view_profile, name='your_profile'),
+    path('privacy', views.privacy, name='privacy'),
+    path('terms', views.terms, name='terms'),
     
     # Authentication URLs
     path('accounts/signup/', views.signup, name='signup'),

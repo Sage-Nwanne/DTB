@@ -27,6 +27,12 @@ def about(request):
 def works(request):
     return render(request, 'works.html')
 
+def privacy(request):
+    return render(request, 'privacy.html')
+
+def terms(request):
+    return render(request, 'terms.html')
+
 def contact(request):
     form = ContactForm()
 
