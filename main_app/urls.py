@@ -27,7 +27,7 @@ urlpatterns = [
 
     # Newsletter URLs
     path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
-    path('newsletter/unsubscribe/<str:email>/', views.newsletter_unsubscribe, name='newsletter_unsubscribe'),
+    path('newsletter/unsubscribe/<uuid:token>/', views.newsletter_unsubscribe, name='newsletter_unsubscribe'),
 
     # Authentication URLs
     path('accounts/signup/', views.signup, name='signup'),

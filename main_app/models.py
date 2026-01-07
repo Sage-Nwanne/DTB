@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.urls import reverse
+import uuid
 
 class Project(models.Model):
     from django.utils import timezone
@@ -183,6 +184,9 @@ class NewsletterSubscriber(models.Model):
     is_active = models.BooleanField(default=True, verbose_name='Active Subscription')
     subscribed_at = models.DateTimeField(auto_now_add=True, verbose_name='Subscribed At')
     unsubscribed_at = models.DateTimeField(null=True, blank=True, verbose_name='Unsubscribed At')
+
+    # Unsubscribe token for secure unsubscribe links
+    unsubscribe_token = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, verbose_name='Unsubscribe Token')
 
     # Track engagement
     emails_sent = models.PositiveIntegerField(default=0, verbose_name='Emails Sent')

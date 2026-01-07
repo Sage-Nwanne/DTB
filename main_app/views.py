@@ -383,13 +383,13 @@ def newsletter_subscribe(request):
     return redirect('blog_list')
 
 
-def newsletter_unsubscribe(request, email):
+def newsletter_unsubscribe(request, token):
     """Handle newsletter unsubscription"""
     try:
-        subscriber = NewsletterSubscriber.objects.get(email=email)
+        subscriber = NewsletterSubscriber.objects.get(unsubscribe_token=token)
         subscriber.unsubscribe()
         messages.success(request, "You've been unsubscribed from our newsletter. We're sorry to see you go!")
     except NewsletterSubscriber.DoesNotExist:
-        messages.error(request, "Email address not found in our subscriber list.")
+        messages.error(request, "Invalid unsubscribe link. Please contact us if you need assistance.")
 
     return render(request, 'newsletter_unsubscribe.html')

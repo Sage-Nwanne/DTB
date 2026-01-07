@@ -108,6 +108,7 @@ def send_newsletter_welcome_email(subscriber):
     context = {
         'name': subscriber.name or 'there',
         'email': subscriber.email,
+        'unsubscribe_token': subscriber.unsubscribe_token,
     }
 
     # Render email body
@@ -145,6 +146,7 @@ def send_newsletter_blog_update(subscriber, blog_post):
     context = {
         'name': subscriber.name or 'there',
         'email': subscriber.email,
+        'unsubscribe_token': subscriber.unsubscribe_token,
         'post': blog_post,
         'post_url': f"https://dtbsolutions.tech{blog_post.get_absolute_url()}",
     }
