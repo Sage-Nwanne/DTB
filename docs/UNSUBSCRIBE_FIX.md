@@ -89,10 +89,17 @@ context = {
 
 A new migration was created: `0006_add_unsubscribe_token.py`
 
+**This is a 3-step migration that:**
+1. Adds the `unsubscribe_token` field (nullable, non-unique)
+2. Generates unique UUID tokens for all existing subscribers
+3. Makes the field non-nullable and unique
+
 **To deploy:**
 1. Commit and push changes
 2. Migration will run automatically on Heroku (via `Procfile`)
 3. Existing subscribers will get unique tokens automatically
+
+**Note:** This migration is safe to run on production with existing data.
 
 ---
 
