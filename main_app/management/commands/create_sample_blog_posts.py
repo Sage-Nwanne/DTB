@@ -369,7 +369,7 @@ class Command(BaseCommand):
                 defaults={
                     **post_data,
                     'author': admin_user,
-                    'status': 'published',
+                    'status': 'draft',  # Create as draft by default
                     'published_at': timezone.now() - timedelta(days=days_ago),
                 }
             )
@@ -381,4 +381,5 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f'Blog post already exists: {post.title}'))
 
         self.stdout.write(self.style.SUCCESS('\n✅ Sample blog posts created successfully!'))
+        self.stdout.write(self.style.WARNING('   Note: Posts are created as DRAFT - they will not be visible on the site.'))
 
