@@ -3,6 +3,33 @@
 
 {% block title %}Blog | DTB Solutions - Web Design & Automation Insights{% endblock %}
 
+{% block extra_css %}
+<style>
+    /* Custom breakpoint for newsletter form at 700px */
+    @media (min-width: 701px) {
+        .newsletter-input-desktop {
+            padding-left: 1.5rem !important;
+            padding-right: 1.5rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            font-size: 1.125rem !important;
+        }
+        .newsletter-button-desktop {
+            padding-left: 2.5rem !important;
+            padding-right: 2.5rem !important;
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+            font-size: 1.125rem !important;
+        }
+        .newsletter-form-container {
+            flex-direction: row !important;
+            position: relative;
+            left: 50px;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block meta_description %}Expert insights on web design, AI automation, and digital marketing for small businesses. Learn strategies to grow your business with technology.{% endblock %}
 
 {% block meta_keywords %}web design blog, AI automation tips, small business technology, digital marketing insights, web development tutorials{% endblock %}
@@ -149,40 +176,40 @@
             {% csrf_token %}
             <input type="hidden" name="source" value="blog">
 
-            <div class="rounded-2xl p-8 border border-white/20" style="background: linear-gradient(135deg, #ff9f1a 0%, #a86608 100%); width: 100%; ">
-                <div class="flex flex-col sm:flex-row gap-4 mb-4" style="position: relative; left: 50px;">
+            <div class="rounded-2xl p-4 sm:p-8 border border-white/20" style="background: linear-gradient(135deg, #ff9f1a 0%, #a86608 100%); width: 100%; ">
+                <div class="flex flex-col gap-3 mb-4 newsletter-form-container">
                     <input
                         type="email"
                         name="email"
                         placeholder="your@email.com"
                         required
-                        style="color: #b4b2b2; background-color: #1a1a1a;"
-                        class="flex-1 px-6 py-4 rounded-lg bg-white text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                        style="color: #b4b2b2; background-color: #1a1a1a; margin-top: 20px;"
+                        class="newsletter-input-desktop flex-1 px-3 py-2 rounded-lg bg-white text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-sm"
                     >
                     <button
                         type="submit"
-                        class="px-10 py-4 rounded-lg hover:opacity-90 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                        style="background-color: #0b0b0b; color: white; padding: 15px;"
+                        class="newsletter-button-desktop px-4 py-2 rounded-lg hover:opacity-90 transition-all duration-300 font-bold text-sm shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        style="background-color: #0b0b0b; color: white; margin-top: 20px;"
                     >
                         Join Newsletter
                     </button>
                 </div>
 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm" style="color: #0b0b0b;">
+                <div class="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm" style="color: #0b0b0b;">
                     <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
                         <span class="font-semibold">Weekly insights</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
                         <span class="font-semibold">Actionable tips</span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
                         <span class="font-semibold">Unsubscribe anytime</span>
