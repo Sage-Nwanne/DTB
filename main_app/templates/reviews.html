@@ -1,8 +1,68 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Reviews | DTB{% endblock %}
-{% block meta_description %}See what our clients say about working with DTB.{% endblock %}
+{% block title %}Client Reviews & Testimonials | DTB Web Design & Automation{% endblock %}
+{% block meta_description %}Read real client reviews and testimonials for DTB Solutions. See what businesses say about our web design, automation and marketing services. Verified 5-star ratings and success stories.{% endblock %}
+{% block meta_keywords %}web design testimonials, client reviews, automation services reviews, web development testimonials, customer success stories{% endblock %}
+{% block canonical_url %}https://dtbsolutions.tech/reviews/{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DTB Solutions",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "6",
+        "bestRating": "5",
+        "worstRating": "5"
+    },
+    "review": [
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Gem Nwannem"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "Sage's developer work on Neesh was exceptional. His extensive Figma designs and UX expertise brought our vision to life perfectly."
+        },
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Paul Rodriguez"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "We came across DTB by chance and were very glad with the service they provided. The e-commerce platform they built for our vinyl and audio equipment store is beautiful, responsive and easy to manage."
+        },
+        {
+            "@type": "Review",
+            "author": {
+                "@type": "Person",
+                "name": "Marcus Johnson"
+            },
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "reviewBody": "Working with DTB on our CMS implementation was seamless. They built modular components that our team can easily update and the accessibility improvements have made our site usable for everyone."
+        }
+    ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 

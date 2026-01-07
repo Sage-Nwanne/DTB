@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blog | DTB Solutions - Web Design & Automation Insights{% endblock %}
+
+{% block meta_description %}Expert insights on web design, AI automation, and digital marketing for small businesses. Learn strategies to grow your business with technology.{% endblock %}
+
+{% block meta_keywords %}web design blog, AI automation tips, small business technology, digital marketing insights, web development tutorials{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-br from-charcoal via-charcoal-light to-charcoal overflow-hidden" style="background-color: black; height: 300px; ">
+    {% include 'components/animated_bg.html' %}
+    
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">
+            DTB <span class="text-accent-yellow">Insights</span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Expert tips on web design, AI automation, and growing your business with technology
+        </p>
+        
+        <!-- Category Filter -->
+        <div class="mt-8 flex flex-wrap justify-center gap-3">
+            <a href="{% url 'blog_list' %}"
+               class="px-6 py-2 transition-all duration-300"
+               style="{% if not current_category %}background-color: #ff9f1a; color: rgb(0, 0, 0);{% else %}background-color: transparent; color: white;{% endif %} border: 1px solid #454545; border-radius: 10px; position: relative; top: 25px; font-weight: 700;">
+                All Posts
+            </a>
+            {% for category in categories %}
+            <a href="{% url 'blog_category' category.slug %}"
+               class="px-6 py-2 transition-all duration-300"
+               style="{% if current_category == category %}background-color: #ff9f1a; color: rgb(0, 0, 0);{% else %}background-color: transparent; color: white;{% endif %} border: 1px solid #454545; border-radius: 10px; position: relative; top: 25px; font-weight: 700;">
+                {{ category.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Blog Posts Grid -->
+<section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {% if posts %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% for post in posts %}
+            <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group">
+                <!-- Featured Image -->
+                {% if post.featured_image %}
+                <a href="{{ post.get_absolute_url }}" class="block overflow-hidden">
+                    <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                </a>
+                {% else %}
+                <a href="{{ post.get_absolute_url }}" class="block h-48 bg-gradient-to-br from-charcoal to-charcoal-light flex items-center justify-center">
+                    <span class="text-4xl text-accent-yellow">📝</span>
+                </a>
+                {% endif %}
+                
+                <!-- Content -->
+                <div class="p-6">
+                    <!-- Category & Read Time -->
+                    <div class="flex items-center justify-between mb-3 text-sm text-gray-500">
+                        {% if post.category %}
+                        <a href="{% url 'blog_category' post.category.slug %}" class="text-accent-yellow hover:underline">
+                            {{ post.category.name }}
+                        </a>
+                        {% else %}
+                        <span>Uncategorized</span>
+                        {% endif %}
+                        <span>{{ post.read_time }} min read</span>
+                    </div>
+                    
+                    <!-- Title -->
+                    <h2 class="text-2xl font-bold text-charcoal mb-3 group-hover:text-accent-yellow transition-colors">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </h2>
+                    
+                    <!-- Excerpt -->
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        {{ post.excerpt }}
+                    </p>
+                    
+                    <!-- Meta -->
+                    <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-500">By {{ post.author.get_full_name|default:post.author.username }}</span>
+                        </div>
+                        <span class="text-sm text-gray-400">{{ post.published_at|date:"M d, Y" }}</span>
+                    </div>
+                    
+                    <!-- Read More -->
+                    <a href="{{ post.get_absolute_url }}" class="inline-block mt-4 text-accent-yellow hover:underline font-semibold">
+                        Read More →
+                    </a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="mt-12 flex justify-center space-x-2">
+            {% if page_obj.has_previous %}
+            <a href="?page=1" class="px-4 py-2 bg-charcoal-light text-white rounded hover:bg-accent-yellow hover:text-charcoal transition-colors">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}" class="px-4 py-2 bg-charcoal-light text-white rounded hover:bg-accent-yellow hover:text-charcoal transition-colors">Previous</a>
+            {% endif %}
+            
+            <span class="px-4 py-2 bg-accent-yellow text-charcoal rounded font-semibold">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" class="px-4 py-2 bg-charcoal-light text-white rounded hover:bg-accent-yellow hover:text-charcoal transition-colors">Next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="px-4 py-2 bg-charcoal-light text-white rounded hover:bg-accent-yellow hover:text-charcoal transition-colors">Last</a>
+            {% endif %}
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <!-- No Posts -->
+        <div class="text-center py-20">
+            <p class="text-2xl text-gray-500 mb-4">No blog posts yet. Check back soon!</p>
+            <a href="{% url 'home' %}" class="inline-block px-8 py-3 bg-accent-yellow text-charcoal rounded-lg hover:bg-yellow-500 transition-colors font-semibold">
+                Back to Home
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Newsletter CTA -->
+<section class="py-20" style="background-color: #050505d9;">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+            <!-- Icon -->
+            
+
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Never Miss an <span class="text-accent-yellow">Insight</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+                Join business owners and entrepreneurs getting tips on web design, AI automation, and growth strategies.
+                <span class="text-accent-yellow font-semibold">No spam, ever.</span>
+            </p>
+        </div>
+
+        <!-- Subscription Form -->
+        <form method="POST" action="{% url 'newsletter_subscribe' %}" class="max-w-2xl mx-auto">
+            {% csrf_token %}
+            <input type="hidden" name="source" value="blog">
+
+            <div class="rounded-2xl p-8 border border-white/20" style="background: linear-gradient(135deg, #ff9f1a 0%, #a86608 100%); width: 100%; ">
+                <div class="flex flex-col sm:flex-row gap-4 mb-4" style="position: relative; left: 50px;">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="your@email.com"
+                        required
+                        style="color: #b4b2b2; background-color: #1a1a1a;"
+                        class="flex-1 px-6 py-4 rounded-lg bg-white text-charcoal placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white text-lg"
+                    >
+                    <button
+                        type="submit"
+                        class="px-10 py-4 rounded-lg hover:opacity-90 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                        style="background-color: #0b0b0b; color: white; padding: 15px;"
+                    >
+                        Join Newsletter
+                    </button>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm" style="color: #0b0b0b;">
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="font-semibold">Weekly insights</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="font-semibold">Actionable tips</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span class="font-semibold">Unsubscribe anytime</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- Social Proof -->
+        <div class="mt-8 text-center">
+            <p class="text-gray-400 text-sm">
+                Trusted by business owners at companies like Google, Microsoft, and 50+ small businesses
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

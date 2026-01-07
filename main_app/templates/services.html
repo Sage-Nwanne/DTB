@@ -1,8 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Services | DTB{% endblock %}
-{% block meta_description %}Web design, agentic automation, marketing systems and consulting for small teams.{% endblock %}
+{% block title %}Web Design & Automation Services | DTB Solutions{% endblock %}
+{% block meta_description %}Professional web design, AI automation, marketing systems and consulting services for small businesses. Custom solutions including SEO-optimized websites, intelligent automation and growth strategies.{% endblock %}
+{% block meta_keywords %}web design services, AI automation services, marketing automation, business consulting, SEO optimization, custom web development, white-label services, agentic automation{% endblock %}
+{% block canonical_url %}https://dtbsolutions.tech/services/{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Web Design and Automation Services",
+    "provider": {
+        "@type": "Organization",
+        "name": "DTB Solutions"
+    },
+    "areaServed": "US",
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design and Automation Services",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Web Design Services",
+                    "description": "Conversion-first websites designed to turn visitors into customers with SEO optimization, analytics and ongoing support"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "AI Automation Services",
+                    "description": "Intelligent automation systems that replace busywork with AI agents and workflows"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Marketing & Growth Systems",
+                    "description": "Content systems and marketing automation that compound attention into revenue"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Consulting & White-Label Services",
+                    "description": "Strategy, audits and white-label delivery for agencies and teams"
+                }
+            }
+        ]
+    }
+}
+</script>
+{% endblock %}
 
 {% block content %}
 

@@ -1,5 +1,5 @@
 from django import forms
-from .models import ContactSubmission
+from .models import ContactSubmission, NewsletterSubscriber
 
 class ContactForm(forms.ModelForm):
     class Meta:
@@ -34,3 +34,19 @@ class ContactForm(forms.ModelForm):
             }),
         }
 
+
+class NewsletterSubscriptionForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscriber
+        fields = ['email', 'name']
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'class': 'flex-1 px-6 py-3 rounded-lg bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-accent-yellow',
+                'placeholder': 'your@email.com',
+                'required': True,
+            }),
+            'name': forms.TextInput(attrs={
+                'class': 'flex-1 px-6 py-3 rounded-lg bg-white text-charcoal focus:outline-none focus:ring-2 focus:ring-accent-yellow',
+                'placeholder': 'Your name (optional)',
+            }),
+        }

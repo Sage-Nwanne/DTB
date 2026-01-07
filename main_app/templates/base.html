@@ -6,8 +6,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}DTB — Web + Agentic Automation Studio{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Design. Automate. Breakthrough. Web systems and agentic automation for small teams.{% endblock %}">
+    <title>{% block title %}DTB | Web Design & AI Automation for Small Businesses{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}Professional web design, AI automation and marketing systems for small businesses. Custom solutions that drive growth and save time.{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}web design, AI automation, agentic automation, small business web development, marketing automation, custom web solutions{% endblock %}">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}{% block title %}DTB | Web Design & AI Automation for Small Businesses{% endblock %}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{% block meta_description %}Professional web design, AI automation and marketing systems for small businesses. Custom solutions that drive growth and save time.{% endblock %}{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'Images/DTB_logo.png' %}{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://dtbsolutions.tech{% endblock %}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}{% block title %}DTB | Web Design & AI Automation for Small Businesses{% endblock %}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{% block meta_description %}Professional web design, AI automation and marketing systems for small businesses. Custom solutions that drive growth and save time.{% endblock %}{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}{% static 'Images/DTB_logo.png' %}{% endblock %}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}https://dtbsolutions.tech{% endblock %}">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="{% static 'Images/DTB_logo.png' %}" />
@@ -20,6 +41,44 @@
     <!-- Tailwind CSS -->
     {% tailwind_css %}
 
+    <!-- Structured Data / Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DTB Solutions",
+        "alternateName": "Designed To Breakthrough",
+        "url": "https://dtbsolutions.tech",
+        "logo": "https://dtbsolutions.tech{% static 'Images/DTB_logo.png' %}",
+        "description": "Professional web design, AI automation and marketing systems for small businesses",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "email": "contact@dtbsolutions.tech"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/dtb-solutions"
+        ],
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "Sage Nwanne",
+                "jobTitle": "Co-Founder & Lead Developer"
+            },
+            {
+                "@type": "Person",
+                "name": "Shawn Dullen",
+                "jobTitle": "Co-Founder & Solutions Architect"
+            }
+        ]
+    }
+    </script>
+
+    {% block extra_schema %}{% endblock %}
     {% block extra_css %}{% endblock %}
 </head>
 <body class="bg-charcoal text-text font-inter">

@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
+from django.urls import reverse
 
 class Project(models.Model):
     from django.utils import timezone
@@ -61,3 +63,146 @@ class ContactSubmission(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+
+
+class Category(models.Model):
+    """Blog post categories"""
+    name = models.CharField(max_length=100, unique=True, verbose_name='Category Name')
+    slug = models.SlugField(max_length=100, unique=True, verbose_name='URL Slug')
+    description = models.TextField(blank=True, verbose_name='Description')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created At')
+
+    class Meta:
+        verbose_name_plural = 'Categories'
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog_category', kwargs={'slug': self.slug})
+
+
+class Tag(models.Model):
+    """Blog post tags"""
+    name = models.CharField(max_length=50, unique=True, verbose_name='Tag Name')
+    slug = models.SlugField(max_length=50, unique=True, verbose_name='URL Slug')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created At')
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog_tag', kwargs={'slug': self.slug})
+
+
+class BlogPost(models.Model):
+    """Blog post model"""
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+        ('archived', 'Archived'),
+    ]
+
+    # Basic Info
+    title = models.CharField(max_length=200, verbose_name='Title')
+    slug = models.SlugField(max_length=200, unique=True, verbose_name='URL Slug')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts', verbose_name='Author')
+
+    # Content
+    excerpt = models.TextField(max_length=300, verbose_name='Excerpt/Summary', help_text='Short description for previews (300 chars max)')
+    content = models.TextField(verbose_name='Content')
+    featured_image = models.ImageField(upload_to='blog_images/', blank=True, null=True, verbose_name='Featured Image', help_text='Recommended: 1200x630px')
+
+    # SEO
+    meta_description = models.CharField(max_length=160, blank=True, verbose_name='Meta Description', help_text='SEO description (160 chars max)')
+    meta_keywords = models.CharField(max_length=255, blank=True, verbose_name='Meta Keywords', help_text='Comma-separated keywords')
+
+    # Organization
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='posts', verbose_name='Category')
+    tags = models.ManyToManyField(Tag, blank=True, related_name='posts', verbose_name='Tags')
+
+    # Status & Timing
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft', verbose_name='Status')
+    published_at = models.DateTimeField(null=True, blank=True, verbose_name='Published At')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Created At')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated At')
+
+    # Engagement
+    views = models.PositiveIntegerField(default=0, verbose_name='Views')
+    read_time = models.PositiveIntegerField(default=5, verbose_name='Read Time (minutes)', help_text='Estimated reading time')
+
+    class Meta:
+        ordering = ['-published_at', '-created_at']
+        verbose_name = 'Blog Post'
+        verbose_name_plural = 'Blog Posts'
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        # Auto-calculate read time based on content (average 200 words/min)
+        if self.content:
+            word_count = len(self.content.split())
+            self.read_time = max(1, round(word_count / 200))
+
+        # Auto-generate meta description from excerpt if not provided
+        if not self.meta_description and self.excerpt:
+            self.meta_description = self.excerpt[:160]
+
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog_detail', kwargs={'slug': self.slug})
+
+    @property
+    def is_published(self):
+        return self.status == 'published' and self.published_at is not None
+
+
+class NewsletterSubscriber(models.Model):
+    """Newsletter email subscription model"""
+    email = models.EmailField(unique=True, verbose_name='Email Address')
+    name = models.CharField(max_length=100, blank=True, verbose_name='Name')
+    is_active = models.BooleanField(default=True, verbose_name='Active Subscription')
+    subscribed_at = models.DateTimeField(auto_now_add=True, verbose_name='Subscribed At')
+    unsubscribed_at = models.DateTimeField(null=True, blank=True, verbose_name='Unsubscribed At')
+
+    # Track engagement
+    emails_sent = models.PositiveIntegerField(default=0, verbose_name='Emails Sent')
+    emails_opened = models.PositiveIntegerField(default=0, verbose_name='Emails Opened')
+    last_email_sent = models.DateTimeField(null=True, blank=True, verbose_name='Last Email Sent')
+
+    # Source tracking
+    source = models.CharField(max_length=50, default='blog', verbose_name='Subscription Source',
+                             help_text='Where they subscribed from (blog, homepage, etc.)')
+
+    class Meta:
+        ordering = ['-subscribed_at']
+        verbose_name = 'Newsletter Subscriber'
+        verbose_name_plural = 'Newsletter Subscribers'
+
+    def __str__(self):
+        return self.email
+
+    def unsubscribe(self):
+        """Unsubscribe user from newsletter"""
+        self.is_active = False
+        self.unsubscribed_at = timezone.now()
+        self.save()
