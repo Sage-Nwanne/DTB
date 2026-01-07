@@ -17,17 +17,17 @@ git clone https://github.com/Sage-Nwanne/DTB.git
 cd DTB
 
 # Create and activate virtual environment
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Run migrations
-python manage.py migrate
+python3 manage.py migrate
 
 # Start development server
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Visit `http://127.0.0.1:8000` in your browser.
