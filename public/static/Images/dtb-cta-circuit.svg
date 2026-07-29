@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 360" aria-hidden="true">
+  <g fill="none" stroke="#111827" stroke-opacity=".22" stroke-width="3">
+    <path d="M-40 92H250L338 180H560L666 74H930L1044 188H1280L1398 70H1628L1960 226"/>
+    <path d="M-40 278H194L310 162H520L644 286H890L1030 146H1262L1392 270H1666L1960 112"/>
+    <path d="M170 -30V86L300 216V390"/>
+    <path d="M760 -30V98L902 240V390"/>
+    <path d="M1260 -30V112L1404 256V390"/>
+    <path d="M1760 -30V82L1648 194L1832 378"/>
+  </g>
+  <g fill="none" stroke="#ffe08a" stroke-opacity=".13" stroke-width="2">
+    <path d="M-30 38H384L476 130H734"/>
+    <path d="M1110 328H1450L1544 234H1960"/>
+    <path d="M520 -20V74L614 168"/>
+    <path d="M1510 -20V52L1598 140"/>
+  </g>
+</svg>

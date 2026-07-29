@@ -1,0 +1,120 @@
+/* About team leadership hierarchy */
+.team-card-founder,
+.team-card-cofounder,
+.team-card-manager {
+  min-height: 100%;
+  padding: 30px;
+  border-width: 1px;
+  background:
+    radial-gradient(circle at 88% 10%, var(--leadership-glow), transparent 31%),
+    linear-gradient(145deg, rgba(25,31,42,.95), rgba(8,12,18,.97));
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.25),
+    inset 0 1px rgba(255,255,255,.04);
+}
+
+.team-card-founder {
+  --leadership-accent: var(--gold);
+  --leadership-glow: rgba(242,173,36,.12);
+  --leadership-watermark: rgba(242,173,36,.045);
+  border-color: rgba(242,173,36,.5);
+}
+
+.team-card-cofounder {
+  --leadership-accent: var(--purple-light);
+  --leadership-glow: rgba(116,65,232,.14);
+  --leadership-watermark: rgba(162,122,255,.05);
+  border-color: rgba(162,122,255,.46);
+}
+
+.team-card-manager {
+  --leadership-accent: var(--orange);
+  --leadership-glow: rgba(255,103,29,.1);
+  --leadership-watermark: rgba(255,103,29,.05);
+  border-color: rgba(255,103,29,.4);
+}
+
+.team-card-founder::after,
+.team-card-cofounder::after,
+.team-card-manager::after {
+  position: absolute;
+  right: -8px;
+  bottom: -10px;
+  color: var(--leadership-watermark);
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(42px, 4.1vw, 64px);
+  font-weight: 800;
+  letter-spacing: -.06em;
+  line-height: .85;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.team-card-founder::after { content: "FOUNDER"; }
+.team-card-cofounder::after { content: "CO-FOUNDER"; }
+.team-card-manager::after { content: "MANAGER"; }
+
+.team-card-founder > *,
+.team-card-cofounder > *,
+.team-card-manager > * {
+  position: relative;
+  z-index: 1;
+}
+
+.team-card-cofounder > span {
+  color: var(--purple-light);
+}
+
+.team-card-manager > span {
+  color: #ff8a47;
+}
+
+.team-card-cofounder .team-monogram {
+  border-color: rgba(162,122,255,.62);
+  color: var(--purple-light);
+  box-shadow: 0 0 24px rgba(116,65,232,.08);
+}
+
+.team-card-manager .team-monogram {
+  border-color: rgba(255,103,29,.56);
+  color: #ff8a47;
+  box-shadow: 0 0 24px rgba(255,103,29,.08);
+}
+
+.team-card-founder h3,
+.team-card-cofounder h3,
+.team-card-manager h3 {
+  font-size: 24px;
+}
+
+.team-card-founder p,
+.team-card-cofounder p,
+.team-card-manager p {
+  font-size: 15px;
+}
+
+.team-card-founder:hover,
+.team-card-cofounder:hover,
+.team-card-manager:hover {
+  transform: translateY(-4px);
+  border-color: var(--leadership-accent);
+  box-shadow:
+    0 30px 74px rgba(0,0,0,.32),
+    0 0 0 1px color-mix(in srgb, var(--leadership-accent) 12%, transparent) inset;
+}
+
+@media (max-width: 900px) {
+  .team-card-founder::after,
+  .team-card-cofounder::after,
+  .team-card-manager::after {
+    font-size: clamp(38px, 10vw, 62px);
+  }
+}
+
+@media (max-width: 560px) {
+  .team-card-founder,
+  .team-card-cofounder,
+  .team-card-manager {
+    padding: 26px;
+  }
+}

@@ -56,4 +56,4 @@ export const siteFooter = `
     <div><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a></div>
   </div>
 </footer>
-<script src="/assets/copy-refresh.js?v=20260728-1"></script>`;
+<script src="/assets/copy-refresh.js?v=20260729-2"></script>`;

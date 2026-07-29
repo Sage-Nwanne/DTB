@@ -1,4 +1,12 @@
 (function () {
+  if (!document.querySelector('link[data-site-refinements]')) {
+    const sharedStyles = document.createElement("link");
+    sharedStyles.rel = "stylesheet";
+    sharedStyles.href = "/static/css/site-refinements.css?v=20260729-1";
+    sharedStyles.dataset.siteRefinements = "true";
+    document.head.appendChild(sharedStyles);
+  }
+
   const replacements = new Map([
     ["DTB brings your website, brand, infrastructure and day-to-day tools together so the business is easier to run, easier to trust and ready to grow.", "We build the brand, website and systems your business needs to grow with confidence."],
     ["Talk Through My Project", "Start a Project"],
@@ -17,7 +25,7 @@
     ["Hosting, cloud deployment, security, backups and documented foundations built for reliability and handoff.", "Reliable hosting, security, backups and business infrastructure."],
     ["Offer clarity, analytics, content systems and ongoing improvements grounded in what the business actually needs.", "Practical strategy, analytics and ongoing improvements that support growth."],
     ["Clear starting points, before the sales call.", "Know the starting price."],
-    ["Website packages begin at $2.5K, with project, enterprise and ongoing-partner options shown openly.", "Website packages start at $2.5K, with custom and ongoing options available."],
+    ["Website packages begin at $2.5K, with project, enterprise and ongoing-partner options shown openly.", "Website packages start at $1.5K, with custom systems and ongoing support available."],
     ["See what the work looks like.", "Work that speaks for itself."],
     ["Explore real client work, the problem each project addressed and what DTB was responsible for delivering.", "See the websites, platforms and systems we have delivered."],
     ["A partner beyond launch day.", "Built to last beyond launch."],
@@ -73,10 +81,10 @@
     ["Bring the problem. DTB will help map the right next move before prescribing technology.", "Tell us the goal and we will recommend the right service."],
     ["Map My Breakthrough", "Talk to DTB"],
 
-    ["Proof should feel personal and verifiable.", "Results you can see. Clients you can hear from."],
-    ["Read what clients have said about the work, then explore public projects for yourself.", "See what clients say and review the work for yourself."],
-    ["What clients have said about working with DTB.", "What clients say about DTB."],
-    ["These reviews cover website development, UX, e-commerce, email, CMS and marketing work across different client needs.", "Feedback from clients across web, UX, e-commerce, email and digital strategy."],
+    ["Proof should feel personal and verifiable.", "What clients say."],
+    ["Read what clients have said about the work, then explore public projects for yourself.", "Real feedback from the people and teams we have worked with."],
+    ["What clients have said about working with DTB.", "Client feedback."],
+    ["These reviews cover website development, UX, e-commerce, email, CMS and marketing work across different client needs.", "Experiences across web, UX, e-commerce, email and digital strategy."],
     ["Public projects you can inspect.", "See the work for yourself."],
     ["These links are a stronger starting point than anonymous praise.", "Visit selected projects and experience the work firsthand."],
     ["Evaluate the fit", "Work with DTB"],
@@ -102,12 +110,20 @@
     "/": "DTB builds websites, brands, automation and infrastructure that help businesses grow and operate with confidence.",
     "/about/": "Meet the team behind DTB and learn how we combine design, development, automation and infrastructure for growing businesses.",
     "/services/": "Explore DTB services and straightforward pricing for websites, branding, automation, infrastructure and ongoing support.",
-    "/reviews/": "Read client reviews and explore selected DTB website, UX, e-commerce and digital systems projects."
+    "/reviews/": "Read client testimonials and explore selected DTB website, UX, e-commerce and digital systems projects."
   };
   const path = window.location.pathname;
   const description = descriptions[path];
   if (description) {
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", description);
+  }
+
+  if (path === "/about/" || path === "/about") {
+    const leadershipStyles = document.createElement("link");
+    leadershipStyles.rel = "stylesheet";
+    leadershipStyles.href = "/static/css/about-team-cards.css?v=20260729-2";
+    leadershipStyles.dataset.aboutTeamCards = "true";
+    document.head.appendChild(leadershipStyles);
   }
 })();

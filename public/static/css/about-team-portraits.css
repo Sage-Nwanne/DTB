@@ -1,0 +1,57 @@
+/* Circular leadership portraits inside the original About card layout */
+.team-card-founder,
+.team-card-cofounder,
+.team-card-manager {
+  display: block;
+  min-height: 100%;
+  padding: 30px;
+}
+
+.team-monogram-photo {
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  overflow: hidden;
+  background: #10151e;
+  box-shadow:
+    0 0 0 4px rgba(8,12,18,.72),
+    0 0 28px color-mix(in srgb, var(--leadership-accent) 14%, transparent);
+}
+
+.team-monogram-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 32%;
+  border-radius: inherit;
+  filter: saturate(.94) contrast(1.04);
+  transition: transform .35s ease, filter .35s ease;
+}
+
+.team-card-founder .team-monogram-photo {
+  border-color: rgba(242,173,36,.68);
+}
+
+.team-card-cofounder .team-monogram-photo {
+  border-color: rgba(162,122,255,.66);
+}
+
+.team-card-founder:hover .team-monogram-photo img,
+.team-card-cofounder:hover .team-monogram-photo img {
+  transform: scale(1.06);
+  filter: saturate(1) contrast(1.05);
+}
+
+@media (max-width: 560px) {
+  .team-card-founder,
+  .team-card-cofounder,
+  .team-card-manager {
+    padding: 26px;
+  }
+
+  .team-monogram-photo {
+    width: 68px;
+    height: 68px;
+  }
+}
