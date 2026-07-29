@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "npm run build && wrangler dev",
     "build": "node scripts/build.js",
+    "check": "npm run build && node scripts/validate.js",
     "preview": "npm run build && wrangler dev",
     "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
-    "wrangler": "^4.93.1"
+    "wrangler": "^4.95.0"
   }
 }

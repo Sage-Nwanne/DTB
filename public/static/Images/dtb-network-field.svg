@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 760" role="img" aria-label="Abstract DTB digital network">
+  <defs>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ff671d" stop-opacity=".08"/>
+      <stop offset=".5" stop-color="#f2ad24" stop-opacity=".42"/>
+      <stop offset="1" stop-color="#ff671d" stop-opacity=".08"/>
+    </linearGradient>
+    <radialGradient id="node">
+      <stop offset="0" stop-color="#f2ad24" stop-opacity=".8"/>
+      <stop offset=".35" stop-color="#ff671d" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#ff671d" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+
+  <g fill="#202024" fill-opacity=".34">
+    <circle cx="346" cy="148" r="184"/>
+    <circle cx="1140" cy="168" r="246"/>
+    <circle cx="674" cy="694" r="232"/>
+    <circle cx="1472" cy="622" r="210"/>
+  </g>
+
+  <g fill="none" stroke="url(#route)" stroke-width="2">
+    <path d="M-40 112H238L480 224H712L930 72H1180L1412 214H1614L1960 44"/>
+    <path d="M-40 316H420L620 126H818L1008 318H1244L1446 120H1630L1960 302"/>
+    <path d="M-40 556H288L516 388H792L1004 570H1282L1510 386H1768L1960 512"/>
+    <path d="M210 -30V180L474 420V790"/>
+    <path d="M718 -30V246L952 468V790"/>
+    <path d="M1204 -30V208L1456 438V790"/>
+    <path d="M1694 -30V220L1516 352L1788 624V790"/>
+    <path d="M88 728L416 494L604 578L832 402L1052 492L1302 282L1536 458L1878 202"/>
+    <path d="M-40 178L242 178L522 20"/>
+    <path d="M1398 740L1622 574L1960 574"/>
+  </g>
+
+  <g fill="#f2ad24" fill-opacity=".42">
+    <circle cx="238" cy="112" r="3"/>
+    <circle cx="480" cy="224" r="3"/>
+    <circle cx="930" cy="72" r="3"/>
+    <circle cx="1412" cy="214" r="3"/>
+    <circle cx="420" cy="316" r="3"/>
+    <circle cx="1008" cy="318" r="3"/>
+    <circle cx="1446" cy="120" r="3"/>
+    <circle cx="516" cy="388" r="3"/>
+    <circle cx="1004" cy="570" r="3"/>
+    <circle cx="1510" cy="386" r="3"/>
+    <circle cx="952" cy="468" r="3"/>
+    <circle cx="1456" cy="438" r="3"/>
+    <circle cx="1622" cy="574" r="3"/>
+  </g>
+
+  <g fill="url(#node)" filter="url(#softGlow)">
+    <circle cx="480" cy="224" r="18"/>
+    <circle cx="1008" cy="318" r="18"/>
+    <circle cx="1510" cy="386" r="18"/>
+    <circle cx="952" cy="468" r="18"/>
+  </g>
+</svg>

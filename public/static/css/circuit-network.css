@@ -1,0 +1,179 @@
+/* Reusable DTB circuit-network background */
+.tech-network-section,
+.team-section,
+.testimonial-section,
+.breakthrough-band,
+.final-cta,
+.partnership {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.tech-network-section::before,
+.tech-network-section::after,
+.team-section::before,
+.team-section::after,
+.testimonial-section::before,
+.testimonial-section::after {
+  animation: none !important;
+}
+
+.circuit-network {
+  --circuit-opacity: .46;
+  --circuit-trace: rgba(242, 173, 36, .16);
+  --circuit-purple: rgba(162, 122, 255, .13);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--circuit-opacity);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+.circuit-network::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 68%, rgba(255, 103, 29, .055), transparent 22%),
+    radial-gradient(circle at 82% 26%, rgba(116, 65, 232, .045), transparent 24%);
+}
+
+.circuit-network svg {
+  position: absolute;
+  inset: -4% -2%;
+  width: 104%;
+  height: 108%;
+  overflow: visible;
+}
+
+.circuit-network .circuit-trace {
+  fill: none;
+  stroke: var(--circuit-trace);
+  stroke-width: 1.15;
+  vector-effect: non-scaling-stroke;
+}
+
+.circuit-network .circuit-trace-purple {
+  stroke: var(--circuit-purple);
+}
+
+.circuit-network .circuit-signal {
+  fill: none;
+  stroke: url(#dtbCircuitGold);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-dasharray: 18 620;
+  vector-effect: non-scaling-stroke;
+  filter: url(#dtbCircuitGlow);
+  animation: circuit-signal 7.2s linear infinite;
+}
+
+.circuit-network .circuit-signal-purple {
+  stroke: url(#dtbCircuitPurple);
+  animation-duration: 9.4s;
+}
+
+.circuit-network .signal-b { animation-delay: -2.6s; }
+.circuit-network .signal-c { animation-delay: -5.1s; }
+.circuit-network .signal-d { animation-delay: -3.8s; }
+
+.circuit-network .circuit-node {
+  fill: #090d13;
+  stroke: rgba(242, 173, 36, .42);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.circuit-network .circuit-node-purple {
+  stroke: rgba(162, 122, 255, .42);
+}
+
+.circuit-network .circuit-node-live {
+  fill: rgba(242, 173, 36, .95);
+  stroke: rgba(255, 230, 164, .95);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: circuit-node 7.2s ease-in-out infinite;
+  filter: url(#dtbCircuitGlow);
+}
+
+.circuit-network .node-b { animation-delay: -2.6s; }
+.circuit-network .node-c { animation-delay: -5.1s; }
+.circuit-network .node-d {
+  fill: rgba(162, 122, 255, .95);
+  stroke: rgba(214, 198, 255, .95);
+  animation-delay: -3.8s;
+  animation-duration: 9.4s;
+}
+
+.circuit-network > .circuit-ambient {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: .28;
+  box-shadow: 0 0 14px rgba(242, 173, 36, .55);
+}
+
+.circuit-ambient.a { top: 24%; left: 13%; }
+.circuit-ambient.b { top: 71%; left: 36%; }
+.circuit-ambient.c { top: 34%; right: 17%; background: var(--purple-light); box-shadow: 0 0 14px rgba(162, 122, 255, .5); }
+
+.tech-network-section > .shell,
+.team-section > .shell,
+.testimonial-section > .shell,
+.breakthrough-band > .shell,
+.final-cta > *,
+.partnership > .shell,
+.partnership > .partnership-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.services .circuit-network { --circuit-opacity: .58; }
+.team-section .circuit-network { --circuit-opacity: .38; }
+.testimonial-section .circuit-network { --circuit-opacity: .34; }
+.breakthrough-band .circuit-network,
+.final-cta .circuit-network { --circuit-opacity: .3; }
+.partnership .circuit-network { --circuit-opacity: .26; }
+
+@keyframes circuit-signal {
+  from { stroke-dashoffset: 0; opacity: 0; }
+  8% { opacity: 1; }
+  82% { opacity: 1; }
+  to { stroke-dashoffset: -638; opacity: 0; }
+}
+
+@keyframes circuit-node {
+  0%, 34%, 45%, 100% { opacity: .12; transform: scale(.72); }
+  38% { opacity: 1; transform: scale(1.7); }
+  41% { opacity: .68; transform: scale(1); }
+}
+
+@media (max-width: 900px) {
+  .circuit-network {
+    --circuit-opacity: .31;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  }
+
+  .circuit-network svg {
+    left: -28%;
+    width: 156%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circuit-network .circuit-signal,
+  .circuit-network .circuit-node-live {
+    animation: none;
+  }
+
+  .circuit-network .circuit-signal { opacity: .28; }
+  .circuit-network .circuit-node-live { opacity: .38; transform: none; }
+}

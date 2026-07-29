@@ -1,1244 +1,160 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Design & Automation Services | DTB Solutions</title>
-    <meta name="description" content="Professional web design, AI automation, marketing systems and consulting services for small businesses. Custom solutions including SEO-optimized websites, intelligent automation and growth strategies.">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="/static/Images/DTB_logo.png" />
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <link rel="stylesheet" href="/static/css/dist/styles.css">
-
-    <!-- Tech Backgrounds -->
-    <!-- Tech Background Patterns -->
-<style>
-  /* Circuit Board Pattern */
-  .bg-circuit {
-    background-image: 
-      linear-gradient(0deg, transparent 24%, rgba(255, 159, 26, 0.05) 25%, rgba(255, 159, 26, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.05) 75%, rgba(255, 159, 26, 0.05) 76%, transparent 77%, transparent),
-      linear-gradient(90deg, transparent 24%, rgba(255, 159, 26, 0.05) 25%, rgba(255, 159, 26, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.05) 75%, rgba(255, 159, 26, 0.05) 76%, transparent 77%, transparent);
-    background-size: 50px 50px;
-    background-position: 0 0;
-  }
-
-  /* Data Grid Pattern */
-  .bg-grid {
-    background-image: 
-      linear-gradient(rgba(255, 159, 26, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 159, 26, 0.08) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  /* Network Nodes Pattern */
-  .bg-nodes {
-    background-image: 
-      radial-gradient(circle, rgba(255, 159, 26, 0.1) 1px, transparent 1px),
-      radial-gradient(circle, rgba(255, 159, 26, 0.05) 1px, transparent 1px);
-    background-size: 80px 80px, 120px 120px;
-    background-position: 0 0, 40px 40px;
-  }
-
-  /* Diagonal Lines Pattern */
-  .bg-diagonal {
-    background-image: 
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 35px,
-        rgba(255, 159, 26, 0.05) 35px,
-        rgba(255, 159, 26, 0.05) 70px
-      );
-  }
-
-  /* Hexagon Pattern */
-  .bg-hex {
-    background-image: 
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><pattern id="hex" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M50 0 L100 25 L100 75 L50 100 L0 75 L0 25 Z" fill="none" stroke="rgba(255,159,26,0.08)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="none"/><rect width="100" height="100" fill="url(%23hex)"/></svg>');
-    background-size: 100px 100px;
-  }
-
-  /* Dots Pattern */
-  .bg-dots {
-    background-image: 
-      radial-gradient(circle, rgba(255, 159, 26, 0.12) 2px, transparent 2px);
-    background-size: 30px 30px;
-    background-position: 0 0;
-  }
-
-  /* Wave Pattern */
-  .bg-wave {
-    background-image: 
-      url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><defs><pattern id="wave" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse"><path d="M0 60 Q30 40 60 60 T120 60" fill="none" stroke="rgba(255,159,26,0.08)" stroke-width="1"/><path d="M0 80 Q30 60 60 80 T120 80" fill="none" stroke="rgba(255,159,26,0.06)" stroke-width="1"/></pattern></defs><rect width="120" height="120" fill="url(%23wave)"/></svg>');
-    background-size: 120px 120px;
-  }
-
-  /* Subtle Glow Overlay */
-  .bg-glow-overlay {
-    position: relative;
-  }
-
-  .bg-glow-overlay::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 159, 26, 0.03) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Animated Gradient Background */
-  .bg-gradient-animated {
-    background: linear-gradient(-45deg, #0c0c0c, #141414, #0c0c0c, #141414);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite;
-  }
-
-  @keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Combine patterns */
-  .bg-tech-primary {
-    background-color: #0c0c0c;
-  }
-
-  .bg-tech-secondary {
-    background-color: #141414;
-  }
-
-  .bg-tech-accent {
-    background-color: #1a1a1a;
-  }
-</style>
-
-<!-- SVG Patterns for use in sections -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-  <defs>
-    <!-- Circuit Pattern -->
-    <pattern id="circuit-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-      <rect x="10" y="10" width="80" height="80" fill="none" stroke="rgba(255,159,26,0.1)" stroke-width="1"/>
-      <circle cx="20" cy="20" r="2" fill="rgba(255,159,26,0.15)"/>
-      <circle cx="80" cy="20" r="2" fill="rgba(255,159,26,0.15)"/>
-      <circle cx="20" cy="80" r="2" fill="rgba(255,159,26,0.15)"/>
-      <circle cx="80" cy="80" r="2" fill="rgba(255,159,26,0.15)"/>
-      <line x1="20" y1="20" x2="80" y2="20" stroke="rgba(255,159,26,0.08)" stroke-width="0.5"/>
-      <line x1="80" y1="20" x2="80" y2="80" stroke="rgba(255,159,26,0.08)" stroke-width="0.5"/>
-      <line x1="80" y1="80" x2="20" y2="80" stroke="rgba(255,159,26,0.08)" stroke-width="0.5"/>
-      <line x1="20" y1="80" x2="20" y2="20" stroke="rgba(255,159,26,0.08)" stroke-width="0.5"/>
-    </pattern>
-
-    <!-- Tech Lines Pattern -->
-    <pattern id="tech-lines" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="60" y2="60" stroke="rgba(255,159,26,0.06)" stroke-width="0.5"/>
-      <line x1="60" y1="0" x2="0" y2="60" stroke="rgba(255,159,26,0.06)" stroke-width="0.5"/>
-      <circle cx="30" cy="30" r="1" fill="rgba(255,159,26,0.1)"/>
-    </pattern>
-  </defs>
-</svg>
-
-
-
-    
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services &amp; Transparent Pricing | Designed to Breakthrough</title>
+  <meta name="description" content="Explore DTB services and transparent starting prices for websites, custom systems, automation and ongoing technical partnership.">
+  <link rel="canonical" href="https://dtbsolutions.tech/services/"><link rel="icon" type="image/png" href="/static/Images/dtb-favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/site.css?v=20260728-7">
 </head>
-<body class="bg-charcoal text-text font-inter">
-    <!-- Navigation -->
-    
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a><!-- DTB_HEADER -->
+  <main id="main-content">
+    <section class="page-hero">
+      <div class="shell page-hero-copy reveal"><p class="brand-signature">Connected solutions</p><h1>Services built around the <em>whole business.</em></h1><p>We begin with the bottleneck and design the right combination of identity, technology and operating systems around it.</p></div>
+    </section>
 
-<nav class="sticky top-0 z-50 bg-charcoal border-b border-slate relative" style="background-image: url(/static/Images/logo-background-image-resized.png); background-position: top; background-size: auto; background-repeat: repeat; height: 92px;">
-    <!-- Animated Background (commented out) -->
-    
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 relative z-10">
-        <!-- Desktop Layout -->
-        <div class="hidden md:flex justify-between items-center">
-            <!-- Logo -->
-            <a href="/" class="flex items-center gap-2" aria-label="Designed To Breakthrough Home">
-                <img
-                    src="/images/dtb-logo-transparent-full.png"
-                    alt="Designed To Breakthrough"
-                    class="dtb-header-logo"
-                />
-            </a>
-
-            <!-- Desktop Navigation -->
-            <div class="flex gap-8 items-center">
-                <ul class="flex gap-8 items-center" style="font-size: 23px; font-weight: 900;">
-                    <li><a href="/" class="hover:text-accent transition duration-200">Home</a></li>
-                    <li><a href="/services" class="hover:text-accent transition duration-200">Services</a></li>
-                    <li><a href="/works" class="hover:text-accent transition duration-200">Portfolio</a></li>
-                    <li><a href="/blog/" class="hover:text-accent transition duration-200">Blog</a></li>
-                    <li><a href="/about" class="hover:text-accent transition duration-200">About</a></li>
-                    <li><a href="/reviews" class="hover:text-accent transition duration-200">Reviews</a></li>
-                    <li><a href="/contact" class="hover:text-accent transition duration-200">Contact</a></li>
-                </ul>
-
-                <!-- CTA Button -->
-                <a href="/contact" class="bg-accent text-charcoal rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200 flex items-center justify-center" style="width: 164px; height: 45px;">
-                    Start a Project
-                </a>
-            </div>
+    <section class="page-section section-dark service-pillars-section">
+      <div class="shell">
+        <div class="section-intro reveal"><p class="eyebrow">Four connected pillars</p><h2>Build what the business needs next.</h2><p>Start with one need or combine several. We shape the scope around the business instead of forcing every project into the same package.</p></div>
+        <div class="glass-grid">
+          <article class="glass-card reveal" id="web-brand">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#web"/></svg></span>
+            <h2>Web + Brand</h2><p>Turn the business into a clear, credible public experience that gives the right customer a confident next step.</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Positioning and messaging direction</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Responsive website design and development</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Conversion paths, analytics and technical SEO</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Content structure and maintainable handoff</li>
+            </ul>
+          </article>
+          <article class="glass-card purple reveal" id="automation-ai">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#automation"/></svg></span>
+            <h2>Automation + AI</h2><p>Reduce repetitive work and missed follow-up with workflows that remain understandable, reviewable and under your control.</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Lead intake, qualification and routing</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Follow-up and notification workflows</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>AI-assisted knowledge and communication tools</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Documentation, training and safeguards</li>
+            </ul>
+          </article>
+          <article class="glass-card reveal" id="infrastructure">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#server"/></svg></span>
+            <h2>Infrastructure + Operations</h2><p>Create a reliable technical foundation for the website, team and information the business depends on.</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Domains, hosting and cloud deployment</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Security, backups and monitoring</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Business tools and system integration</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Operational documentation and continuity</li>
+            </ul>
+          </article>
+          <article class="glass-card reveal" id="growth-strategy">
+            <span class="icon-badge"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#growth"/></svg></span>
+            <h2>Growth + Strategy</h2><p>Sharpen the offer, identify the next constraint and improve the system based on evidence instead of noise.</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Offer, audience and niche clarity</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Content and campaign systems</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Analytics and conversion review</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Roadmapping and ongoing optimization</li>
+            </ul>
+          </article>
         </div>
+      </div>
+    </section>
 
-        <!-- Mobile Layout -->
-        <div class="md:hidden flex justify-center items-center">
-            <!-- Centered Logo -->
-            <a href="/" class="flex items-center gap-2" aria-label="Designed To Breakthrough Home">
-                <img
-                    src="/images/dtb-logo-transparent-full.png"
-                    alt="Designed To Breakthrough"
-                    class="dtb-header-logo dtb-mobile-logo"
-                />
-            </a>
-
-            <!-- Mobile Menu Button (Fixed positioned to top right) -->
-            <button id="mobileMenuBtn" class="text-accent z-20" style="position: fixed; right: 20px; top: 25px;" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+    <section class="page-section section-slate tech-network-section" id="pricing">
+      <div class="shell">
+        <div class="section-intro centered reveal">
+          <p class="brand-signature">Transparent pricing</p>
+          <h2>Know the starting point before we talk.</h2>
+          <p>These are clear baseline packages—not teaser prices. Final scope is confirmed in writing before work begins, and every project package includes post-launch support.</p>
         </div>
-
-    </div>
-
-    <!-- Mobile Navigation Menu (outside container to span full width) -->
-    <div id="mobileMenu" class="hidden md:hidden flex-col gap-4 py-4 border-t border-slate" style="background-color: #000000;">
-        <a href="/" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Home</a>
-        <a href="/services" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Services</a>
-        <a href="/works" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Portfolio</a>
-        <a href="/blog/" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Blog</a>
-        <a href="/about" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">About</a>
-        <a href="/reviews" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Reviews</a>
-        <a href="/contact" class="block px-4 py-2 hover:text-accent transition duration-200 text-center">Contact</a>
-        <a href="/contact" class="block px-4 py-2 bg-accent text-charcoal rounded-md font-bold font-poppins text-center mx-4">
-            Start a Project
-        </a>
-    </div>
-</nav>
-
-<style>
-    .dtb-header-logo {
-        display: block;
-        width: clamp(225px, 16.5vw, 295px);
-        height: auto;
-        max-height: 56px;
-        object-fit: contain;
-        filter: drop-shadow(0 0 4px rgba(255, 159, 26, 0.08));
-    }
-
-    .dtb-mobile-logo {
-        width: min(76vw, 260px);
-        max-height: 52px;
-        position: relative;
-        top: 11px;
-        filter: drop-shadow(0 0 3px rgba(255, 159, 26, 0.08));
-    }
-
-    @media (min-width: 768px) {
-        nav .max-w-7xl > .hidden.md\:flex {
-            gap: 44px;
-        }
-    }
-
-    @media (max-width: 500px) {
-        .dtb-mobile-logo {
-            width: min(74vw, 235px);
-            max-height: 48px;
-            top: 14px;
-        }
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        });
-
-        // Close menu when a link is clicked
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-            });
-        });
-    });
-</script>
-
-
-
-    <!-- Main Content -->
-    <main>
-        
-
-<!-- Tech Icons Library -->
-<!-- Tech Icons SVG Library -->
-<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-  <!-- Web Services Icon -->
-  <symbol id="icon-web" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="28" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M10 32h44M32 4v56M10 32a22 22 0 0 0 44 0M10 32a22 22 0 0 1 44 0" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="32" cy="32" r="3" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Automation Icon -->
-  <symbol id="icon-automation" viewBox="0 0 64 64">
-    <rect x="8" y="12" width="48" height="40" rx="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M20 24h24M20 32h24M20 40h16" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="48" cy="28" r="3" fill="#ff9f1a"/>
-    <circle cx="48" cy="36" r="3" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Marketing Icon -->
-  <symbol id="icon-marketing" viewBox="0 0 64 64">
-    <path d="M12 48V20c0-2 1-4 3-4h34c2 0 3 2 3 4v28" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M16 20l16-12 16 12" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M28 32l8-8 8 8" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <circle cx="32" cy="44" r="2" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Consulting Icon -->
-  <symbol id="icon-consulting" viewBox="0 0 64 64">
-    <circle cx="20" cy="24" r="8" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="44" cy="24" r="8" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M16 32c-4 4-6 10-6 16v8h40v-8c0-6-2-12-6-16" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M28 40h8" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Code/Development Icon -->
-  <symbol id="icon-code" viewBox="0 0 64 64">
-    <path d="M20 16l-8 16 8 16M44 16l8 16-8 16M32 12l-8 40" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-
-  <!-- Data/Analytics Icon -->
-  <symbol id="icon-data" viewBox="0 0 64 64">
-    <rect x="12" y="28" width="8" height="24" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <rect x="28" y="16" width="8" height="36" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <rect x="44" y="20" width="8" height="32" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="8" y1="52" x2="56" y2="52" stroke="#ff9f1a" stroke-width="2"/>
-  </symbol>
-
-  <!-- Security Icon -->
-  <symbol id="icon-security" viewBox="0 0 64 64">
-    <path d="M32 8l20 8v16c0 16-20 20-20 20s-20-4-20-20V16l20-8z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M28 36l4 4 8-8" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
-
-  <!-- Integration Icon -->
-  <symbol id="icon-integration" viewBox="0 0 64 64">
-    <circle cx="16" cy="32" r="6" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="48" cy="32" r="6" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M22 32h20" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M28 26l-4 6 4 6M36 26l4 6-4 6" fill="none" stroke="#ff9f1a" stroke-width="1.5" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Performance Icon -->
-  <symbol id="icon-performance" viewBox="0 0 64 64">
-    <path d="M12 44l12-20 8 12 16-24" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="24" cy="24" r="2" fill="#ff9f1a"/>
-    <circle cx="32" cy="36" r="2" fill="#ff9f1a"/>
-    <circle cx="48" cy="20" r="2" fill="#ff9f1a"/>
-    <line x1="12" y1="48" x2="52" y2="48" stroke="#ff9f1a" stroke-width="2"/>
-  </symbol>
-
-  <!-- Support Icon -->
-  <symbol id="icon-support" viewBox="0 0 64 64">
-    <path d="M32 8c13.3 0 24 10.7 24 24s-10.7 24-24 24S8 45.3 8 32 18.7 8 32 8z" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M32 20v12l8 4" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Shopping/E-commerce Icon -->
-  <symbol id="icon-shopping" viewBox="0 0 64 64">
-    <path d="M12 20h40l-4 28H16l-4-28z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M20 20V12c0-2 1-4 3-4h18c2 0 3 2 3 4v8" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="24" cy="44" r="2" fill="#ff9f1a"/>
-    <circle cx="40" cy="44" r="2" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Partnership Icon -->
-  <symbol id="icon-partnership" viewBox="0 0 64 64">
-    <circle cx="20" cy="24" r="6" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="44" cy="24" r="6" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M14 32c-4 4-6 10-6 16v8h12v-8c0-6 2-12 6-16" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M50 32c4 4 6 10 6 16v8H44v-8c0-6-2-12-6-16" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M32 28c-3 0-6 2-6 5v19h12V33c0-3-3-5-6-5z" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-  </symbol>
-
-  <!-- Target/Goal Icon -->
-  <symbol id="icon-target" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="24" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="32" cy="32" r="16" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="32" cy="32" r="8" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="32" cy="32" r="3" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Email Icon -->
-  <symbol id="icon-email" viewBox="0 0 64 64">
-    <rect x="8" y="16" width="48" height="32" rx="2" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M8 16l24 16 24-16" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-  </symbol>
-
-  <!-- Document/Content Icon -->
-  <symbol id="icon-document" viewBox="0 0 64 64">
-    <rect x="12" y="8" width="40" height="48" rx="2" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="20" y1="20" x2="44" y2="20" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="20" y1="28" x2="44" y2="28" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="20" y1="36" x2="44" y2="36" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="20" y1="44" x2="32" y2="44" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Home/Building Icon -->
-  <symbol id="icon-home" viewBox="0 0 64 64">
-    <path d="M8 32l24-20 24 20v20H8z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <rect x="24" y="32" width="16" height="20" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="32" y1="32" x2="32" y2="52" stroke="#ff9f1a" stroke-width="2"/>
-  </symbol>
-
-  <!-- Rocket Icon -->
-  <symbol id="icon-rocket" viewBox="0 0 64 64">
-    <path d="M32 8l8 16h-16z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M24 24l-8 28 16-8 16 8-8-28" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <circle cx="32" cy="28" r="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M20 52l4-8M44 52l-4-8" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Lightbulb/Idea Icon -->
-  <symbol id="icon-lightbulb" viewBox="0 0 64 64">
-    <path d="M32 8c-8 0-14 6-14 14 0 6 3 11 8 13v8h12v-8c5-2 8-7 8-13 0-8-6-14-14-14z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <rect x="24" y="43" width="16" height="3" fill="#ff9f1a"/>
-    <line x1="28" y1="46" x2="28" y2="50" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="36" y1="46" x2="36" y2="50" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-  </symbol>
-
-  <!-- Speed/Lightning Icon -->
-  <symbol id="icon-speed" viewBox="0 0 64 64">
-    <path d="M32 8l12 20H32l12 28L20 28h12L8 8z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-  </symbol>
-
-  <!-- Precision/Crosshair Icon -->
-  <symbol id="icon-precision" viewBox="0 0 64 64">
-    <circle cx="32" cy="32" r="12" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="32" y1="8" x2="32" y2="16" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="32" y1="48" x2="32" y2="56" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="8" y1="32" x2="16" y2="32" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <line x1="48" y1="32" x2="56" y2="32" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <circle cx="32" cy="32" r="3" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Results/Chart Icon -->
-  <symbol id="icon-results" viewBox="0 0 64 64">
-    <path d="M12 48V20c0-2 1-4 3-4h34c2 0 3 2 3 4v28" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <path d="M16 20l16-12 16 12" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <path d="M28 32l8-8 8 8" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-  </symbol>
-
-  <!-- Growth Icon - Professional upward trend with arrow -->
-  <symbol id="icon-growth" viewBox="0 0 64 64">
-    <!-- Base line -->
-    <line x1="12" y1="48" x2="52" y2="48" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <!-- Upward trending line -->
-    <path d="M12 44l8-8 8 4 12-12 12 8" fill="none" stroke="#ff9f1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Arrow pointing up -->
-    <path d="M48 16l4 8h-8z" fill="#ff9f1a"/>
-    <!-- Accent dots on trend line -->
-    <circle cx="20" cy="36" r="2.5" fill="#ff9f1a"/>
-    <circle cx="28" cy="40" r="2.5" fill="#ff9f1a"/>
-    <circle cx="40" cy="28" r="2.5" fill="#ff9f1a"/>
-    <circle cx="52" cy="36" r="2.5" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- Design/Pen Tool Icon -->
-  <symbol id="icon-design" viewBox="0 0 64 64">
-    <!-- Pen tool -->
-    <path d="M48 8l8 8-32 32-12 4 4-12z" fill="none" stroke="#ff9f1a" stroke-width="2" stroke-linejoin="round"/>
-    <!-- Pen tip -->
-    <path d="M44 12l8 8" stroke="#ff9f1a" stroke-width="2" stroke-linecap="round"/>
-    <!-- Design elements -->
-    <circle cx="16" cy="48" r="3" fill="#ff9f1a"/>
-    <rect x="8" y="52" width="16" height="4" rx="2" fill="#ff9f1a"/>
-  </symbol>
-
-  <!-- AI Agent/Neural Network Icon -->
-  <symbol id="icon-ai-agent" viewBox="0 0 64 64">
-    <!-- Central brain/processor -->
-    <circle cx="32" cy="32" r="8" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <circle cx="32" cy="32" r="4" fill="#ff9f1a"/>
-    <!-- Neural connections - top -->
-    <circle cx="32" cy="12" r="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="32" y1="16" x2="32" y2="24" stroke="#ff9f1a" stroke-width="2"/>
-    <!-- Neural connections - bottom -->
-    <circle cx="32" cy="52" r="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="32" y1="48" x2="32" y2="40" stroke="#ff9f1a" stroke-width="2"/>
-    <!-- Neural connections - left -->
-    <circle cx="12" cy="32" r="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="16" y1="32" x2="24" y2="32" stroke="#ff9f1a" stroke-width="2"/>
-    <!-- Neural connections - right -->
-    <circle cx="52" cy="32" r="4" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <line x1="48" y1="32" x2="40" y2="32" stroke="#ff9f1a" stroke-width="2"/>
-    <!-- Diagonal connections -->
-    <circle cx="18" cy="18" r="3" fill="none" stroke="#ff9f1a" stroke-width="1.5"/>
-    <line x1="21" y1="21" x2="27" y2="27" stroke="#ff9f1a" stroke-width="1.5"/>
-    <circle cx="46" cy="18" r="3" fill="none" stroke="#ff9f1a" stroke-width="1.5"/>
-    <line x1="43" y1="21" x2="37" y2="27" stroke="#ff9f1a" stroke-width="1.5"/>
-    <circle cx="18" cy="46" r="3" fill="none" stroke="#ff9f1a" stroke-width="1.5"/>
-    <line x1="21" y1="43" x2="27" y2="37" stroke="#ff9f1a" stroke-width="1.5"/>
-    <circle cx="46" cy="46" r="3" fill="none" stroke="#ff9f1a" stroke-width="1.5"/>
-    <line x1="43" y1="43" x2="37" y2="37" stroke="#ff9f1a" stroke-width="1.5"/>
-  </symbol>
-
-  <!-- Social Media/Content Creation Icon -->
-  <symbol id="icon-social-media" viewBox="0 0 64 64">
-    <!-- Main screen/device (centered brackets) -->
-    <rect x="16" y="18" width="36" height="28" rx="3" fill="none" stroke="#ff9f1a" stroke-width="2"/>
-    <!-- Play button (video content) - centered with more space from brackets -->
-    <path d="M29 28l10 4-10 6z" fill="#ff9f1a"/>
-   
-</svg>
-
-<!-- Icon Component Helper -->
-<style>
-  .tech-icon {
-    width: 48px;
-    height: 48px;
-    display: inline-block;
-  }
-  
-  .tech-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-
-
-<!-- Hero Section -->
-<section class="bg-gradient-to-r from-charcoal to-slate py-20 md:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl">
-            <h1 class="text-5xl md:text-6xl font-poppins font-bold mb-6 leading-tight">
-                Services Built for <span class="text-accent">Growth</span>
-            </h1>
-            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-                We combine design, automation and strategy to deliver results that compound over time.
-            </p>
+        <div class="pricing-grid">
+          <article class="pricing-card reveal">
+            <div class="pricing-label">Website foundation</div>
+            <h3>Starter</h3>
+            <p class="pricing-summary">A focused professional presence for a new or smaller business.</p>
+            <p class="pricing-value"><small>Starting at</small>$2.5K</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Up to 5 core pages</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Responsive design</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Technical SEO foundation</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>30-day launch support</li>
+            </ul>
+            <a class="button button-secondary" href="/contact/#project-form">Choose Starter</a>
+          </article>
+          <article class="pricing-card pricing-card-featured reveal">
+            <div class="pricing-label">Growth website <span>Popular</span></div>
+            <h3>Professional</h3>
+            <p class="pricing-summary">A larger conversion-focused site with stronger content and measurement.</p>
+            <p class="pricing-value"><small>Starting at</small>$5K</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Up to 10 core pages</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Advanced SEO structure</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Analytics and lead paths</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>CMS integration + 30-day support</li>
+            </ul>
+            <a class="button button-primary" href="/contact/#project-form">Choose Professional</a>
+          </article>
+          <article class="pricing-card reveal">
+            <div class="pricing-label">Custom system</div>
+            <h3>Enterprise</h3>
+            <p class="pricing-summary">Custom features, integrations and automation for a broader operation.</p>
+            <p class="pricing-value"><small>Custom scope</small>$10K+</p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Custom page and feature scope</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>API and system integration</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Advanced automation</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>90-day launch support</li>
+            </ul>
+            <a class="button button-secondary" href="/contact/#project-form">Discuss Enterprise</a>
+          </article>
+          <article class="pricing-card reveal">
+            <div class="pricing-label">Ongoing partner</div>
+            <h3>Retainer</h3>
+            <p class="pricing-summary">Priority support and continuous improvement after the initial build.</p>
+            <p class="pricing-value"><small>Monthly partnership</small>$1.5K <span>/mo</span></p>
+            <ul class="feature-list">
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Ongoing updates</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Priority support</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Monthly strategy review</li>
+              <li><svg class="icon"><use href="/assets/icons.svg#check"/></svg>Performance optimization</li>
+            </ul>
+            <a class="button button-secondary" href="/contact/#project-form">Discuss Retainer</a>
+          </article>
         </div>
-    </div>
-</section>
+        <p class="pricing-note reveal">Starting prices assume timely access to content, accounts and feedback. E-commerce, extensive content migration, paid third-party services and unusually complex integrations are scoped separately and approved before billing.</p>
+      </div>
+    </section>
 
-<!-- Services Grid -->
-<section class="py-20 md:py-32 bg-charcoal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <!-- Service 1: Web Services -->
-            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="mb-4">
-                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-web"/></svg>
-                </div>
-                <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Web Services</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Conversion-first websites designed to turn visitors into customers. We build fast, SEO-optimized sites with analytics, maintenance and ongoing support baked in.
-                </p>
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Custom design aligned with your brand</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>SEO optimization & performance tuning</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Analytics & conversion tracking</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>30-day post-launch support</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Ongoing maintenance packages available</span>
-                    </li>
-                </ul>
-                <a href="/contact" class="inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
-                    Get Started
-                </a>
-            </div>
-            
-            <!-- Service 2: Agentic Automation -->
-            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="mb-4">
-                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-automation"/></svg>
-                </div>
-                <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Agentic Automation</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    AI agents and workflows that replace busywork with results. From lead qualification to customer support, we build systems that work 24/7.
-                </p>
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Custom AI agent development</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Workflow automation & integration</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Lead qualification & nurturing</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Customer support automation</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Training & handoff documentation</span>
-                    </li>
-                </ul>
-                <a href="/contact" class="inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
-                    Get Started
-                </a>
-            </div>
-            
-            <!-- Service 3: Marketing & Growth -->
-            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="mb-4">
-                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-results"/></svg>
-                </div>
-                <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Marketing & Growth</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Content systems that compound attention into revenue. We build sustainable growth engines through strategy, content and automation.
-                </p>
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Growth strategy & positioning</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Content calendar & production</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Email & SMS automation</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Social media strategy & management</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Analytics & optimization</span>
-                    </li>
-                </ul>
-                <a href="/contact" class="inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
-                    Get Started
-                </a>
-            </div>
-            
-            <!-- Service 4: Consulting -->
-            <div class="bg-graphite p-8 rounded-lg border border-slate hover:border-accent transition duration-300">
-                <div class="mb-4">
-                    <svg class="tech-icon" style="width: 64px; height: 64px;" viewBox="0 0 64 64"><use href="#icon-lightbulb"/></svg>
-                </div>
-                <h3 class="text-2xl font-poppins font-bold mb-4 text-accent">Consulting</h3>
-                <p class="text-gray-300 mb-6 leading-relaxed">
-                    Strategy, audits and white-label delivery you can trust. We help agencies and teams scale without the overhead.
-                </p>
-                <ul class="space-y-3 mb-8 text-sm text-gray-300">
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Technical audits & recommendations</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Strategy sessions & roadmapping</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>White-label project delivery</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Team training & knowledge transfer</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <span class="text-accent mt-1">✓</span>
-                        <span>Retainer & ongoing support</span>
-                    </li>
-                </ul>
-                <a href="/contact" class="inline-block bg-accent text-charcoal px-6 py-2 rounded-md font-bold font-poppins hover:shadow-lg hover:shadow-accent/50 transition duration-200">
-                    Get Started
-                </a>
-            </div>
+    <section class="page-section section-alloy">
+      <div class="shell">
+        <div class="section-intro section-heading-dark reveal"><p class="eyebrow">Engagement paths</p><h2>Transparent baseline. Right-sized scope.</h2><p>The public prices establish an honest starting point. Discovery then defines the outcome, boundaries and delivery path before the proposal is approved.</p></div>
+        <div class="glass-grid">
+          <article class="alloy-card reveal"><p class="eyebrow">Launch</p><h3>Build the foundation</h3><p>For a new offer, business or public presence that needs positioning, identity and a focused launch system.</p><ul class="tag-list"><li>Defined scope</li><li>Launch milestone</li><li>Documented handoff</li></ul></article>
+          <article class="alloy-card reveal"><p class="eyebrow">System</p><h3>Fix the bottleneck</h3><p>For an established business with disconnected tools, manual processes or an experience that no longer converts.</p><ul class="tag-list"><li>System mapping</li><li>Focused implementation</li><li>Team enablement</li></ul></article>
+          <article class="alloy-card reveal"><p class="eyebrow">Partner</p><h3>Improve continuously</h3><p>For teams that need a reliable technical partner to maintain, measure and evolve the system over time.</p><ul class="tag-list"><li>Prioritized roadmap</li><li>Ongoing delivery</li><li>Performance review</li></ul></article>
+          <article class="alloy-card reveal"><p class="eyebrow">Advisory</p><h3>Get the direction right</h3><p>For teams that need an audit, roadmap, vendor-neutral recommendation or help preparing a project for execution.</p><ul class="tag-list"><li>Audit</li><li>Strategy</li><li>Implementation plan</li></ul></article>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Pricing Section -->
-<section class="py-20 md:py-32 relative" style="background-color: #09050352;">
-    <!-- Animated Background -->
-    <!-- Animated Tech Background -->
-<style>
-  .animated-bg-container {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .animated-bg-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.15;
-    pointer-events: none;
-  }
-
-  /* Animated circuit paths */
-  @keyframes flowPath1 {
-    0% {
-      stroke-dashoffset: 1000;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes flowPath2 {
-    0% {
-      stroke-dashoffset: 1200;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes flowPath3 {
-    0% {
-      stroke-dashoffset: 1400;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes flowPath4 {
-    0% {
-      stroke-dashoffset: 1100;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes flowPath5 {
-    0% {
-      stroke-dashoffset: 1300;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes flowPath6 {
-    0% {
-      stroke-dashoffset: 1500;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes pulseNode {
-    0%, 100% {
-      r: 2;
-      opacity: 0.3;
-    }
-    50% {
-      r: 4;
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes floatNode {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  .flow-path-1 {
-    stroke-dasharray: 1000;
-    animation: flowPath1 8s linear infinite;
-  }
-
-  .flow-path-2 {
-    stroke-dasharray: 1200;
-    animation: flowPath2 10s linear infinite;
-  }
-
-  .flow-path-3 {
-    stroke-dasharray: 1400;
-    animation: flowPath3 12s linear infinite;
-  }
-
-  .flow-path-4 {
-    stroke-dasharray: 1100;
-    animation: flowPath4 9s linear infinite;
-  }
-
-  .flow-path-5 {
-    stroke-dasharray: 1300;
-    animation: flowPath5 11s linear infinite;
-  }
-
-  .flow-path-6 {
-    stroke-dasharray: 1500;
-    animation: flowPath6 13s linear infinite;
-  }
-
-  .pulse-node {
-    animation: pulseNode 3s ease-in-out infinite;
-  }
-
-  .float-node {
-    animation: floatNode 4s ease-in-out infinite;
-  }
-
-  /* Grid animation */
-  @keyframes gridShift {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 50px 50px;
-    }
-  }
-
-  .animated-grid {
-    background-image: 
-      linear-gradient(0deg, transparent 24%, rgba(255, 159, 26, 0.08) 25%, rgba(255, 159, 26, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.08) 75%, rgba(255, 159, 26, 0.08) 76%, transparent 77%, transparent),
-      linear-gradient(90deg, transparent 24%, rgba(255, 159, 26, 0.08) 25%, rgba(255, 159, 26, 0.08) 26%, transparent 27%, transparent 74%, rgba(255, 159, 26, 0.08) 75%, rgba(255, 159, 26, 0.08) 76%, transparent 77%, transparent);
-    background-size: 50px 50px;
-    animation: gridShift 20s linear infinite;
-  }
-
-  /* Glow effect */
-  @keyframes glowPulse {
-    0%, 100% {
-      opacity: 0.05;
-    }
-    50% {
-      opacity: 0.15;
-    }
-  }
-
-  .glow-pulse {
-    animation: glowPulse 4s ease-in-out infinite;
-  }
-
-  /* Disable animations on mobile for better performance */
-  @media (max-width: 768px) {
-    .flow-path-1,
-    .flow-path-2,
-    .flow-path-3,
-    .flow-path-4,
-    .flow-path-5,
-    .flow-path-6 {
-      animation: none !important;
-    }
-
-    .pulse-node,
-    .float-node,
-    .glow-pulse {
-      animation: none !important;
-    }
-
-    .animated-grid {
-      animation: none !important;
-    }
-
-    .animated-bg-svg {
-      opacity: 0.05;
-    }
-  }
-</style>
-
-<!-- Animated SVG Background -->
-<svg class="animated-bg-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice">
-  <defs>
-    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#ff9f1a;stop-opacity:0.3" />
-      <stop offset="100%" style="stop-color:#ff9f1a;stop-opacity:0" />
-    </linearGradient>
-    
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
-
-  <!-- Background grid -->
-  <rect width="1440" height="800" fill="none"/>
-
-  <!-- Animated circuit paths - Hexagonal grid pattern -->
-  <g stroke="#ff9f1a" stroke-width="2" fill="none" filter="url(#glow)">
-    <!-- Horizontal lines -->
-    <path class="flow-path-1" d="M 0 100 L 1440 100" stroke-linecap="round"/>
-    <path class="flow-path-2" d="M 0 300 L 1440 300" stroke-linecap="round"/>
-    <path class="flow-path-3" d="M 0 500 L 1440 500" stroke-linecap="round"/>
-    <path class="flow-path-4" d="M 0 700 L 1440 700" stroke-linecap="round"/>
-
-    <!-- Vertical lines (evenly spaced) -->
-    <path class="flow-path-5" d="M 180 0 L 180 800" stroke-linecap="round"/>
-    <path class="flow-path-6" d="M 360 0 L 360 800" stroke-linecap="round"/>
-    <path class="flow-path-1" d="M 540 0 L 540 800" stroke-linecap="round"/>
-    <path class="flow-path-2" d="M 720 0 L 720 800" stroke-linecap="round"/>
-    <path class="flow-path-3" d="M 900 0 L 900 800" stroke-linecap="round"/>
-    <path class="flow-path-4" d="M 1080 0 L 1080 800" stroke-linecap="round"/>
-    <path class="flow-path-5" d="M 1260 0 L 1260 800" stroke-linecap="round"/>
-
-    <!-- Diagonal lines (60 degrees) - Top left to bottom right -->
-    <path class="flow-path-6" d="M 0 200 L 1440 800" stroke-linecap="round"/>
-    <path class="flow-path-1" d="M 0 0 L 1260 800" stroke-linecap="round"/>
-    <path class="flow-path-2" d="M 180 0 L 1440 700" stroke-linecap="round"/>
-    <path class="flow-path-3" d="M 360 0 L 1440 500" stroke-linecap="round"/>
-    <path class="flow-path-4" d="M 540 0 L 1440 300" stroke-linecap="round"/>
-    <path class="flow-path-5" d="M 720 0 L 1440 100" stroke-linecap="round"/>
-
-    <!-- Diagonal lines (120 degrees) - Top right to bottom left -->
-    <path class="flow-path-6" d="M 1440 200 L 0 800" stroke-linecap="round"/>
-    <path class="flow-path-1" d="M 1440 0 L 180 800" stroke-linecap="round"/>
-    <path class="flow-path-2" d="M 1260 0 L 0 700" stroke-linecap="round"/>
-    <path class="flow-path-3" d="M 1080 0 L 0 500" stroke-linecap="round"/>
-    <path class="flow-path-4" d="M 900 0 L 0 300" stroke-linecap="round"/>
-    <path class="flow-path-5" d="M 720 0 L 0 100" stroke-linecap="round"/>
-  </g>
-
-  <!-- Animated nodes - Hexagonal grid intersections -->
-  <g fill="#ff9f1a" filter="url(#glow)">
-    <!-- Horizontal line intersections -->
-    <!-- Row 1 (y=100) -->
-    <circle class="pulse-node" style="animation-delay: 0.0s;" cx="180" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.1s;" cx="360" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="540" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="720" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="900" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="1080" cy="100" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="1260" cy="100" r="2"/>
-
-    <!-- Row 2 (y=300) -->
-    <circle class="pulse-node" style="animation-delay: 0.1s;" cx="180" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="360" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="540" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="720" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="900" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="1080" cy="300" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="1260" cy="300" r="2"/>
-
-    <!-- Row 3 (y=500) -->
-    <circle class="pulse-node" style="animation-delay: 0.2s;" cx="180" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="360" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="540" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="720" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="900" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="1080" cy="500" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.8s;" cx="1260" cy="500" r="2"/>
-
-    <!-- Row 4 (y=700) -->
-    <circle class="pulse-node" style="animation-delay: 0.3s;" cx="180" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.4s;" cx="360" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="540" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.6s;" cx="720" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.7s;" cx="900" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.8s;" cx="1080" cy="700" r="2"/>
-    <circle class="pulse-node" style="animation-delay: 0.9s;" cx="1260" cy="700" r="2"/>
-
-    <!-- Larger hub nodes at key intersections -->
-    <circle class="pulse-node" style="animation-delay: 0.0s;" cx="720" cy="300" r="3"/>
-    <circle class="pulse-node" style="animation-delay: 0.5s;" cx="540" cy="500" r="3"/>
-    <circle class="pulse-node" style="animation-delay: 1.0s;" cx="900" cy="500" r="3"/>
-    <circle class="pulse-node" style="animation-delay: 1.5s;" cx="360" cy="300" r="3"/>
-    <circle class="pulse-node" style="animation-delay: 2.0s;" cx="1080" cy="700" r="3"/>
-  </g>
-
-  <!-- Connecting lines - Hexagonal grid pattern -->
-  <g stroke="#ff9f1a" stroke-width="1" opacity="0.15" fill="none">
-    <!-- Horizontal connections -->
-    <line x1="180" y1="100" x2="360" y2="100"/>
-    <line x1="360" y1="100" x2="540" y2="100"/>
-    <line x1="540" y1="100" x2="720" y2="100"/>
-    <line x1="720" y1="100" x2="900" y2="100"/>
-    <line x1="900" y1="100" x2="1080" y2="100"/>
-    <line x1="1080" y1="100" x2="1260" y2="100"/>
-
-    <line x1="180" y1="300" x2="360" y2="300"/>
-    <line x1="360" y1="300" x2="540" y2="300"/>
-    <line x1="540" y1="300" x2="720" y2="300"/>
-    <line x1="720" y1="300" x2="900" y2="300"/>
-    <line x1="900" y1="300" x2="1080" y2="300"/>
-    <line x1="1080" y1="300" x2="1260" y2="300"/>
-
-    <line x1="180" y1="500" x2="360" y2="500"/>
-    <line x1="360" y1="500" x2="540" y2="500"/>
-    <line x1="540" y1="500" x2="720" y2="500"/>
-    <line x1="720" y1="500" x2="900" y2="500"/>
-    <line x1="900" y1="500" x2="1080" y2="500"/>
-    <line x1="1080" y1="500" x2="1260" y2="500"/>
-
-    <line x1="180" y1="700" x2="360" y2="700"/>
-    <line x1="360" y1="700" x2="540" y2="700"/>
-    <line x1="540" y1="700" x2="720" y2="700"/>
-    <line x1="720" y1="700" x2="900" y2="700"/>
-    <line x1="900" y1="700" x2="1080" y2="700"/>
-    <line x1="1080" y1="700" x2="1260" y2="700"/>
-
-    <!-- Vertical connections -->
-    <line x1="180" y1="100" x2="180" y2="300"/>
-    <line x1="180" y1="300" x2="180" y2="500"/>
-    <line x1="180" y1="500" x2="180" y2="700"/>
-
-    <line x1="360" y1="100" x2="360" y2="300"/>
-    <line x1="360" y1="300" x2="360" y2="500"/>
-    <line x1="360" y1="500" x2="360" y2="700"/>
-
-    <line x1="540" y1="100" x2="540" y2="300"/>
-    <line x1="540" y1="300" x2="540" y2="500"/>
-    <line x1="540" y1="500" x2="540" y2="700"/>
-
-    <line x1="720" y1="100" x2="720" y2="300"/>
-    <line x1="720" y1="300" x2="720" y2="500"/>
-    <line x1="720" y1="500" x2="720" y2="700"/>
-
-    <line x1="900" y1="100" x2="900" y2="300"/>
-    <line x1="900" y1="300" x2="900" y2="500"/>
-    <line x1="900" y1="500" x2="900" y2="700"/>
-
-    <line x1="1080" y1="100" x2="1080" y2="300"/>
-    <line x1="1080" y1="300" x2="1080" y2="500"/>
-    <line x1="1080" y1="500" x2="1080" y2="700"/>
-
-    <line x1="1260" y1="100" x2="1260" y2="300"/>
-    <line x1="1260" y1="300" x2="1260" y2="500"/>
-    <line x1="1260" y1="500" x2="1260" y2="700"/>
-  </g>
-
-  <!-- Glow overlays -->
-  <circle class="glow-pulse" cx="300" cy="200" r="150" fill="#ff9f1a" opacity="0.05"/>
-  <circle class="glow-pulse" style="animation-delay: 1s;" cx="900" cy="400" r="200" fill="#ff9f1a" opacity="0.05"/>
-  <circle class="glow-pulse" style="animation-delay: 2s;" cx="500" cy="650" r="180" fill="#ff9f1a" opacity="0.05"/>
-</svg>
-
-
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-poppins font-bold mb-4">Transparent Pricing</h2>
-            <p class="text-gray-300 text-lg">Choose the package that fits your needs. All include 30-day support.</p>
+    <section class="page-section section-slate">
+      <div class="shell">
+        <div class="section-intro reveal"><p class="eyebrow">How DTB works</p><h2>A clear path from friction to flow.</h2></div>
+        <div class="number-grid">
+          <article class="number-card reveal"><span>01 / Discover</span><h3>Find the real constraint</h3><p>Understand the business, audience, workflow and current system.</p></article>
+          <article class="number-card reveal"><span>02 / Design</span><h3>Map the solution</h3><p>Define the experience, architecture, priorities and success criteria.</p></article>
+          <article class="number-card reveal"><span>03 / Deploy</span><h3>Build with visibility</h3><p>Implement, test and communicate progress without creating a black box.</p></article>
+          <article class="number-card reveal"><span>04 / Improve</span><h3>Measure and evolve</h3><p>Document the system and refine it as the business changes.</p></article>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Starter -->
-            <div class="bg-graphite p-6 rounded-lg border border-slate">
-                <h3 class="font-poppins font-bold text-lg mb-2">Starter</h3>
-                <p class="text-gray-400 text-sm mb-4">Perfect for small projects</p>
-                <p class="text-3xl font-poppins font-bold text-accent mb-6">$2.5K</p>
-                <ul class="space-y-2 text-sm text-gray-300 mb-6">
-                    <li>✓ 5-page website</li>
-                    <li>✓ Mobile responsive</li>
-                    <li>✓ Basic SEO</li>
-                    <li>✓ 30-day support</li>
-                </ul>
-                <a href="/contact" class="block text-center bg-accent text-charcoal px-4 py-2 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
-                    Choose
-                </a>
-            </div>
-            
-            <!-- Professional -->
-            <div class="bg-graphite p-6 rounded-lg border border-accent">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="font-poppins font-bold text-lg">Professional</h3>
-                    <span class="bg-accent text-charcoal text-xs font-bold px-3 py-1 rounded-full">Popular</span>
-                </div>
-                <p class="text-gray-400 text-sm mb-4">Most popular choice</p>
-                <p class="text-3xl font-poppins font-bold text-accent mb-6">$5K</p>
-                <ul class="space-y-2 text-sm text-gray-300 mb-6">
-                    <li>✓ 10-page website</li>
-                    <li>✓ Advanced SEO</li>
-                    <li>✓ Analytics setup</li>
-                    <li>✓ CMS integration</li>
-                    <li>✓ 30-day support</li>
-                </ul>
-                <a href="/contact" class="block text-center bg-accent text-charcoal px-4 py-2 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
-                    Choose
-                </a>
-            </div>
-            
-            <!-- Enterprise -->
-            <div class="bg-graphite p-6 rounded-lg border border-slate">
-                <h3 class="font-poppins font-bold text-lg mb-2">Enterprise</h3>
-                <p class="text-gray-400 text-sm mb-4">Custom solutions</p>
-                <p class="text-3xl font-poppins font-bold text-accent mb-6">$10K+</p>
-                <ul class="space-y-2 text-sm text-gray-300 mb-6">
-                    <li>✓ Unlimited pages</li>
-                    <li>✓ Custom features</li>
-                    <li>✓ API integration</li>
-                    <li>✓ Advanced automation</li>
-                    <li>✓ 90-day support</li>
-                </ul>
-                <a href="/contact" class="block text-center bg-accent text-charcoal px-4 py-2 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
-                    Choose
-                </a>
-            </div>
-            
-            <!-- Retainer -->
-            <div class="bg-graphite p-6 rounded-lg border border-slate">
-                <h3 class="font-poppins font-bold text-lg mb-2">Retainer</h3>
-                <p class="text-gray-400 text-sm mb-4">Ongoing support</p>
-                <p class="text-3xl font-poppins font-bold text-accent mb-6">$1.5K/mo</p>
-                <ul class="space-y-2 text-sm text-gray-300 mb-6">
-                    <li>✓ Ongoing updates</li>
-                    <li>✓ Priority support</li>
-                    <li>✓ Monthly strategy</li>
-                    <li>✓ Performance optimization</li>
-                </ul>
-                <a href="/contact" class="block text-center bg-accent text-charcoal px-4 py-2 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
-                    Choose
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Process Section -->
-<section class="py-20 md:py-32 bg-charcoal">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-poppins font-bold mb-16 text-center">Our Process</h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold text-lg mx-auto mb-4">1</div>
-                <h3 class="font-poppins font-bold text-lg mb-2">Discovery</h3>
-                <p class="text-gray-400 text-sm">We understand your goals, audience and constraints.</p>
-            </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold text-lg mx-auto mb-4">2</div>
-                <h3 class="font-poppins font-bold text-lg mb-2">Strategy</h3>
-                <p class="text-gray-400 text-sm">We create a roadmap aligned with your business objectives.</p>
-            </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold text-lg mx-auto mb-4">3</div>
-                <h3 class="font-poppins font-bold text-lg mb-2">Execution</h3>
-                <p class="text-gray-400 text-sm">We build, test and optimize with precision and care.</p>
-            </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 bg-accent text-charcoal rounded-full flex items-center justify-center font-poppins font-bold text-lg mx-auto mb-4">4</div>
-                <h3 class="font-poppins font-bold text-lg mb-2">Launch & Support</h3>
-                <p class="text-gray-400 text-sm">We launch with confidence and support you every step.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Section -->
-<section class="bg-gradient-to-r from-accent to-accent-dark py-20 md:py-32">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl md:text-5xl font-poppins font-bold mb-6 text-charcoal">
-            Ready to get started?
-        </h2>
-        <p class="text-lg text-charcoal/80 mb-8">
-            Let's discuss which service is right for your business.
-        </p>
-        <a href="/contact" class="inline-block bg-charcoal text-accent px-8 py-3 rounded-md font-bold font-poppins hover:shadow-lg transition duration-200">
-            Schedule a Consultation
-        </a>
-    </div>
-</section>
-
-
-    </main>
-
-    <!-- Footer -->
-    
-
-<footer class="bg-slate border-t border-graphite mt-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-            <!-- Column 1: Company Info -->
-            <div>
-                <div class="flex items-center gap-2 mb-4">
-                    <img src="/static/Images/DTB_logo.png" alt="DTB logo" class="h-6 w-6">
-                    
-                </div>
-                <p class="text-sm text-gray-400 mb-4">Web systems and agentic automation for small teams that want enterprise results.</p>
-                <div class="flex gap-4">
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition">Twitter</a>
-                    <a href="https://www.linkedin.com/company/dtbsolutions" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition">LinkedIn</a>
-                    <a href="https://github.com/DTB-Solutions" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-accent transition">GitHub</a>
-                </div>
-            </div>
-
-            <!-- Column 2: Links -->
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <h4 class="font-poppins font-bold text-sm mb-4 text-text">Product</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="/" class="text-gray-400 hover:text-accent transition">Home</a></li>
-                        <li><a href="/services" class="text-gray-400 hover:text-accent transition">Services</a></li>
-                        <li><a href="/works" class="text-gray-400 hover:text-accent transition">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-poppins font-bold text-sm mb-4 text-text">Company</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="/about" class="text-gray-400 hover:text-accent transition">About</a></li>
-                        <li><a href="/reviews" class="text-gray-400 hover:text-accent transition">Reviews</a></li>
-                        <li><a href="/contact" class="text-gray-400 hover:text-accent transition">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Divider -->
-        <div class="border-t border-graphite pt-8">
-            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-                <p>© 2026 Designed To Breakthrough LLC. All rights reserved.</p>
-                <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="/privacy" class="hover:text-accent transition">Privacy Policy</a>
-                    <a href="/terms" class="hover:text-accent transition">Terms of Service</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script src="/assets/site.js"></script>
+    <section class="breakthrough-band"><div class="shell breakthrough-layout reveal"><div><p class="brand-signature">Start with clarity</p><h2>Not sure which service fits?</h2><p>Bring the problem. DTB will help map the right next move before prescribing technology.</p></div><a class="button" href="/contact/#project-form">Map My Breakthrough</a></div></section>
+  </main>
+  <!-- DTB_FOOTER --><script src="/assets/site.js?v=20260728-7"></script>
 </body>
 </html>

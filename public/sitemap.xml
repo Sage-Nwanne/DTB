@@ -5,35 +5,40 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/services</loc>
+    <loc>https://dtbsolutions.tech/services/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/works</loc>
+    <loc>https://dtbsolutions.tech/works/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/about</loc>
+    <loc>https://dtbsolutions.tech/about/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/reviews</loc>
+    <loc>https://dtbsolutions.tech/reviews/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/contact</loc>
+    <loc>https://dtbsolutions.tech/contact/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/privacy</loc>
+    <loc>https://dtbsolutions.tech/privacy/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://dtbsolutions.tech/terms</loc>
+    <loc>https://dtbsolutions.tech/terms/</loc>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://dtbsolutions.tech/blog/</loc>
     <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://dtbsolutions.tech/shawn/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

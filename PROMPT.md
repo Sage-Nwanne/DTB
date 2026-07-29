@@ -1,0 +1,9 @@
+# Creative Direction Prompt for DTB Profile Pages
+
+Create two modern profile-resume landing pages for DTB Solutions at `/shawn` and `/sage`. Each page should feel like a high-end digital resume, founder profile, and brand credibility page combined. The visual language should stay aligned with Designed To Breakthrough: deep charcoal/black backgrounds, warm amber-gold highlights, subtle tech-grid/circuit patterns, bold typography, polished card layouts, and a premium small-business technology brand feel.
+
+The pages should prioritize business credibility first: leadership, systems thinking, client-facing execution, technical capabilities, operations, creative direction, automation, infrastructure, web systems, process improvement, and measurable impact. Personal details should support the person behind the business rather than dominate the page. Social links such as Twitch, Instagram, Twitter/X, GitHub, LinkedIn, and other personal channels should appear as a refined “personal signal” section near the lower half or footer.
+
+The structure should borrow from modern resume formatting but avoid looking like a plain document. Use resume-inspired sections like headline summary, core strengths, selected accomplishments, project highlights, experience timeline, tools/skills, certifications/credentials, and contact/social links. Make it feel interactive, dimensional, and current: profile stat cards, glowing section dividers, timeline rails, skill chips, accomplishment cards, quote-style mission statements, and CTA buttons.
+
+Do not limit the design to traditional resume formatting. Treat each page like a polished personal brand microsite for a modern digital systems company. It should be easy to refine later with real numbers, updated accomplishments, project screenshots, social handles, and photos.

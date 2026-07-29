@@ -25,6 +25,19 @@ function clean(value) {
   return String(value || "").trim();
 }
 
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+function looksAutomated(body) {
+  const honeypot = clean(body.website);
+  const startedAt = Number(body.started_at);
+
+  if (honeypot) return true;
+  if (Number.isFinite(startedAt) && Date.now() - startedAt < 1200) return true;
+  return false;
+}
+
 function normalizePath(pathname) {
   if (!pathname || pathname === "/") {
     return "/";
@@ -46,9 +59,19 @@ async function handleContact(request, env) {
     const timeline = clean(body.timeline);
     const message = clean(body.message);
 
-    if (!name || !email || !message) {
+    if (looksAutomated(body)) {
+      return redirectTo(request, "/contact/", { sent: "1" });
+    }
+
+    if (!name || !email || !message || !isValidEmail(email)) {
       return redirectTo(request, "/contact/", {
-        error: "Name, email, and message are required.",
+        error: "A valid name, email, and message are required.",
+      });
+    }
+
+    if (name.length > 100 || email.length > 254 || company.length > 120 || message.length > 4000) {
+      return redirectTo(request, "/contact/", {
+        error: "One or more fields are longer than allowed.",
       });
     }
 
@@ -59,7 +82,7 @@ async function handleContact(request, env) {
     }
 
     const toEmail = env.CONTACT_TO_EMAIL || "inquire@dtbsolutions.tech";
-    const fromEmail = env.CONTACT_FROM_EMAIL || "Website Contact <inquire@send.dtbsolutions.tech>";
+    const fromEmail = env.CONTACT_FROM_EMAIL || "Website Contact <inquire@dtbsolutions.tech>";
 
     const emailText = [
       "New DTB contact form submission",
@@ -92,11 +115,8 @@ async function handleContact(request, env) {
     });
 
     if (!resendResponse.ok) {
-      const resendError = await resendResponse.text();
-
       return redirectTo(request, "/contact/", {
         error: "Message could not be sent. Please check the email configuration.",
-        resend: resendError.slice(0, 120),
       });
     }
 
@@ -113,8 +133,12 @@ async function handleNewsletter(request, env) {
     const body = await readForm(request);
     const email = clean(body.email);
 
-    if (!email) {
-      return redirectTo(request, "/blog/", { error: "Email is required." });
+    if (looksAutomated(body)) {
+      return redirectTo(request, "/blog/", { subscribed: "1" });
+    }
+
+    if (!email || !isValidEmail(email) || email.length > 254) {
+      return redirectTo(request, "/blog/", { error: "A valid email is required." });
     }
 
     if (!env.RESEND_API_KEY) {
@@ -123,8 +147,30 @@ async function handleNewsletter(request, env) {
       });
     }
 
+    if (env.RESEND_AUDIENCE_ID) {
+      const audienceResponse = await fetch(
+        `https://api.resend.com/audiences/${env.RESEND_AUDIENCE_ID}/contacts`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${env.RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, unsubscribed: false }),
+        },
+      );
+
+      if (!audienceResponse.ok) {
+        return redirectTo(request, "/blog/", {
+          error: "Newsletter signup could not be saved. Please try again.",
+        });
+      }
+
+      return redirectTo(request, "/blog/", { subscribed: "1" });
+    }
+
     const toEmail = env.CONTACT_TO_EMAIL || "inquire@dtbsolutions.tech";
-    const fromEmail = env.CONTACT_FROM_EMAIL || "Website Contact <inquire@send.dtbsolutions.tech>";
+    const fromEmail = env.CONTACT_FROM_EMAIL || "Website Contact <inquire@dtbsolutions.tech>";
 
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -181,6 +227,14 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const pathname = normalizePath(url.pathname);
+
+    if (request.method === "GET" && pathname === "/api/contact") {
+      return redirectTo(request, "/contact/");
+    }
+
+    if (request.method === "GET" && pathname === "/api/newsletter") {
+      return redirectTo(request, "/blog/");
+    }
 
     if (
       request.method === "POST" &&
